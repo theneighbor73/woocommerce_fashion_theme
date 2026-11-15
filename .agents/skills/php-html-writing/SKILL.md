@@ -20,6 +20,7 @@ Use this skill for theme setup, guarded presentation hooks, block patterns, and 
 - Use native core and WooCommerce blocks. Keep block comment attributes consistent with the saved HTML markup.
 - Use template parts for recurring structural regions and patterns for reusable native block compositions.
 - Use semantic landmarks and native controls. Keep nesting purposeful and manageable.
+- Meet the project’s WCAG 2.2 Level AA target for theme-authored markup; preserve accessible names, keyboard behavior, and visible focus.
 - Match template locking to the UI specification: preserve fixed composition while allowing intended content and navigation editing.
 
 ## PHP safety

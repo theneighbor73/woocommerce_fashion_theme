@@ -36,7 +36,7 @@ Use a consistent spacing scale and reusable content widths. Support readable con
 
 Use interaction only when it helps users understand state or complete a task. Keep motion subtle, avoid layout shifts and blocking transitions, and respect `prefers-reduced-motion`. Native WordPress/WooCommerce controls own functionality; theme enhancements are limited to visual/interface state.
 
-Design and review mobile, tablet, and desktop presentations. Preserve keyboard access, semantic hierarchy, readable contrast, visible focus, and accessible names for icon-only controls. Do not rely on hover alone.
+Target WCAG 2.2 Level AA for theme-authored UI. Design and review mobile, tablet, and desktop presentations; preserve keyboard access, semantic hierarchy, readable contrast, visible and unobscured focus, and accessible names for icon-only controls. Do not rely on hover alone. Review native WooCommerce controls for regressions caused by theme styling without claiming ownership of plugin markup.
 
 ## Open design decisions
 

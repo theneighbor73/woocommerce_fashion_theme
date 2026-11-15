@@ -22,6 +22,7 @@ Use this skill for theme stylesheets, `theme.json` styles, responsive presentati
 - Prefer logical properties (`margin-inline`, `padding-block`, `inset-inline-start`) and responsive layouts over fixed dimensions.
 - Keep specificity low; avoid `!important` unless a documented integration requires it.
 - Provide visible `:focus-visible` styles. Respect `prefers-reduced-motion` and avoid motion that obscures content or causes layout shifts.
+- Meet the project’s WCAG 2.2 Level AA target for theme-authored styles; check contrast, focus visibility, reflow, and non-color state cues.
 - Ensure frontend and editor styles remain consistent where the same blocks appear.
 
 ## Before finishing
