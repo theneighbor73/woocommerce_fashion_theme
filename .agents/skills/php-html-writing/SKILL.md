@@ -35,4 +35,4 @@ Use a PHP pattern only when needed for a reusable native block composition. Incl
 
 ## Before finishing
 
-Review block validity, editor parity, escaping, translation, WooCommerce guards, and whether the change stays within the presentation-only boundary. Do not run tests unless requested; report any checks performed.
+Review block validity, editor parity, escaping, translation, WooCommerce guards, and whether the change stays within the presentation-only boundary. Run relevant existing lint/build/validation checks by default, provide manual editor/browser review steps, and do not create a new test suite without approval.

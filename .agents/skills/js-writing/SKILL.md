@@ -27,4 +27,4 @@ If a requirement cannot be achieved within these limits, stop and follow the esc
 
 ## Before finishing
 
-State why native block behavior and CSS alone do not meet the visual interaction requirement. Confirm fallback behavior, keyboard use, focus, and that no commerce behavior was added. Do not run tests unless requested; report any checks performed.
+State why native block behavior and CSS alone do not meet the visual interaction requirement. Confirm fallback behavior, keyboard use, focus, and that no commerce behavior was added. Run relevant existing lint/build/validation checks by default, provide manual browser review steps, and do not create a new test suite without approval.

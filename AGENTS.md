@@ -32,6 +32,6 @@ Installed WordPress skills under `.agents/skills/` provide technical guidance. P
 2. If requirements conflict or are unclear, stop and ask the project owner.
 3. Before UI implementation, create or confirm its specification in `docs/frontend/09.ui-registry.md`.
 4. Propose the smallest native presentation change, then implement it.
-5. Keep edits limited to the task. Do not add or run tests unless requested; report any verification performed.
+5. Keep edits limited to the task. Run relevant existing lint, build, and validation checks by default; provide manual browser/editor review steps for behavior that needs the WordPress environment. Do not create a new test suite without approval.
 6. Update `docs/07.project-tracker.md` when implementation progress changes.
 7. Report changes, how they work, verification, incomplete work, and deviations.

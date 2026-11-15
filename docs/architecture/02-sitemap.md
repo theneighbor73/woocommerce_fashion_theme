@@ -54,7 +54,7 @@ Storefront
 └── 404
 ```
 
-This is a proposed baseline. The actual published pages and navigation items are managed by the merchant.
+This is the planned page baseline. Core shopping pages are implemented first; blog, editorial, and secondary content pages follow. The actual published pages and navigation items are managed by the merchant.
 
 Not every sitemap entry requires a separate template.
 
@@ -65,7 +65,7 @@ Initial proposed template inventory:
 | Template      | WordPress template file | Purpose                       |
 | ------------- | ----------------------- | ----------------------------- |
 | Index         | `index.html`            | Required fallback template    |
-| Homepage      | `front-page.html`       | Storefront landing page       |
+| Homepage      | `front-page.html`       | Prebuilt native-block editorial composition and product collection |
 | Standard Page | `page.html`             | General content pages         |
 | Single Post   | `single.html`           | Individual blog posts         |
 | Blog Archive  | `home.html`             | Posts index, where applicable |
@@ -95,7 +95,7 @@ WooCommerce functionality can be rendered through WooCommerce blocks, WordPress 
 
 Do not assume that every WooCommerce page requires a separate HTML template.
 
-For example, Cart and Checkout are commonly WordPress pages containing WooCommerce blocks. Their actual rendering and assignment must be verified against the supported WooCommerce version.
+Cart and Checkout must be styled for both WooCommerce blocks and classic shortcode-backed pages. Prefer blocks for new/default setups; do not replace either mode's behavior.
 
 Use the correct WordPress and WooCommerce template hierarchy.
 
@@ -103,13 +103,13 @@ Use the correct WordPress and WooCommerce template hierarchy.
 
 | Customer-facing page | Expected rendering                                     |
 | -------------------- | ------------------------------------------------------ |
-| Home                 | `front-page.html`                                      |
+| Home                 | `front-page.html`, with editorial content and a native WooCommerce product collection |
 | Shop                 | Product Catalog template or WooCommerce shop rendering |
 | Product Category     | Product category archive                               |
 | Product Tag          | Product tag archive                                    |
 | Product Detail       | Single Product template                                |
-| Cart                 | Cart page and WooCommerce cart functionality           |
-| Checkout             | Checkout page and WooCommerce checkout functionality   |
+| Cart                 | WooCommerce Cart block or classic shortcode page       |
+| Checkout             | WooCommerce Checkout block or classic shortcode page  |
 | Account              | My Account page and account endpoints                  |
 | Blog                 | Posts index                                            |
 | Blog Category        | Category archive                                       |
