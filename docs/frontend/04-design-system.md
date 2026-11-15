@@ -19,11 +19,11 @@ Use only the six approved roles and values in [the project overview](../00.proje
 
 ## Typography
 
-Use clean, confident typography with a clear hierarchy for display, page headings, section headings, body copy, metadata, navigation, and controls. Keep font families and weights limited, body copy readable, and heading sizes responsive. Exact families and scale remain undecided; record approved values in UI Tokens.
+Use Cormorant Garamond for editorial display and Plus Jakarta Sans for body and interface text. Bundle free/open-licensed font files locally; verify and record each exact source and license before shipping. Use the approved scale and typography tokens in [UI Tokens](08.ui-tokens.md).
 
 ## Spacing and layout
 
-Use a consistent spacing scale and reusable content widths. Support readable content width, wide layouts, and full-width editorial sections. Product grids should have responsive columns, balanced gaps, and consistent image treatment. Exact widths, breakpoints, and spacing values remain undecided; record approved values in UI Tokens.
+Use the spacing scale, widths, breakpoints, and grid columns in [UI Tokens](08.ui-tokens.md). Support readable content width, wide layouts, and full-width editorial sections. Product grids should have balanced gaps and consistent image treatment.
 
 ## Components
 
@@ -38,12 +38,8 @@ Use interaction only when it helps users understand state or complete a task. Ke
 
 Target WCAG 2.2 Level AA for theme-authored UI. Design and review mobile, tablet, and desktop presentations; preserve keyboard access, semantic hierarchy, readable contrast, visible and unobscured focus, and accessible names for icon-only controls. Do not rely on hover alone. Review native WooCommerce controls for regressions caused by theme styling without claiming ownership of plugin markup.
 
-## Open design decisions
+## Header behavior
 
-| Decision | Status |
-|---|---|
-| Font families and type scale | TBD |
-| Spacing scale and content widths | TBD |
-| Breakpoints and product grid columns | TBD |
-| Button and form dimensions | TBD |
-| Border radius, shadows, and motion values | TBD |
+Keep the header fixed on mobile. Order its top row as site logo, hamburger menu, centered search, then account and cart utilities. The hamburger opens a native navigation panel that slides in from the left, occupying about one third of the viewport with a minimum usable width and a `24rem` maximum. Keep the panel keyboard accessible and dismissible; honor reduced motion.
+
+On desktop, the header scrolls out of view while scrolling down and slides back into view at the top while scrolling up. Any script may control only this visual show/hide state; the header and navigation remain usable without the enhancement.
