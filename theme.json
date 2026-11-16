@@ -1,0 +1,139 @@
+{
+	"$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"custom": false,
+			"customDuotone": false,
+			"customGradient": false,
+			"defaultDuotone": false,
+			"defaultGradients": false,
+			"defaultPalette": false,
+			"palette": [
+				{ "slug": "primary", "color": "#111111", "name": "Primary / dark" },
+				{ "slug": "canvas", "color": "#F9F8F6", "name": "Canvas" },
+				{ "slug": "accent", "color": "#C5A059", "name": "Brand accent" },
+				{ "slug": "body", "color": "#222222", "name": "Body text" },
+				{ "slug": "border", "color": "#E5E5E5", "name": "Borders" },
+				{ "slug": "alert", "color": "#C62828", "name": "Feedback / alert" }
+			]
+		},
+		"layout": {
+			"contentSize": "47.5rem",
+			"wideSize": "85rem"
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true,
+			"blockGap": true,
+			"customSpacingSize": false,
+			"defaultSpacingSizes": false,
+			"spacingSizes": [
+				{ "slug": "20", "size": "0.5rem", "name": "Extra small" },
+				{ "slug": "30", "size": "1rem", "name": "Small" },
+				{ "slug": "40", "size": "1.5rem", "name": "Medium" },
+				{ "slug": "50", "size": "clamp(2rem, 4vw, 3rem)", "name": "Large" },
+				{ "slug": "60", "size": "clamp(3.5rem, 6vw, 5rem)", "name": "Extra large" },
+				{ "slug": "70", "size": "clamp(5rem, 9vw, 8rem)", "name": "2x large" }
+			]
+		},
+		"typography": {
+			"customFontSize": false,
+			"defaultFontSizes": false,
+			"fontFamilies": [
+				{
+					"fontFamily": "\"Cormorant Garamond\", Georgia, serif",
+					"name": "Cormorant Garamond",
+					"slug": "serif",
+					"fontFace": [
+						{
+							"fontFamily": "Cormorant Garamond",
+							"fontStyle": "normal",
+							"fontWeight": "300 700",
+							"src": ["file:./assets/fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf"]
+						},
+						{
+							"fontFamily": "Cormorant Garamond",
+							"fontStyle": "italic",
+							"fontWeight": "300 700",
+							"src": ["file:./assets/fonts/Cormorant_Garamond/CormorantGaramond-Italic-VariableFont_wght.ttf"]
+						}
+					]
+				},
+				{
+					"fontFamily": "\"Plus Jakarta Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+					"name": "Plus Jakarta Sans",
+					"slug": "sans",
+					"fontFace": [
+						{
+							"fontFamily": "Plus Jakarta Sans",
+							"fontStyle": "normal",
+							"fontWeight": "200 800",
+							"src": ["file:./assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf"]
+						},
+						{
+							"fontFamily": "Plus Jakarta Sans",
+							"fontStyle": "italic",
+							"fontWeight": "200 800",
+							"src": ["file:./assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-Italic-VariableFont_wght.ttf"]
+						}
+					]
+				}
+			],
+			"fontSizes": [
+				{ "slug": "xs", "size": "0.75rem", "name": "Extra small" },
+				{ "slug": "sm", "size": "0.875rem", "name": "Small" },
+				{ "slug": "base", "size": "1rem", "name": "Base" },
+				{ "slug": "md", "size": "1.25rem", "name": "Medium" },
+				{ "slug": "lg", "size": "clamp(1.5rem, 2.2vw, 2rem)", "name": "Large" },
+				{ "slug": "xl", "size": "clamp(2rem, 3.5vw, 3rem)", "name": "Extra large" },
+				{ "slug": "2xl", "size": "clamp(2.75rem, 5vw, 4.5rem)", "name": "2x large" }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var:preset|color|canvas",
+			"text": "var:preset|color|body"
+		},
+		"typography": {
+			"fontFamily": "var:preset|font-family|sans",
+			"fontSize": "var:preset|font-size|base",
+			"lineHeight": "1.65"
+		},
+		"elements": {
+			"heading": {
+				"color": { "text": "var:preset|color|primary" },
+				"typography": { "fontFamily": "var:preset|font-family|serif", "lineHeight": "1.15" }
+			},
+			"link": {
+				"color": { "text": "var:preset|color|primary" },
+				":hover": { "color": { "text": "var:preset|color|accent" } }
+			},
+			"button": {
+				"color": { "background": "var:preset|color|primary", "text": "var:preset|color|canvas" },
+				"border": { "radius": "0" },
+				"spacing": { "padding": { "top": "0.875rem", "right": "1.75rem", "bottom": "0.875rem", "left": "1.75rem" } },
+				"typography": { "fontFamily": "var:preset|font-family|sans", "fontSize": "var:preset|font-size|sm", "fontWeight": "500", "textTransform": "uppercase", "letterSpacing": "0.08em" },
+				":hover": { "color": { "background": "var:preset|color|body", "text": "var:preset|color|canvas" } },
+				":focus": { "outline": { "color": "var:preset|color|primary", "offset": "3px", "style": "solid", "width": "2px" } }
+			}
+		},
+			"elements": {
+				"textInput": {
+					"border": { "color": "var:preset|color|border", "radius": "0", "width": "1px" },
+					"color": { "text": "var:preset|color|body", "background": "var:preset|color|canvas" }
+				}
+			},
+			"blocks": {
+			"core/search": {
+				"color": { "text": "var:preset|color|primary" }
+			}
+		}
+	},
+	"templateParts": [
+		{ "name": "header", "title": "Header", "area": "header" },
+		{ "name": "footer", "title": "Footer", "area": "footer" }
+	]
+}
