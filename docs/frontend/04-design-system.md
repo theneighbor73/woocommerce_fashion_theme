@@ -40,6 +40,10 @@ Target WCAG 2.2 Level AA for theme-authored UI. Design and review mobile, tablet
 
 ## Header behavior
 
-Keep the header fixed on mobile. Order its top row as site logo, hamburger menu, centered search, then account and cart utilities. The hamburger opens a native navigation panel that slides in from the left, occupying about one third of the viewport with a minimum usable width and a `24rem` maximum. Keep the panel keyboard accessible and dismissible; honor reduced motion.
+Use the same three equal columns at all widths: site logo aligned left, centered search, and the hamburger/navigation plus account and cart utilities aligned right. The header scrolls out of view while scrolling down and reappears while scrolling up on mobile and desktop. The hamburger opens a native navigation panel that slides in from the left, occupying about one third of the viewport with a minimum usable width and a `24rem` maximum. Keep the panel keyboard accessible and dismissible; honor reduced motion. At narrow widths, allow the search field to shrink while keeping its submit button and utility controls usable.
 
-On desktop, the header scrolls out of view while scrolling down and slides back into view at the top while scrolling up. Any script may control only this visual show/hide state; the header and navigation remain usable without the enhancement.
+The header scrolls out of view while scrolling down and slides back into view while scrolling up. Any script may control only this visual show/hide state; the header and navigation remain usable without the enhancement.
+
+## Site Editor visual parity
+
+Keep the Site Editor close to the frontend so merchants can understand and customize the layout they will publish. Set meaningful block-level presentation—especially section backgrounds, text colors, and spacing—in native block attributes or `theme.json` when practical. Use CSS for responsive behavior and component details that are awkward or unavailable in native controls. Avoid duplicating the same visual decision in multiple places. Exact pixel parity is not required; prioritize parity for structure, colors, spacing, and visible states, and check both editor and frontend when a shared component changes.

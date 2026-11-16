@@ -8,6 +8,10 @@ Use native WordPress and WooCommerce blocks and templates, template parts, patte
 
 If a requirement cannot be met within that boundary, stop and present the native fallback and any existing-plugin option. The project owner decides whether to use a fallback, defer the work, or record it in [the Custom Block Consideration List](docs/consideration-list.md). Do not implement a custom block or install a plugin without that decision.
 
+## Media assets
+
+Act only as the theme developer. Do not create, generate, draw, source, or download media assets, including images, illustrations, icons, logos, audio, video, or fonts. Do not create SVG artwork or use image-generation tools. Use project-owner-provided assets as supplied; do not crop, resize, compress, convert, or otherwise edit the media files. CSS may control display size, positioning, and cropping. Prefer visuals rendered by native WordPress/WooCommerce blocks and text labels over theme-authored icon artwork. If a required asset is missing, stop and ask the project owner to provide or approve it. Record source and license details supplied by the owner before shipping media.
+
 ## Read the relevant source of truth
 
 - [Project overview](docs/00.project-overview.md): scope, product decisions, and palette.
