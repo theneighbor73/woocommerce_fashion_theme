@@ -21,9 +21,8 @@ const { state, actions } = store('alice/header', {
 		},
 		updateHeaderVisibility() {
 			const currentY = window.scrollY;
-			const isDesktop = window.matchMedia('(min-width: 64rem)').matches;
 
-			if (!isDesktop || currentY <= 8) {
+			if (currentY <= 8) {
 				state.isHidden = false;
 			} else if (currentY > state.lastScrollY + 4) {
 				state.isHidden = true;
