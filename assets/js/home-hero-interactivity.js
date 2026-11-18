@@ -18,7 +18,7 @@ const { state, actions } = store('alice/home-hero', {
 
 			state.slideCount = hero.querySelectorAll('.home-hero__slides .wp-block-image').length;
 
-			if (state.slideCount < 1) {
+			if (state.slideCount < 2) {
 				return;
 			}
 
@@ -49,7 +49,7 @@ const { state, actions } = store('alice/home-hero', {
 
 			const stageHeight = window.innerHeight;
 			hero.style.setProperty('--home-hero-stage-height', `${stageHeight}px`);
-			hero.style.setProperty('--home-hero-scroll-height', `${state.slideCount * stageHeight}px`);
+			hero.style.setProperty('--home-hero-scroll-height', `${(state.slideCount + 1) * stageHeight}px`);
 			actions.queueUpdate();
 		},
 		syncSlideState() {

@@ -39,3 +39,9 @@ Installed WordPress skills under `.agents/skills/` provide technical guidance. P
 5. Keep edits limited to the task. Run relevant existing lint, build, and validation checks by default; provide manual browser/editor review steps for behavior that needs the WordPress environment. Do not create a new test suite without approval.
 6. Update `docs/07.project-tracker.md` when implementation progress changes.
 7. Report changes, how they work, verification, incomplete work, and deviations.
+
+## Live review
+
+Run live review when requested only.
+
+The project owner authorized Chrome browser control and DevTools inspection for live testing. Use the connected Chrome browser at <http://localhost:8080/>; this resolves on the owner's machine, unlike a remote browser. Use Chrome DevTools Protocol network events to verify resource request status/completion, then inspect visible behavior in the page. Do not use TinyFish for live-site verification.
