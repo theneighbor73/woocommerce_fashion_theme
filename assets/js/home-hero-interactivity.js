@@ -84,9 +84,10 @@ const { state, actions } = store('alice/home-hero', {
 			const heroTop = hero.getBoundingClientRect().top + window.scrollY;
 			const stageHeight = Math.max(1, stage.offsetHeight);
 			const scrolledThroughHero = Math.max(0, window.scrollY - heroTop);
+			// Keep each image active through 95% of its viewport interval.
 			const nextSlide = Math.min(
 				slideCount - 1,
-				Math.floor(scrolledThroughHero / stageHeight + 0.15),
+				Math.floor(scrolledThroughHero / stageHeight + 0.05),
 			);
 
 			if (state.activeSlide !== nextSlide) {
