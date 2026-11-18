@@ -350,9 +350,16 @@ a {
 	margin: 0;
 }
 
-.home-hero__actions .wp-block-button__link {
+.home-hero__overlay .home-hero__actions .wp-block-button__link {
 	background: var(--color-bg-page);
 	color: var(--color-text-heading);
+	box-shadow: none;
+	text-shadow: none;
+}
+
+.home-hero__overlay .home-hero__actions .wp-block-button__link * {
+	box-shadow: none;
+	text-shadow: none;
 }
 
 .home-hero.is-enhanced {
