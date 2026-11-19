@@ -6,6 +6,10 @@ Alice is a WordPress Block Theme for WooCommerce stores. It is a presentation la
 
 Use native WordPress and WooCommerce blocks and templates, template parts, patterns, `theme.json`, CSS, and narrowly scoped Interactivity API enhancements for progressive visual interactions (for example, navigation state). Shopping behavior remains native to WordPress/WooCommerce.
 
+## Reusable merchant components
+
+Treat portability as a design principle. Build reusable merchant-facing page sections from native blocks and expose them as inserter patterns so merchants can add and edit independent copies in other pages or content. Use template parts for recurring site structure such as the shared header and footer. Reuse the same pattern in templates where it is the source composition; do not duplicate block markup or create custom blocks just to package a component.
+
 If a requirement cannot be met within that boundary, stop and present the native fallback and any existing-plugin option. The project owner decides whether to use a fallback, defer the work, or record it in [the Custom Block Consideration List](docs/consideration-list.md). Do not implement a custom block or install a plugin without that decision.
 
 ## Media assets
@@ -27,6 +31,7 @@ Read the relevant authored skill before coding:
 - [CSS](.agents/skills/css-writing/SKILL.md)
 - [JavaScript](.agents/skills/js-writing/SKILL.md)
 - [PHP and HTML](.agents/skills/php-html-writing/SKILL.md)
+- [WordPress asset versioning and cache busting](.agents/skills/wordpress-asset-versioning-cache-busting/SKILL.md): read when adding or changing CSS/JavaScript assets or their PHP registrations.
 
 Installed WordPress skills under `.agents/skills/` provide technical guidance. Project documentation is authoritative if a skill recommendation conflicts with the agreed project boundary.
 
@@ -45,3 +50,4 @@ Installed WordPress skills under `.agents/skills/` provide technical guidance. P
 Run live review when requested only.
 
 The project owner authorized Chrome browser control and DevTools inspection for live testing. Use the connected Chrome browser at <http://localhost:8080/>; this resolves on the owner's machine, unlike a remote browser. Use Chrome DevTools Protocol network events to verify resource request status/completion, then inspect visible behavior in the page. Do not use TinyFish for live-site verification.
+

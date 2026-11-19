@@ -35,33 +35,93 @@ function alice_theme_setup() {
 add_action( 'after_setup_theme', 'alice_theme_setup' );
 
 /**
+ * Check parsed block content for an insertable editorial hero image gallery.
+ *
+ * @param array $blocks Parsed block list.
+ * @return bool
+ */
+function alice_theme_blocks_contain_editorial_hero_image_gallery( $blocks ) {
+	foreach ( $blocks as $block ) {
+		$class_names = preg_split( '/\s+/', trim( $block['attrs']['className'] ?? '' ), -1, PREG_SPLIT_NO_EMPTY );
+
+		if ( 'core/group' === $block['blockName'] && in_array( 'editorial-hero-image-gallery', $class_names, true ) ) {
+			return true;
+		}
+
+		if ( ! empty( $block['innerBlocks'] ) && alice_theme_blocks_contain_editorial_hero_image_gallery( $block['innerBlocks'] ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Determine whether the current view can contain the editorial hero image gallery.
+ *
+ * @return bool
+ */
+function alice_theme_view_contains_editorial_hero_image_gallery() {
+	if ( is_front_page() ) {
+		return true;
+	}
+
+	if ( ! is_singular() ) {
+		return false;
+	}
+
+	$post = get_queried_object();
+
+	return $post instanceof WP_Post && alice_theme_blocks_contain_editorial_hero_image_gallery( parse_blocks( $post->post_content ) );
+}
+
+/**
+ * Get a theme asset version from its modification time, with a theme-version fallback.
+ *
+ * @param string $relative_path Theme-relative asset path.
+ * @return string
+ */
+function alice_theme_get_asset_version( $relative_path ) {
+	$filepath = get_theme_file_path( $relative_path );
+
+	if ( file_exists( $filepath ) ) {
+		$modified = filemtime( $filepath );
+		if ( false !== $modified ) {
+			return (string) $modified;
+		}
+	}
+
+	$theme_version = wp_get_theme()->get( 'Version' );
+
+	return is_string( $theme_version ) && '' !== $theme_version ? $theme_version : '0.1.0';
+}
+
+/**
  * Enqueue the theme stylesheet and progressive visual enhancements.
  *
  * @return void
  */
 function alice_theme_enqueue_assets() {
-	$theme_version = wp_get_theme()->get( 'Version' );
-
 	wp_enqueue_style(
 		'alice-theme',
 		get_theme_file_uri( '/assets/css/theme.css' ),
 		array(),
-		$theme_version
+		alice_theme_get_asset_version( 'assets/css/theme.css' )
 	);
 
 	wp_enqueue_script_module(
 		'alice-theme-header-interactivity',
 		get_theme_file_uri( '/assets/js/header-interactivity.js' ),
 		array( '@wordpress/interactivity' ),
-		$theme_version
+		alice_theme_get_asset_version( 'assets/js/header-interactivity.js' )
 	);
 
-	if ( is_front_page() ) {
+	if ( alice_theme_view_contains_editorial_hero_image_gallery() ) {
 		wp_enqueue_script_module(
-			'alice-theme-home-hero-interactivity',
-			get_theme_file_uri( '/assets/js/home-hero-interactivity.js' ),
+			'alice-theme-editorial-hero-image-gallery-interactivity',
+			get_theme_file_uri( '/assets/js/editorial-hero-image-gallery-interactivity.js' ),
 			array( '@wordpress/interactivity' ),
-			$theme_version
+			alice_theme_get_asset_version( 'assets/js/editorial-hero-image-gallery-interactivity.js' )
 		);
 	}
 }
@@ -89,7 +149,7 @@ add_filter( 'register_block_type_args', 'alice_theme_interactivity_block_support
  *
  * @return void
  */
-function alice_theme_register_home_hero_overlay_styles() {
+function alice_theme_register_editorial_hero_image_gallery_overlay_styles() {
 	$positions = array(
 		'top-left'     => __( 'Top left', 'alice-theme' ),
 		'top-right'    => __( 'Top right', 'alice-theme' ),
@@ -109,34 +169,17 @@ function alice_theme_register_home_hero_overlay_styles() {
 		);
 	}
 }
-add_action( 'init', 'alice_theme_register_home_hero_overlay_styles' );
+add_action( 'init', 'alice_theme_register_editorial_hero_image_gallery_overlay_styles' );
 
 /**
- * Add scroll-driven slide directives to the homepage hero.
+ * Add scroll-driven slide directives to hero pattern instances.
  *
  * @param string $block_content Rendered block markup.
  * @param array  $block         Parsed block.
  * @return string
  */
-function alice_theme_add_home_hero_interactivity( $block_content, $block ) {
-	$image_url = $block['attrs']['url'] ?? '';
-	if ( 'core/image' === $block['blockName'] && is_string( $image_url ) && str_starts_with( $image_url, '/alice-theme-assets/' ) ) {
-		$asset_name = basename( $image_url );
-		$asset_path = '/assets/images/' . $asset_name;
-		if ( file_exists( get_theme_file_path( $asset_path ) ) && class_exists( 'WP_HTML_Tag_Processor' ) ) {
-			$image = new WP_HTML_Tag_Processor( $block_content );
-			if ( $image->next_tag( 'IMG' ) ) {
-				$image->set_attribute( 'src', get_theme_file_uri( $asset_path ) );
-				return $image->get_updated_html();
-			}
-		}
-	}
-
-	if (
-		! is_front_page() ||
-		! function_exists( 'wp_interactivity_state' ) ||
-		! class_exists( 'WP_HTML_Tag_Processor' )
-	) {
+function alice_theme_add_editorial_hero_image_gallery_interactivity( $block_content, $block ) {
+	if ( ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
 		return $block_content;
 	}
 
@@ -144,38 +187,22 @@ function alice_theme_add_home_hero_interactivity( $block_content, $block ) {
 
 	if (
 		'core/group' === $block['blockName'] &&
-		in_array( 'home-hero', explode( ' ', $block['attrs']['className'] ?? '' ), true )
+		in_array( 'editorial-hero-image-gallery', explode( ' ', $block['attrs']['className'] ?? '' ), true )
 	) {
-		$processor->next_tag();
-		$processor->set_attribute( 'data-wp-interactive', 'alice/home-hero' );
-		$processor->set_attribute( 'data-wp-class--is-enhanced', 'state.isEnhanced' );
+		if ( ! $processor->next_tag() ) {
+			return $block_content;
+		}
+
+		$processor->set_attribute( 'data-wp-interactive', 'alice/editorial-hero-image-gallery' );
 		$processor->set_attribute( 'data-wp-init', 'callbacks.initialize' );
 		$processor->set_attribute( 'data-wp-on-window--scroll', 'actions.queueUpdate' );
-		$processor->set_attribute( 'data-wp-on-window--resize', 'actions.resizeHero' );
+		$processor->set_attribute( 'data-wp-on-window--resize', 'actions.resizeHeroes' );
 		return $processor->get_updated_html();
 	}
 
-	if ( 'core/gallery' !== $block['blockName'] || ! str_contains( $block['attrs']['className'] ?? '', 'home-hero__slides' ) ) {
-		return $block_content;
-	}
-
-	$count = 0;
-	while ( $processor->next_tag( array( 'tag_name' => 'figure', 'class_name' => 'wp-block-image' ) ) ) {
-		++$count;
-	}
-
-	wp_interactivity_state(
-		'alice/home-hero',
-		array(
-			'activeSlide' => 0,
-			'isEnhanced'  => false,
-			'slideCount'  => $count,
-		)
-	);
-
-	return $processor->get_updated_html();
+	return $block_content;
 }
-add_filter( 'render_block', 'alice_theme_add_home_hero_interactivity', 10, 2 );
+add_filter( 'render_block', 'alice_theme_add_editorial_hero_image_gallery_interactivity', 10, 2 );
 
 /**
  * Add scoped directives to the shared header template part.
