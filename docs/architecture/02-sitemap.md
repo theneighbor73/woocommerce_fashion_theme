@@ -158,7 +158,7 @@ Use for reusable compositions such as:
 - Editorial banners.
 - Promotional sections.
 
-Patterns should be used when they simplify implementation or provide useful reusable structures.
+Patterns are the default for reusable merchant-facing page sections: they should be insertable, editable copies, and templates should reference the registered pattern instead of duplicating its block markup. Template parts remain the choice for shared site structure.
 
 ### CSS and JavaScript Components
 
