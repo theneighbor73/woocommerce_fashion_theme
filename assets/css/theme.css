@@ -8,9 +8,9 @@
   --color-accent-primary: var(--wp--preset--color--accent, #c5a059);
   --color-border-subtle: var(--wp--preset--color--border, #e5e5e5);
   --color-status-error: var(--wp--preset--color--alert, #c62828);
-  --color-status-success: var(--wp--preset--color--body, #222222);
-  --color-text-muted: var(--wp--preset--color--body, #222222);
-  --color-accent-subtle: var(--wp--preset--color--canvas, #f9f8f6);
+  --color-status-success: var(--wp--preset--color--success, #2f6b45);
+  --color-text-muted: var(--wp--preset--color--muted, #666666);
+  --color-accent-subtle: var(--wp--preset--color--accent-subtle, #f2e8d4);
   --color-text-inverse: var(--wp--preset--color--canvas, #f9f8f6);
   --color-focus-ring: var(--wp--preset--color--primary, #111111);
   --font-serif: var(

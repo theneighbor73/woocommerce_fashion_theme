@@ -14,8 +14,11 @@
 				{ "slug": "primary", "color": "#111111", "name": "Primary / dark" },
 				{ "slug": "canvas", "color": "#F9F8F6", "name": "Canvas" },
 				{ "slug": "accent", "color": "#C5A059", "name": "Brand accent" },
+				{ "slug": "accent-subtle", "color": "#F2E8D4", "name": "Subtle accent surface" },
 				{ "slug": "body", "color": "#222222", "name": "Body text" },
+				{ "slug": "muted", "color": "#666666", "name": "Muted text" },
 				{ "slug": "border", "color": "#E5E5E5", "name": "Borders" },
+				{ "slug": "success", "color": "#2F6B45", "name": "Feedback / success" },
 				{ "slug": "alert", "color": "#C62828", "name": "Feedback / alert" }
 			]
 		},
