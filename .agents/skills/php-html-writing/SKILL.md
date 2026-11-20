@@ -9,8 +9,7 @@ Use this skill for theme setup, guarded presentation hooks, block patterns, and 
 
 ## Project constraints
 
-- WordPress and WooCommerce own data and business behavior. Theme PHP is limited to setup, asset loading, and approved presentation integration.
-- Do not register custom blocks, post types, taxonomies, tables, shortcodes, custom data sources, or business logic.
+- Follow the presentation-only project boundary in `docs/00.project-overview.md` and the relevant specification in `docs/frontend/09.ui-registry.md`.
 - Check WooCommerce APIs and hooks before use. When WooCommerce is inactive, do not fatal; keep general WordPress pages usable.
 - Follow WordPress APIs; use `alice-theme` for WordPress slugs/handles and `alice_theme_` for PHP identifiers.
 
@@ -19,8 +18,7 @@ Use this skill for theme setup, guarded presentation hooks, block patterns, and 
 - Keep `templates/*.html` and `parts/*.html` as serialized WordPress block markup; do not include PHP.
 - Use native core and WooCommerce blocks. Keep block comment attributes consistent with the saved HTML markup.
 - Use template parts for recurring structural regions and patterns for reusable native block compositions.
-- Use semantic landmarks and native controls. Keep nesting purposeful and manageable.
-- Meet the project’s WCAG 2.2 Level AA target for theme-authored markup; preserve accessible names, keyboard behavior, and visible focus.
+- Use semantic landmarks and native controls. Keep nesting purposeful and manageable; follow the accessibility guidance in `docs/frontend/04-design-system.md`.
 - Match template locking to the UI specification: preserve fixed composition while allowing intended content and navigation editing.
 
 ## PHP safety
