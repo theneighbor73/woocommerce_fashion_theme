@@ -18,6 +18,10 @@ This document provides shared visual guidance. [UI Tokens](08.ui-tokens.md) is t
 - Preserve merchant-provided media files; use native blocks and CSS for display size, position, and crop.
 - Provide meaningful alt text for informative images; avoid redundant spoken content for decorative images.
 
+## Color and Shade Usage
+
+The nine-step shade ramps are available throughout the design system. Use shades for any appropriate visual role, including surfaces, text, borders, icons, and feedback. Pair shades to create clear hierarchy and cohesive contrast within the established palette; semantic base colors remain useful defaults, not exclusive choices. There is no universal shade-to-role mapping: choose combinations for the component and context, then verify contrast and meaning. A feedback surface may, for example, use different steps from its palette family for its background, boundary, and text; that is an illustration, not a required recipe.
+
 ## Shape and Depth
 
 Square corners are the baseline. Use existing small or full-radius tokens only where a component specification calls for them. Keep most layouts flat; use borders for necessary boundaries and reserve overlay shadows for floating layers.
@@ -35,14 +39,14 @@ Component specifications, component-specific behavior, and exceptions belong in 
 
 States describe how an interactable component appears and behaves in response to its condition or user input. Apply the following shared baseline to buttons, navigation, form controls, and other interactable components. A component supports only states that make sense for its role; its UI Registry entry lists applicable states and documents any exception to this baseline.
 
-| State | Meaning and shared rule |
-|---|---|
-| Default | Ready for interaction; the component's normal presentation. |
-| Hover | Pointer is over the component. Use a clear visual cue that fits its role. Where a component uses paired foreground and surface colors, coordinate changes to both colors when applying an inverse treatment; do not make a dark surface brighter while leaving its already-bright foreground unchanged. Hover must not be the only way to identify or operate the component. |
-| Focus | Keyboard or other input method has placed focus on the component. Show a visible, sufficiently contrasting indicator; keep it unobscured. |
-| Active / Pressed | The component is being activated. Provide feedback where supported without changing its meaning or obscuring content. Preserve the selected surface/foreground pairing and add a distinct pressed cue, such as a small positional change, where appropriate. |
-| Disabled | The action is unavailable. Preserve native disabled semantics and behavior; make the unavailable state perceivable without relying on color alone. |
-| Loading | An operation is processing. Preserve the native operation's behavior and feedback; do not imply that a component has loading behavior when its underlying operation does not expose it. |
+| State            | Meaning and shared rule                                                                                                                                                                                                                                                                                                                                                      |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Default          | Ready for interaction; the component's normal presentation.                                                                                                                                                                                                                                                                                                                  |
+| Hover            | Pointer is over the component. Use a clear visual cue that fits its role. Where a component uses paired foreground and surface colors, coordinate changes to both colors when applying an inverse treatment; do not make a dark surface brighter while leaving its already-bright foreground unchanged. Hover must not be the only way to identify or operate the component. |
+| Focus            | Keyboard or other input method has placed focus on the component. Show a visible, sufficiently contrasting indicator; keep it unobscured.                                                                                                                                                                                                                                    |
+| Active / Pressed | The component is being activated. Provide feedback where supported without changing its meaning or obscuring content. Preserve the selected surface/foreground pairing and add a distinct pressed cue, such as a small positional change, where appropriate.                                                                                                                 |
+| Disabled         | The action is unavailable. Preserve native disabled semantics and behavior; make the unavailable state perceivable without relying on color alone.                                                                                                                                                                                                                           |
+| Loading          | An operation is processing. Preserve the native operation's behavior and feedback; do not imply that a component has loading behavior when its underlying operation does not expose it.                                                                                                                                                                                      |
 
 For buttons, the current inverse color treatment is: dark Primary/Fill surfaces invert to Canvas with Primary text; light Secondary/Outline surfaces invert to Primary with inverse text. Hover and pressed retain the same inverse color pairing, while pressed adds a small positional cue. Use existing semantic palette pairs and check contrast on the actual surface. This is a styling rule only; it does not imply new interaction or business behavior.
 
