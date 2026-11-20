@@ -9,8 +9,8 @@
  * Keywords: hero, fashion, editorial, gallery, banner
  * Text Domain: alice-theme
  */
-$hero_image_two = esc_url(get_theme_file_uri('/assets/images/desktop-hero-image2.jpg'));
-$hero_image_one = esc_url(get_theme_file_uri('/assets/images/desktop-hero-image1.jpg'));
+$hero_image_two = esc_url(get_theme_file_uri('/assets/images/editorial-hero-image-gallery/desktop-hero-image2.jpg'));
+$hero_image_one = esc_url(get_theme_file_uri('/assets/images/editorial-hero-image-gallery/desktop-hero-image1.jpg'));
 ?>
 <!-- wp:group {"align":"full","tagName":"section","className":"editorial-hero-image-gallery","layout":{"type":"default"}} -->
 <section class="wp-block-group alignfull editorial-hero-image-gallery">

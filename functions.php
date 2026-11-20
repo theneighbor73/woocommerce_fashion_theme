@@ -35,6 +35,40 @@ function alice_theme_setup() {
 add_action( 'after_setup_theme', 'alice_theme_setup' );
 
 /**
+ * Provide the theme logo when the header Site Logo block has no merchant logo.
+ *
+ * @param string $block_content Rendered Site Logo block markup.
+ * @param array  $block         Parsed block data.
+ * @return string
+ */
+function alice_theme_render_header_site_logo_fallback( $block_content, $block ) {
+	$class_names = preg_split( '/\s+/', trim( $block['attrs']['className'] ?? '' ), -1, PREG_SPLIT_NO_EMPTY );
+
+	if ( ! in_array( 'site-header__logo', $class_names, true ) || has_custom_logo() ) {
+		return $block_content;
+	}
+
+	$width = absint( $block['attrs']['width'] ?? 144 );
+	$width = $width > 0 ? $width : 144;
+	$classes = array_merge( array( 'wp-block-site-logo' ), $class_names );
+	$site_name = get_bloginfo( 'name' );
+
+	if ( '' === $site_name ) {
+		$site_name = __( 'Home', 'alice-theme' );
+	}
+
+	return sprintf(
+		'<div class="%1$s"><a class="custom-logo-link" href="%2$s" rel="home"><img class="custom-logo" src="%3$s" alt="%4$s" width="%5$d" /></a></div>',
+		esc_attr( implode( ' ', $classes ) ),
+		esc_url( home_url( '/' ) ),
+		esc_url( get_theme_file_uri( '/assets/images/logo/fallback-site-logo.png' ) ),
+		esc_attr( $site_name ),
+		$width
+	);
+}
+add_filter( 'render_block_core/site-logo', 'alice_theme_render_header_site_logo_fallback', 10, 2 );
+
+/**
  * Check parsed block content for an insertable editorial hero image gallery.
  *
  * @param array $blocks Parsed block list.
