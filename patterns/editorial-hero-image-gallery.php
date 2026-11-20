@@ -47,8 +47,8 @@ $hero_image_one = esc_url(get_theme_file_uri('/assets/images/editorial-hero-imag
 
       <!-- wp:buttons {"className":"editorial-hero-image-gallery__actions","lock":{"move":true,"remove":true}} -->
       <div class="wp-block-buttons editorial-hero-image-gallery__actions">
-        <!-- wp:button {"lock":{"move":true,"remove":true}} -->
-        <div class="wp-block-button">
+        <!-- wp:button {"className":"is-style-alice-primary","lock":{"move":true,"remove":true}} -->
+        <div class="wp-block-button is-style-alice-primary">
           <a class="wp-block-button__link wp-element-button" href="/shop/"><?php esc_html_e('Shop the collection', 'alice-theme'); ?></a>
         </div>
         <!-- /wp:button -->

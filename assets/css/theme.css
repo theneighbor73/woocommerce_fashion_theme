@@ -4,6 +4,7 @@
   --color-bg-inverse: var(--wp--preset--color--primary, #111111);
   --color-text-heading: var(--wp--preset--color--primary, #111111);
   --color-action-primary: var(--wp--preset--color--primary, #111111);
+  --color-action-primary-hover: var(--wp--preset--color--canvas, #f9f8f6);
   --color-text-primary: var(--wp--preset--color--body, #222222);
   --color-accent-primary: var(--wp--preset--color--accent, #c5a059);
   --color-border-subtle: var(--wp--preset--color--border, #e5e5e5);
@@ -229,6 +230,107 @@ a {
   color: var(--color-text-heading);
 }
 
+/* Shared native Button block styles. */
+.wp-block-button .wp-block-button__link {
+  display: inline-flex;
+  min-height: var(--control-height-base);
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width-thin) solid var(--color-action-primary);
+  border-radius: var(--radius-sm);
+  padding-block: 0.6875rem;
+  padding-inline: var(--button-padding-x);
+  background-color: var(--color-action-primary);
+  color: var(--color-text-inverse);
+  text-align: center;
+  text-decoration: none;
+  transform: translateY(0);
+  transition:
+    background-color var(--duration-fast)
+      var(--ease-editorial, cubic-bezier(0.22, 1, 0.36, 1)),
+    border-color var(--duration-fast)
+      var(--ease-editorial, cubic-bezier(0.22, 1, 0.36, 1)),
+    color var(--duration-fast)
+      var(--ease-editorial, cubic-bezier(0.22, 1, 0.36, 1)),
+    transform var(--duration-fast)
+      var(--ease-editorial, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+/* Primary: hover and press invert the dark surface and light label. */
+.wp-block-button.is-style-alice-primary .wp-block-button__link {
+  border-radius: var(--radius-none);
+}
+
+.wp-block-button.is-style-alice-primary .wp-block-button__link:hover,
+.wp-block-button.is-style-fill .wp-block-button__link:hover,
+.wp-block-button:not(.is-style-alice-primary):not(.is-style-alice-secondary):not(.is-style-outline)
+  .wp-block-button__link:hover {
+  background-color: var(--color-action-primary-hover);
+  border-color: var(--color-action-primary-hover);
+  color: var(--color-action-primary);
+}
+
+/* Secondary: outlined at rest, filled with the inverse pair on interaction. */
+.wp-block-button.is-style-alice-secondary .wp-block-button__link {
+  background-color: transparent;
+  border-color: var(--color-action-primary);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-none);
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link,
+.wp-block-button .wp-block-button__link.is-style-outline {
+  background-color: transparent;
+  border-color: var(--color-action-primary);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-sm);
+}
+
+.wp-block-button.is-style-alice-secondary .wp-block-button__link:hover,
+.wp-block-button.is-style-outline .wp-block-button__link:hover,
+.wp-block-button .wp-block-button__link.is-style-outline:hover {
+  background-color: var(--color-action-primary);
+  border-color: var(--color-action-primary);
+  color: var(--color-text-inverse);
+}
+
+.wp-block-button.is-style-alice-primary .wp-block-button__link:active,
+.wp-block-button.is-style-fill .wp-block-button__link:active,
+.wp-block-button:not(.is-style-alice-primary):not(.is-style-alice-secondary):not(.is-style-outline)
+  .wp-block-button__link:active {
+  background-color: var(--color-action-primary-hover);
+  border-color: var(--color-action-primary-hover);
+  color: var(--color-action-primary);
+  transform: translateY(1px);
+}
+
+.wp-block-button.is-style-alice-secondary .wp-block-button__link:active,
+.wp-block-button.is-style-outline .wp-block-button__link:active,
+.wp-block-button .wp-block-button__link.is-style-outline:active {
+  background-color: var(--color-action-primary);
+  border-color: var(--color-action-primary);
+  color: var(--color-text-inverse);
+  transform: translateY(1px);
+}
+
+/* Accessible keyboard focus and native disabled state. */
+.wp-block-button .wp-block-button__link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--color-accent-subtle);
+}
+
+.wp-block-button .wp-block-button__link:is(:disabled, [aria-disabled="true"]) {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-button .wp-block-button__link {
+    transition: none;
+  }
+}
+
 .site-header__navigation
   .wp-block-navigation__responsive-container.is-menu-open {
   position: fixed;
@@ -378,9 +480,6 @@ a {
 .editorial-hero-image-gallery__overlay
   .editorial-hero-image-gallery__actions
   .wp-block-button__link {
-  background: var(--color-bg-page);
-  color: var(--color-text-heading);
-  box-shadow: none;
   text-shadow: none;
 }
 

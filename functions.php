@@ -227,6 +227,29 @@ function alice_theme_register_editorial_hero_image_gallery_overlay_styles() {
 add_action( 'init', 'alice_theme_register_editorial_hero_image_gallery_overlay_styles' );
 
 /**
+ * Register reusable presentation styles for the native Button block.
+ *
+ * @return void
+ */
+function alice_theme_register_button_styles() {
+	$styles = array(
+		'alice-primary'   => __( 'Primary', 'alice-theme' ),
+		'alice-secondary' => __( 'Secondary', 'alice-theme' ),
+	);
+
+	foreach ( $styles as $name => $label ) {
+		register_block_style(
+			'core/button',
+			array(
+				'name'  => $name,
+				'label' => $label,
+			)
+		);
+	}
+}
+add_action( 'init', 'alice_theme_register_button_styles' );
+
+/**
  * Add scroll-driven slide directives to hero pattern instances.
  *
  * @param string $block_content Rendered block markup.
