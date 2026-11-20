@@ -20,6 +20,7 @@ Use this skill for theme stylesheets, `theme.json` styles, responsive presentati
 - Follow the established stylesheet organization. Keep each component's styles grouped together, update existing rules in place, and avoid duplicate or competing selectors.
 - Keep frontend styles and WordPress editor-specific overrides clearly distinguishable while maintaining consistent presentation where the same blocks appear.
 - Reuse WordPress preset variables or documented semantic tokens. Avoid repeated literal values and one-off tokens.
+- Apply the established design context across color, typography, spacing, layout, and component states: prefer semantic tokens, WordPress presets, and inherited container styles. Avoid one-off hard-coded values or block attributes that bypass that context. Use explicit block attributes for intentional merchant-editable choices, and preserve merchant overrides of theme defaults.
 - Before introducing a token, check whether an existing token serves the same purpose. Add tokens for meaningful design choices that should be changed consistently; prioritize colors, typography, spacing, layout dimensions, and common component dimensions. Keep one-off adjustments, resets, and positioning values in CSS.
 - Scope component styles to their block or theme component. Avoid broad selectors that alter unrelated WordPress or WooCommerce controls.
 - Before modifying a component, inspect its responsive behavior and interaction states. Preserve compatibility with native WordPress and WooCommerce blocks.
