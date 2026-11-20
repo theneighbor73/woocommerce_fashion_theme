@@ -35,6 +35,27 @@ function alice_theme_setup() {
 add_action( 'after_setup_theme', 'alice_theme_setup' );
 
 /**
+ * Use the bundled favicon when the merchant has not configured a Site Icon.
+ *
+ * @param string $url Site Icon URL returned by WordPress.
+ * @return string
+ */
+function alice_theme_site_icon_fallback( $url ) {
+	if ( '' !== $url || get_option( 'site_icon' ) ) {
+		return $url;
+	}
+
+	$icon_path = 'assets/images/site-icon/fallback-favicon.png';
+
+	if ( ! file_exists( get_theme_file_path( $icon_path ) ) ) {
+		return $url;
+	}
+
+	return get_theme_file_uri( $icon_path );
+}
+add_filter( 'get_site_icon_url', 'alice_theme_site_icon_fallback' );
+
+/**
  * Provide the theme logo when the header Site Logo block has no merchant logo.
  *
  * @param string $block_content Rendered Site Logo block markup.
