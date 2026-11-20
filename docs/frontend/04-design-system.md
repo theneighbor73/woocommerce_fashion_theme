@@ -38,11 +38,13 @@ States describe how an interactable component appears and behaves in response to
 | State | Meaning and shared rule |
 |---|---|
 | Default | Ready for interaction; the component's normal presentation. |
-| Hover | Pointer is over the component. May add a visual cue, but must not be the only way to identify or operate it. |
+| Hover | Pointer is over the component. Use a clear visual cue that fits its role. Where a component uses paired foreground and surface colors, coordinate changes to both colors when applying an inverse treatment; do not make a dark surface brighter while leaving its already-bright foreground unchanged. Hover must not be the only way to identify or operate the component. |
 | Focus | Keyboard or other input method has placed focus on the component. Show a visible, sufficiently contrasting indicator; keep it unobscured. |
-| Active / Pressed | The component is being activated. Provide feedback where supported without changing its meaning or obscuring content. |
+| Active / Pressed | The component is being activated. Provide feedback where supported without changing its meaning or obscuring content. Preserve the selected surface/foreground pairing and add a distinct pressed cue, such as a small positional change, where appropriate. |
 | Disabled | The action is unavailable. Preserve native disabled semantics and behavior; make the unavailable state perceivable without relying on color alone. |
 | Loading | An operation is processing. Preserve the native operation's behavior and feedback; do not imply that a component has loading behavior when its underlying operation does not expose it. |
+
+For buttons, the current inverse color treatment is: dark Primary/Fill surfaces invert to Canvas with Primary text; light Secondary/Outline surfaces invert to Primary with inverse text. Hover and pressed retain the same inverse color pairing, while pressed adds a small positional cue. Use existing semantic palette pairs and check contrast on the actual surface. This is a styling rule only; it does not imply new interaction or business behavior.
 
 Do not invent unsupported interaction or business behavior to create a state. Theme-authored state styling must maintain keyboard access, accessible names, and the WCAG 2.2 AA target. Respect reduced-motion preferences when state changes use motion.
 
