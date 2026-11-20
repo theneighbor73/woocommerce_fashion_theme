@@ -344,7 +344,6 @@ a {
 .editorial-hero-image-gallery__overlay
   :where(
     .editorial-hero-image-gallery__eyebrow,
-    .editorial-hero-image-gallery__title,
     .editorial-hero-image-gallery__description
   ) {
   color: inherit;
@@ -358,7 +357,8 @@ a {
   text-transform: uppercase;
 }
 
-.editorial-hero-image-gallery__title {
+.editorial-hero-image-gallery__overlay .editorial-hero-image-gallery__title {
+  color: inherit;
   max-width: 14ch;
   margin-block: 0 0.75rem;
   font-size: clamp(2.25rem, 5vw, 4.5rem);
@@ -475,6 +475,12 @@ a {
 .editorial-hero-image-gallery__overlay.is-style-hero-overlay-bottom-right {
   inset-block-end: clamp(1rem, 5vw, 5rem);
   inset-inline-end: clamp(1rem, 5vw, 5rem);
+}
+
+.editor-styles-wrapper
+  .editorial-hero-image-gallery__overlay
+  .editorial-hero-image-gallery__title {
+  color: inherit;
 }
 
 .editor-styles-wrapper .editorial-hero-image-gallery__stage {
