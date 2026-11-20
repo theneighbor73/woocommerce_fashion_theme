@@ -9,9 +9,7 @@ Use this skill for theme stylesheets, `theme.json` styles, responsive presentati
 
 ## Project constraints
 
-- CSS presents native WordPress and WooCommerce markup; it must not introduce new business behavior.
-- Treat `docs/frontend/08.ui-tokens.md` as the source for approved tokens and `docs/frontend/04-design-system.md` as the visual guide.
-- Keep the palette roles and values defined in `docs/00.project-overview.md`. Add or substitute palette colors only with the project owner's direction.
+- Follow the theme boundary in `docs/00.project-overview.md`, the visual guidance in `docs/frontend/04-design-system.md`, approved values in `docs/frontend/08.ui-tokens.md`, and component behavior in `docs/frontend/09.ui-registry.md`.
 - Prefer `theme.json` for global presets and block defaults. Use CSS for visual details that are not practical in `theme.json`.
 
 ## Conventions
@@ -27,7 +25,7 @@ Use this skill for theme stylesheets, `theme.json` styles, responsive presentati
 - Prefer logical properties (`margin-inline`, `padding-block`, `inset-inline-start`) and responsive layouts over fixed dimensions.
 - Keep specificity low; avoid `!important` unless a documented integration requires it.
 - Provide visible `:focus-visible` styles. Respect `prefers-reduced-motion` and avoid motion that obscures content or causes layout shifts.
-- Meet the project’s WCAG 2.2 Level AA target for theme-authored styles; check contrast, focus visibility, reflow, and non-color state cues.
+- Apply the accessibility target in the Design System; check contrast, focus visibility, reflow, and non-color state cues.
 - Ensure frontend and editor styles remain consistent where the same blocks appear.
 
 ## Before finishing
