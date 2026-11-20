@@ -24,12 +24,27 @@ Square corners are the baseline. Use existing small or full-radius tokens only w
 
 ## Shared Component Guidance
 
-Page-specific structure, states, and behavior belong in the [UI Registry](09.ui-registry.md). These shared principles apply across components:
+Component specifications, component-specific behavior, and exceptions belong in the [UI Registry](09.ui-registry.md). These shared principles apply across components:
 
 - Distinguish primary actions, secondary actions, text links, and icon-only controls. Keep keyboard focus visible and do not rely on hover alone.
 - Use clear form labels, comfortable sizing, and legible validation feedback while preserving native control behavior.
 - Keep product imagery, name, price, sale price, and native product states easy to scan.
 - Do not communicate status through color alone. Retain native disabled, loading, validation, and commerce-feedback behavior unless a UI specification defines a presentation requirement.
+
+### Component states
+
+States describe how an interactable component appears and behaves in response to its condition or user input. Apply the following shared baseline to buttons, navigation, form controls, and other interactable components. A component supports only states that make sense for its role; its UI Registry entry lists applicable states and documents any exception to this baseline.
+
+| State | Meaning and shared rule |
+|---|---|
+| Default | Ready for interaction; the component's normal presentation. |
+| Hover | Pointer is over the component. May add a visual cue, but must not be the only way to identify or operate it. |
+| Focus | Keyboard or other input method has placed focus on the component. Show a visible, sufficiently contrasting indicator; keep it unobscured. |
+| Active / Pressed | The component is being activated. Provide feedback where supported without changing its meaning or obscuring content. |
+| Disabled | The action is unavailable. Preserve native disabled semantics and behavior; make the unavailable state perceivable without relying on color alone. |
+| Loading | An operation is processing. Preserve the native operation's behavior and feedback; do not imply that a component has loading behavior when its underlying operation does not expose it. |
+
+Do not invent unsupported interaction or business behavior to create a state. Theme-authored state styling must maintain keyboard access, accessible names, and the WCAG 2.2 AA target. Respect reduced-motion preferences when state changes use motion.
 
 ## Accessibility and Editor Parity
 
