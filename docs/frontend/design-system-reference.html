@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A visual reference to Alice's documented design system decisions, tokens, and open questions.">
+  <title>Alice — Design System Reference</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --color-bg-page: #F9F8F6;
+      --color-bg-inverse: #111111;
+      --color-text-heading: #111111;
+      --color-action-primary: #111111;
+      --color-action-primary-hover: #F9F8F6;
+      --color-text-primary: #222222;
+      --color-accent-primary: #C5A059;
+      --color-border-subtle: #E5E5E5;
+      --color-status-error: #C62828;
+      --color-text-inverse: #F9F8F6;
+      --color-text-muted: #666666;
+      --color-accent-subtle: #F2E8D4;
+      --color-status-success: #2F6B45;
+      --color-focus-ring: #111111;
+      --font-serif: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      --text-xs: .75rem;
+      --text-sm: .875rem;
+      --text-base: 1rem;
+      --text-md: 1.25rem;
+      --text-lg: clamp(1.5rem, 2.2vw, 2rem);
+      --text-xl: clamp(2rem, 3.5vw, 3rem);
+      --text-2xl: clamp(2.75rem, 5vw, 4.5rem);
+      --leading-display: 1.05;
+      --leading-tight: 1.15;
+      --leading-snug: 1.3;
+      --leading-normal: 1.65;
+      --tracking-eyebrow: .08em;
+      --tracking-tight: -.02em;
+      --weight-regular: 400;
+      --weight-medium: 500;
+      --weight-semibold: 600;
+      --space-xs: .5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: clamp(2rem, 4vw, 3rem);
+      --space-xl: clamp(3.5rem, 6vw, 5rem);
+      --space-2xl: clamp(5rem, 9vw, 8rem);
+      --layout-content-max: 47.5rem;
+      --layout-wide-max: 85rem;
+      --layout-gutter: var(--space-md);
+      --product-aspect-ratio: 3 / 4;
+      --control-height-base: 3rem;
+      --control-height-sm: 2.375rem;
+      --button-padding-x: 1.75rem;
+      --input-padding-x: 1rem;
+      --radius-none: 0;
+      --radius-sm: 3px;
+      --radius-full: 9999px;
+      --border-width-thin: 1px;
+      --border-width-thick: 2px;
+      --shadow-none: none;
+      --shadow-overlay: 0 12px 32px rgb(17 17 17 / .08);
+      --z-base: 1;
+      --z-sticky: 100;
+      --z-dropdown: 200;
+      --z-modal: 400;
+      --ease-editorial: cubic-bezier(.22, 1, .36, 1);
+      --duration-fast: 200ms;
+      --duration-base: 350ms;
+      --duration-media: 600ms;
+      --page: var(--color-bg-page);
+      --ink: var(--color-text-primary);
+      --muted: var(--color-text-muted);
+      --line: var(--color-border-subtle);
+      --accent: var(--color-accent-primary);
+      --serif: var(--font-serif);
+      --sans: var(--font-sans);
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--page);
+      scroll-behavior: smooth;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-size: var(--text-base); line-height: var(--leading-normal); }
+    a { color: inherit; text-underline-offset: .2em; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: 4px; }
+    .wrap { width: min(calc(100% - 2 * var(--layout-gutter)), var(--layout-wide-max)); margin-inline: auto; }
+    .eyebrow { margin: 0 0 var(--space-sm); font-size: var(--text-xs); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; }
+    .masthead { min-height: 5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; gap: var(--space-md); border-bottom: var(--border-width-thin) solid var(--color-border-subtle); }
+    .brand { font-family: var(--serif); font-size: 1.7rem; line-height: 1; letter-spacing: var(--tracking-tight); }
+    .masthead p { margin: 0; text-align: center; font-size: var(--text-sm); color: var(--muted); }
+    .masthead nav { display: flex; justify-content: flex-end; gap: var(--space-md); font-size: var(--text-sm); }
+    .masthead nav a { text-decoration: none; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(18rem, .92fr); align-items: center; gap: var(--space-xl); padding-block: var(--space-2xl); border-bottom: var(--border-width-thin) solid var(--line); }
+    .hero h1 { max-width: 10ch; margin: 0 0 var(--space-md); font: var(--weight-regular) var(--text-2xl)/var(--leading-display) var(--serif); letter-spacing: var(--tracking-tight); color: var(--color-text-heading); }
+    .hero-copy { max-width: 39rem; color: var(--muted); }
+    .hero-copy p { margin: 0 0 var(--space-md); }
+    .hero-visual { min-height: 25rem; display: grid; place-items: center; padding: var(--space-xl); background: linear-gradient(145deg, #E9E4DC 0 40%, #D9D0C3 40% 65%, #B7AAA0 65%); color: var(--color-bg-inverse); text-align: center; }
+    .hero-visual span { padding: .7rem 1rem; background: rgb(249 248 246 / .84); font-size: var(--text-xs); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; }
+    .button-row { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+    .button { min-height: var(--control-height-base); display: inline-flex; align-items: center; justify-content: center; padding-inline: var(--button-padding-x); border: var(--border-width-thin) solid var(--color-action-primary); border-radius: var(--radius-none); background: var(--color-action-primary); color: var(--color-text-inverse); font: var(--weight-medium) var(--text-sm)/1 var(--sans); text-decoration: none; transition: background var(--duration-fast) var(--ease-editorial), color var(--duration-fast) var(--ease-editorial), transform var(--duration-fast) var(--ease-editorial); }
+    .button:hover { background: var(--color-action-primary-hover); color: var(--color-action-primary); }
+    .button:active { transform: translateY(1px); }
+    .button.secondary { background: transparent; color: var(--color-action-primary); }
+    .button.secondary:hover { background: var(--color-action-primary); color: var(--color-text-inverse); }
+    .section { padding-block: var(--space-xl); border-bottom: var(--border-width-thin) solid var(--line); scroll-margin-top: var(--space-md); }
+    .section-head { display: grid; grid-template-columns: minmax(12rem, .65fr) minmax(18rem, 1.35fr); gap: var(--space-xl); align-items: end; margin-bottom: var(--space-lg); }
+    .section h2 { margin: 0; font: var(--weight-regular) var(--text-xl)/var(--leading-tight) var(--serif); letter-spacing: var(--tracking-tight); color: var(--color-text-heading); }
+    .section-head p { max-width: 48rem; margin: 0; color: var(--muted); }
+    .status { display: inline-flex; align-items: center; gap: .45rem; border: 1px solid var(--line); padding: .25rem .55rem; background: white; font-size: var(--text-xs); font-weight: var(--weight-semibold); line-height: 1.3; }
+    .status::before { width: .5rem; height: .5rem; border-radius: var(--radius-full); background: var(--color-status-success); content: ""; }
+    .status.open::before { background: var(--color-accent-primary); }
+    .status.pending::before { background: var(--color-status-error); }
+    .tag { display: inline-block; padding: .25rem .5rem; background: var(--color-accent-subtle); font-size: var(--text-xs); }
+    .color-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-sm); }
+    .swatch { min-width: 0; border: 1px solid var(--line); background: white; }
+    .swatch-color { min-height: 5.5rem; border-bottom: 1px solid var(--line); }
+    .swatch-info { padding: .8rem; }
+    code, .mono { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: .82em; overflow-wrap: anywhere; }
+    .swatch code { display: block; margin-bottom: .25rem; }
+    .swatch small { color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); background: white; }
+    table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+    th, td { padding: .75rem .85rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--muted); font-size: var(--text-xs); letter-spacing: .04em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    td code { white-space: nowrap; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
+    .panel { padding: var(--space-md); border: 1px solid var(--line); background: white; }
+    .panel h3 { margin: 0 0 var(--space-sm); font-size: var(--text-base); }
+    .panel p:last-child, .panel ul:last-child { margin-bottom: 0; }
+    .type-specimen { padding: var(--space-md); border-left: 2px solid var(--accent); background: white; }
+    .type-display { margin: 0 0 .5rem; font: 400 var(--text-xl)/var(--leading-display) var(--serif); letter-spacing: var(--tracking-tight); }
+    .type-sans { margin: 0; font-size: var(--text-base); }
+    .scale { display: flex; align-items: baseline; gap: var(--space-md); flex-wrap: wrap; }
+    .scale span { font-family: var(--serif); line-height: 1; }
+    .space-bars { display: grid; gap: .75rem; }
+    .space-row { display: grid; grid-template-columns: 7rem 1fr 12rem; align-items: center; gap: .75rem; font-size: var(--text-sm); }
+    .bar-track { height: 1.25rem; background: #F1EFEC; }
+    .bar { height: 100%; background: var(--color-bg-inverse); }
+    .radius-demo { min-height: 5rem; display: grid; place-items: center; border: 1px solid var(--line); background: var(--page); }
+    .radius-chip { width: 4.5rem; height: 2.5rem; border: 1px solid var(--color-bg-inverse); background: white; }
+    .shadow-demo { min-height: 6rem; display: grid; place-items: center; background: var(--page); }
+    .shadow-card { width: 75%; padding: 1rem; background: white; box-shadow: var(--shadow-overlay); }
+    .layers { display: flex; gap: .5rem; align-items: end; min-height: 8rem; padding: var(--space-md); background: #EEEAE4; }
+    .layer { flex: 1; padding: .5rem; background: white; border: 1px solid var(--line); text-align: center; font-size: var(--text-xs); }
+    .layer:nth-child(2) { transform: translateY(-.6rem); box-shadow: var(--shadow-overlay); }
+    .motion-line { height: .5rem; margin-block: var(--space-md); background: linear-gradient(90deg, var(--color-bg-inverse) 0 18%, var(--color-accent-primary) 18% 22%, transparent 22%); }
+    .asset-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); }
+    .asset-item { padding: var(--space-sm); border: 1px solid var(--line); background: white; }
+    .asset-item code { display: block; margin-bottom: .4rem; }
+    .text-icon { display: inline-grid; width: 2rem; height: 2rem; place-items: center; border: 1px dashed var(--muted); font-weight: var(--weight-semibold); }
+    .note { padding: var(--space-md); border-left: 3px solid var(--accent); background: var(--color-accent-subtle); }
+    .gap-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); padding: 0; list-style: none; }
+    .gap-list li { padding: var(--space-sm); border: 1px solid var(--line); background: white; }
+    .gap-list strong { display: block; margin-bottom: .35rem; }
+    .nav-index { display: flex; flex-wrap: wrap; gap: .5rem; margin-block: var(--space-md); }
+    .nav-index a { padding: .45rem .7rem; border: 1px solid var(--line); background: white; font-size: var(--text-xs); text-decoration: none; }
+    .footer { padding-block: var(--space-lg); color: var(--color-text-inverse); background: var(--color-bg-inverse); font-size: var(--text-sm); }
+    .footer-row { display: flex; justify-content: space-between; gap: var(--space-md); }
+    .small { color: var(--muted); font-size: var(--text-xs); }
+    @media (min-width: 64rem) { :root { --layout-gutter: var(--space-lg); } }
+    @media (max-width: 63.9375rem) {
+      .hero { grid-template-columns: 1fr 1fr; }
+      .color-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 37.5rem) {
+      .masthead { grid-template-columns: 1fr auto; min-height: 4rem; }
+      .masthead p { display: none; }
+      .masthead nav { gap: var(--space-sm); }
+      .hero, .section-head, .grid-2 { grid-template-columns: 1fr; }
+      .hero { gap: var(--space-lg); padding-block: var(--space-xl); }
+      .hero-visual { min-height: 16rem; }
+      .color-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .asset-list, .gap-list { grid-template-columns: 1fr; }
+      .space-row { grid-template-columns: 5.5rem 1fr; }
+      .space-row code { grid-column: 2; }
+      .footer-row { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      :root { scroll-behavior: auto; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+    @media print {
+      .nav-index { display: none; }
+      .section { break-inside: avoid; }
+      a { text-decoration: none; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap masthead">
+    <div class="brand">Alice</div>
+    <p>Design system reference · documentation-led</p>
+    <nav aria-label="Page links"><a href="#tokens">Tokens</a><a href="#gaps">Open work</a></nav>
+  </header>
+  <main>
+    <section class="wrap hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">A visual companion to the documentation</p>
+        <h1 id="page-title">Quiet clarity, considered detail.</h1>
+        <p>This atlas gathers the approved values and shared rules documented for Alice, then marks the places where more decisions or documentation are still needed. The storefront below is an invented specimen composed only to demonstrate those written decisions.</p>
+        <div class="button-row"><a class="button" href="#tokens">Explore the system</a><a class="button secondary" href="#gaps">See what is open</a></div>
+        <div class="nav-index" aria-label="Design system sections">
+          <a href="#color">Color</a><a href="#type">Typography</a><a href="#space">Spacing</a><a href="#shape">Shape</a><a href="#elevation">Elevation</a><a href="#motion">Motion</a><a href="#assets">Icons & assets</a><a href="#components">Components</a>
+        </div>
+      </div>
+      <div class="hero-visual" role="img" aria-label="Abstract color field illustrating an editorial image area; not a supplied photograph"><span>Editorial image area · illustrative placeholder</span></div>
+    </section>
+
+    <section class="wrap section" id="tokens" aria-labelledby="tokens-title">
+      <div class="section-head"><div><p class="eyebrow">At a glance</p><h2 id="tokens-title">Decision status</h2></div><p>“Approved” means the token or shared rule is explicitly documented. “Specified with open details” means the direction exists but still needs supporting detail or review. “Missing or pending” marks a gap or a UI Registry area awaiting its own specification.</p></div>
+      <div class="grid-2">
+        <article class="panel"><span class="status">Approved</span><p>Color roles and named values; type families and scale; spacing, widths, and breakpoints; control and radius values; shadow and layer tokens; shared component states; broad media and accessibility rules.</p></article>
+        <article class="panel"><span class="status open">Specified with open details</span><p>Shade ramps have an approved algorithm and WordPress preset naming pattern, but the documentation does not enumerate each ramp’s base slug and sRGB value. Motion tokens exist, while component-by-component timing and easing assignments are not mapped.</p></article>
+        <article class="panel"><span class="status pending">Missing or pending</span><p>Several catalog, product, search, cart, checkout, and account presentations remain <code>SPECIFICATION_PENDING</code> in the UI Registry. Their component-specific decisions are not implied by this artifact.</p></article>
+        <article class="panel"><span class="tag">Source boundary</span><p>Values here come from project documentation. This page does not inspect or reproduce <code>theme.json</code>, current CSS, templates, or the live site.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="direction" aria-labelledby="direction-title">
+      <div class="section-head"><div><p class="eyebrow">00 · Visual direction</p><h2 id="direction-title">Editorial, useful, unforced</h2></div><p>The system aims for minimalist contemporary fashion with a lifestyle-editorial feel. The specimen layout is only one possible composition; the documented principles allow variety while keeping product information easy to scan.</p></div>
+      <div class="grid-2">
+        <article class="panel"><h3>Composition principles</h3><ul><li>Keep hierarchy clear and product details easy to scan.</li><li>Use intentional whitespace and strong editorial compositions.</li><li>Use asymmetry, split imagery, and alternating layouts selectively rather than repeating one formula.</li><li>Keep product cards clean, with prominent imagery and readable name and price.</li></ul></article>
+        <article class="panel"><h3>Media framing</h3><ul><li>Let lifestyle and product photography lead; preserve merchant files unchanged.</li><li>Use the 3:4 product image ratio where applicable; editorial frames follow their own UI specification.</li><li>Cover-crop only when essential subject details remain visible at supported sizes and safe areas are respected.</li><li>For the specified hero, center the image and keep key content inside the central safe area through portrait mobile cropping.</li></ul></article>
+      </div>
+      <p class="note" style="margin-top:var(--space-md)">Prefer subtle borders and restrained decoration. Avoid generic boxed layouts, excessive shadows, and decorative rounding. The panels in this reference are catalog specimens for readability, not a mandate to box storefront sections.</p>
+    </section>
+
+    <section class="wrap section" id="color" aria-labelledby="color-title">
+      <div class="section-head"><div><p class="eyebrow">01 · Color and roles</p><h2 id="color-title">A quiet neutral base, restrained accents</h2></div><p>These are the documented semantic color tokens and roles. Use each pairing in context and verify contrast on the actual surface; the documentation does not prescribe one universal shade-to-role map.</p></div>
+      <div class="color-grid">
+        <article class="swatch"><div class="swatch-color" style="background:#F9F8F6"></div><div class="swatch-info"><code>--color-bg-page</code><small>#F9F8F6 · page canvas</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#111111"></div><div class="swatch-info"><code>--color-bg-inverse</code><small>#111111 · dark surfaces</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#111111"></div><div class="swatch-info"><code>--color-text-heading</code><small>#111111 · headings</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#111111"></div><div class="swatch-info"><code>--color-action-primary</code><small>#111111 · key actions</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#F9F8F6"></div><div class="swatch-info"><code>--color-action-primary-hover</code><small>#F9F8F6 · primary/Fill hover & press surface</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#222222"></div><div class="swatch-info"><code>--color-text-primary</code><small>#222222 · body/supporting headings</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#C5A059"></div><div class="swatch-info"><code>--color-accent-primary</code><small>#C5A059 · sale, selected, promotion</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#E5E5E5"></div><div class="swatch-info"><code>--color-border-subtle</code><small>#E5E5E5 · dividers, boundaries</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#C62828"></div><div class="swatch-info"><code>--color-status-error</code><small>#C62828 · errors, critical notices</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#F9F8F6"></div><div class="swatch-info"><code>--color-text-inverse</code><small>#F9F8F6 · text on dark</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#666666"></div><div class="swatch-info"><code>--color-text-muted</code><small>#666666 · metadata; 5.41:1 vs Canvas</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#F2E8D4"></div><div class="swatch-info"><code>--color-accent-subtle</code><small>#F2E8D4 · subtle surface, not text/boundary</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#2F6B45"></div><div class="swatch-info"><code>--color-status-success</code><small>#2F6B45 · success on light; pair with label</small></div></article>
+        <article class="swatch"><div class="swatch-color" style="background:#111111"></div><div class="swatch-info"><code>--color-focus-ring</code><small>#111111 · keyboard focus</small></div></article>
+      </div>
+      <div class="grid-2" style="margin-top:var(--space-md)">
+        <article class="panel"><h3>Documented contrast notes</h3><p>Muted text: 5.41:1 against Canvas. Success: 5.98:1 against Canvas. Primary accent: 2.32:1 against Canvas, so reserve it there for decorative emphasis; 7.69:1 against the dark primary surface. Check all actual pairs against WCAG 2.2 AA.</p></article>
+        <article class="panel"><h3>Nine-step ramp rule</h3><p>Existing palette color/slug is step <code>500</code>. Added preset names follow <code>{base-slug}-{step}</code>: <code>100</code>–<code>400</code> blend base with white; <code>600</code>–<code>900</code> blend base with black. The docs do not list all base slugs and resulting values, so no unverified ramp chips are fabricated here.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="type" aria-labelledby="type-title">
+      <div class="section-head"><div><p class="eyebrow">02 · Typography</p><h2 id="type-title">Editorial serif meets practical sans</h2></div><p>Cormorant Garamond carries editorial display moments; Plus Jakarta Sans handles reading, products, navigation, and controls. The page uses system fallbacks rather than loading or copying bundled font files.</p></div>
+      <div class="grid-2">
+        <article class="type-specimen"><p class="eyebrow">Display · Cormorant Garamond</p><p class="type-display">A quieter kind of statement.</p><code>--font-serif · --text-xl · --leading-display · --tracking-tight</code></article>
+        <article class="type-specimen"><p class="eyebrow">Interface · Plus Jakarta Sans</p><p class="type-sans">Considered details, made for everyday dressing. Product labels, controls, prices, and navigation stay clear and readable.</p><p><code>--font-sans · --text-base · --leading-normal</code></p></article>
+      </div>
+      <div class="table-wrap" style="margin-top:var(--space-md)"><table><thead><tr><th>Token</th><th>Value</th><th>Documented use</th></tr></thead><tbody>
+        <tr><td><code>--font-serif</code></td><td>Cormorant Garamond, Georgia, serif</td><td>Editorial display headings and pull quotes</td></tr>
+        <tr><td><code>--font-sans</code></td><td>Plus Jakarta Sans, system sans fallbacks</td><td>Body, product, navigation, controls</td></tr>
+        <tr><td><code>--text-xs</code> · <code>--text-sm</code> · <code>--text-base</code></td><td>0.75rem · 0.875rem · 1rem</td><td>Eyebrows/badges; product titles/metadata; body/forms</td></tr>
+        <tr><td><code>--text-md</code> · <code>--text-lg</code></td><td>1.25rem · clamp(1.5rem, 2.2vw, 2rem)</td><td>Compact/mobile headings; section/desktop product headings</td></tr>
+        <tr><td><code>--text-xl</code> · <code>--text-2xl</code></td><td>clamp(2rem, 3.5vw, 3rem) · clamp(2.75rem, 5vw, 4.5rem)</td><td>Archive headings/pull quotes; editorial hero</td></tr>
+        <tr><td><code>--leading-display</code> · <code>--leading-tight</code> · <code>--leading-snug</code> · <code>--leading-normal</code></td><td>1.05 · 1.15 · 1.3 · 1.65</td><td>Display through body line-height scale</td></tr>
+        <tr><td><code>--tracking-eyebrow</code> · <code>--tracking-tight</code></td><td>0.08em · -0.02em</td><td>Eyebrow and tight display tracking</td></tr>
+        <tr><td><code>--weight-regular</code> · <code>--weight-medium</code> · <code>--weight-semibold</code></td><td>400 · 500 · 600</td><td>Approved variable font weights</td></tr>
+      </tbody></table></div>
+      <p class="small">Font files and SIL Open Font License texts are documented under <code>assets/fonts/</code>; variable files are preferred over duplicate static sets unless compatibility review requires otherwise.</p>
+    </section>
+
+    <section class="wrap section" id="space" aria-labelledby="space-title">
+      <div class="section-head"><div><p class="eyebrow">03 · Spacing and layout</p><h2 id="space-title">Room to breathe, with clear bounds</h2></div><p>Spacing includes fluid jumps at larger steps. The little bars below are proportional illustrations of the listed rem values, not a new scale.</p></div>
+      <div class="space-bars">
+        <div class="space-row"><code>--space-xs</code><div class="bar-track"><div class="bar" style="width:8%"></div></div><code>0.5rem</code></div>
+        <div class="space-row"><code>--space-sm</code><div class="bar-track"><div class="bar" style="width:16%"></div></div><code>1rem</code></div>
+        <div class="space-row"><code>--space-md</code><div class="bar-track"><div class="bar" style="width:24%"></div></div><code>1.5rem</code></div>
+        <div class="space-row"><code>--space-lg</code><div class="bar-track"><div class="bar" style="width:40%"></div></div><code>clamp(2rem, 4vw, 3rem)</code></div>
+        <div class="space-row"><code>--space-xl</code><div class="bar-track"><div class="bar" style="width:62%"></div></div><code>clamp(3.5rem, 6vw, 5rem)</code></div>
+        <div class="space-row"><code>--space-2xl</code><div class="bar-track"><div class="bar" style="width:100%"></div></div><code>clamp(5rem, 9vw, 8rem)</code></div>
+      </div>
+      <div class="table-wrap" style="margin-top:var(--space-md)"><table><thead><tr><th>Layout token / rule</th><th>Documented value</th></tr></thead><tbody>
+        <tr><td><code>--layout-content-max</code></td><td>47.5rem</td></tr><tr><td><code>--layout-wide-max</code></td><td>85rem</td></tr><tr><td><code>--layout-gutter</code></td><td><code>var(--space-md)</code>, scaling to <code>var(--space-lg)</code> on desktop</td></tr><tr><td><code>--product-aspect-ratio</code></td><td>3 / 4</td></tr>
+        <tr><td>Breakpoints</td><td>Mobile &lt; 37.5rem · tablet 37.5rem–63.9375rem · desktop 64rem–84.9375rem · wide ≥ 85rem</td></tr><tr><td>Product grid columns</td><td>2 mobile · 3 tablet · 4 desktop; curated editorial collections may use 3 desktop columns</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="wrap section" id="shape" aria-labelledby="shape-title">
+      <div class="section-head"><div><p class="eyebrow">04 · Shape and borders</p><h2 id="shape-title">Square is the default</h2></div><p>Use small or full rounding only when a component specification calls for it. Keep decoration restrained and use borders for necessary boundaries.</p></div>
+      <div class="grid-2">
+        <div class="panel"><h3>Radius tokens</h3><div class="grid-2"><div class="radius-demo"><div class="radius-chip" style="border-radius:var(--radius-none)"></div></div><div class="radius-demo"><div class="radius-chip" style="border-radius:var(--radius-sm)"></div></div><div class="radius-demo"><div class="radius-chip" style="border-radius:var(--radius-full)"></div></div></div><p><code>--radius-none: 0</code> · <code>--radius-sm: 3px</code> · <code>--radius-full: 9999px</code></p></div>
+        <div class="panel"><h3>Border tokens and control sizing</h3><p><code>--border-width-thin: 1px</code> · <code>--border-width-thick: 2px</code></p><p><code>--control-height-base: 3rem</code> · <code>--control-height-sm: 2.375rem</code></p><p><code>--button-padding-x: 1.75rem</code> · <code>--input-padding-x: 1rem</code></p></div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="elevation" aria-labelledby="elevation-title">
+      <div class="section-head"><div><p class="eyebrow">05 · Elevation and layers</p><h2 id="elevation-title">Flat by default; lift overlays</h2></div><p>Most layouts stay flat. Reserve the documented overlay shadow for floating layers. Layer numbers are scale values, not specific assignments to every interface element.</p></div>
+      <div class="grid-2">
+        <div class="panel"><h3>Depth example</h3><div class="shadow-demo"><div class="shadow-card">Floating layer · <code>--shadow-overlay</code></div></div><p><code>--shadow-none: none</code></p><p><code>--shadow-overlay: 0 12px 32px rgb(17 17 17 / 0.08)</code></p></div>
+        <div class="panel"><h3>Layer scale</h3><div class="layers"><div class="layer">Base<br><code>1</code></div><div class="layer">Sticky<br><code>100</code></div><div class="layer">Dropdown<br><code>200</code></div><div class="layer">Modal<br><code>400</code></div></div><p><code>--z-base</code> · <code>--z-sticky</code> · <code>--z-dropdown</code> · <code>--z-modal</code></p></div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="motion" aria-labelledby="motion-title">
+      <div class="section-head"><div><p class="eyebrow">06 · Motion</p><h2 id="motion-title">A restrained motion vocabulary</h2></div><p>Token names and values are approved. Reduced motion must be respected. The exact mapping from duration/easing to each component transition remains a documentation opportunity, except where specific behavior is described in the UI Registry.</p></div>
+      <div class="grid-2">
+        <article class="panel"><h3>Timing and easing tokens</h3><p><code>--ease-editorial: cubic-bezier(0.22, 1, 0.36, 1)</code></p><p><code>--duration-fast: 200ms</code> · <code>--duration-base: 350ms</code> · <code>--duration-media: 600ms</code></p><div class="motion-line" aria-hidden="true"></div><p class="small">Static illustration of transition length, not an animated sample.</p></article>
+        <article class="panel"><h3>Documented interaction examples</h3><ul><li>Button press may add a small positional cue while preserving color pairing.</li><li>Homepage gallery with multiple images progressively enhances to a pinned scroll sequence; changes near 95% of each viewport interval.</li><li>Header hides on downward scroll and returns on upward scroll; visual enhancement only.</li><li>Respect reduced-motion preferences; do not invent motion unsupported by the native interaction.</li></ul></article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="assets" aria-labelledby="assets-title">
+      <div class="section-head"><div><p class="eyebrow">07 · Icons and assets</p><h2 id="assets-title">Use the merchant’s media and native icons</h2></div><p>No theme-authored icon artwork is specified. The documented approach favors native WordPress/WooCommerce icon-capable controls and meaningful accessible names. Color shades may be used for icons, with contrast checked in context.</p></div>
+      <div class="grid-2">
+        <article class="panel"><h3>Icon and media rules</h3><p><span class="text-icon" aria-hidden="true">Aa</span> This typographic marker is only a placeholder, not an icon proposal.</p><ul><li>Use native WooCommerce account/cart icons; do not draw replacements.</li><li>Icon-only controls need accessible names.</li><li>Use merchant media as supplied; do not modify source files.</li><li>Meaningful images need useful alt text; decorative images should avoid redundant spoken content.</li></ul></article>
+        <article class="panel"><h3>Documented theme assets</h3><div class="asset-list">
+          <div class="asset-item"><code>assets/images/editorial-hero-image-gallery/desktop-hero-image2.jpg</code>First example hero slide; replaceable in Gallery.</div>
+          <div class="asset-item"><code>assets/images/editorial-hero-image-gallery/desktop-hero-image1.jpg</code>Second example hero slide; replaceable in Gallery.</div>
+          <div class="asset-item"><code>assets/images/logo/fallback-site-logo.png</code>Fallback when merchant Site Logo is absent; merchant logo takes precedence.</div>
+          <div class="asset-item"><code>assets/images/site-icon/fallback-favicon.png</code>Fallback when merchant Site Icon is absent; merchant icon takes precedence.</div>
+        </div><p class="small">The asset inventory records owner-provided or rights-cleared distribution approval. Files remain unchanged.</p></article>
+      </div>
+      <div class="note" style="margin-top:var(--space-md)"><strong>Typography assets:</strong> locally bundled variable Cormorant Garamond and Plus Jakarta Sans files are specified, with SIL Open Font License 1.1 texts kept alongside them. This atlas uses declared fallback stacks and does not load the font binaries.</div>
+    </section>
+
+    <section class="wrap section" id="components" aria-labelledby="components-title">
+      <div class="section-head"><div><p class="eyebrow">08 · Shared component examples</p><h2 id="components-title">States stay legible and native</h2></div><p>Shared component behavior and exceptions belong in the UI Registry. These button samples demonstrate its paired color treatment and documented square/rounded variants; they do not introduce new interactions.</p></div>
+      <div class="grid-2">
+        <article class="panel"><h3>Primary and Secondary</h3><div class="button-row"><a class="button" href="#components">Primary</a><a class="button secondary" href="#components">Secondary</a></div><p>Primary is dark-filled with inverse text. Secondary is transparent with dark text and border. Both use base control height and square corners.</p></article>
+        <article class="panel"><h3>Fill and Outline</h3><div class="button-row"><a class="button" style="border-radius:var(--radius-sm)" href="#components">Fill</a><a class="button secondary" style="border-radius:var(--radius-sm)" href="#components">Outline</a></div><p>Rounded counterparts use <code>--radius-sm</code>; the paired variant’s colors and state behavior remain. Do not duplicate them as separate theme styles.</p></article>
+      </div>
+      <div class="table-wrap" style="margin-top:var(--space-md)"><table><thead><tr><th>State</th><th>Shared documented rule</th></tr></thead><tbody>
+        <tr><td>Default</td><td>Normal ready-to-use presentation.</td></tr><tr><td>Hover</td><td>Clear role-appropriate cue; coordinate paired foreground and surface colors. Never make hover the only cue.</td></tr><tr><td>Focus</td><td>Visible, sufficiently contrasting, and unobscured.</td></tr><tr><td>Active / Pressed</td><td>Preserve the surface/text pairing; add a distinct cue where appropriate, such as a small positional shift.</td></tr><tr><td>Disabled</td><td>Preserve native semantics; make unavailable state perceivable without color alone.</td></tr><tr><td>Loading</td><td>Keep native feedback; do not imply loading where the underlying operation has none.</td></tr>
+      </tbody></table></div>
+      <p class="note" style="margin-top:var(--space-md)">Theme-authored UI targets WCAG 2.2 AA. Preserve keyboard operation, accessible names, visible focus, semantic hierarchy, readable contrast, reduced motion, and Site Editor/frontend parity.</p>
+    </section>
+
+    <section class="wrap section" id="gaps" aria-labelledby="gaps-title">
+      <div class="section-head"><div><p class="eyebrow">09 · Open work</p><h2 id="gaps-title">Where the system still needs decisions</h2></div><p>These items are visible in the documentation as missing details or pending UI specifications. This list is an aid to review, not a new source of design decisions.</p></div>
+      <ul class="gap-list">
+        <li><strong><span class="status open">Specified with open details</span></strong>List the base palette slugs and each static sRGB shade value (the naming/derivation rule is already documented).</li>
+        <li><strong><span class="status open">Specified with open details</span></strong>Map motion tokens to component transitions where the registry needs those specifics; document reduced-motion presentation for each relevant interaction.</li>
+        <li><strong><span class="status open">Specified with open details</span></strong>Clarify the complete iconography policy beyond native account/cart and native Social Links; do not infer custom icon assets.</li>
+        <li><strong><span class="status open">Specified with open details</span></strong>Consider documenting elevation/layer usage examples and assignments if components require more than the current floating-layer guidance and token scale.</li>
+        <li><strong><span class="status pending">Missing or pending</span></strong>Catalog/archive UI: approve grid, crop, card order, and native filter/sort presentation.</li>
+        <li><strong><span class="status pending">Missing or pending</span></strong>Product detail: approve section order, gallery presentation, and related products.</li>
+        <li><strong><span class="status pending">Missing or pending</span></strong>Product search: approve placement and whether it shares catalog grid treatment.</li>
+        <li><strong><span class="status pending">Missing or pending</span></strong>Cart and checkout: resolve any presentation differences between native block and classic modes.</li>
+        <li><strong><span class="status pending">Missing or pending</span></strong>My Account: approve account navigation layout and endpoint presentation.</li>
+        <li><strong><span class="status pending">Missing or pending</span></strong>Editorial pages, archives, search fallback, and 404: define hierarchy, editable regions, locking, responsive behavior, and accessibility before implementation.</li>
+        <li><strong><span class="status open">Specified with open details</span></strong>Reduced-motion review of the implemented hero is still marked pending in the Project Tracker.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-row"><span>Alice · Design System Reference</span><span>Documentation sources: <a href="04-design-system.md">Design System</a> · <a href="08.ui-tokens.md">UI Tokens</a> · <a href="09.ui-registry.md">UI Registry</a> · <a href="../media-assets.md">Media Asset Inventory</a></span></div></footer>
+</body>
+</html>
