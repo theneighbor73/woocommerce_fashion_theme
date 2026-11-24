@@ -1,0 +1,64 @@
+/* Concrete reference values. Semantic and consumer tokens alias these values. */
+:root {
+  --md-ref-palette-alice-neutral-ink: #111111;
+  --md-ref-palette-alice-neutral-white: #ffffff;
+  --md-ref-palette-alice-neutral-canvas: #f9f8f6;
+  --md-ref-palette-alice-neutral-body: #222222;
+  --md-ref-palette-alice-neutral-muted: #666666;
+  --md-ref-palette-alice-neutral-outline: #e5e5e5;
+  --md-ref-palette-alice-brand-gold: #c5a059;
+  --md-ref-palette-alice-brand-gold-soft: #f2e8d4;
+  --md-ref-palette-alice-brand-gold-dark: #766035;
+  --md-ref-palette-alice-brand-gold-light: #dcc69b;
+  --md-ref-palette-alice-error: #c62828;
+  --md-ref-palette-alice-error-soft: #f4d4d4;
+  --md-ref-palette-alice-success: #2f6b45;
+  --md-ref-typeface-brand: "Cormorant Garamond", Georgia, serif;
+  --md-ref-typeface-plain: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Alice reference primitives used by documented system extensions. */
+  --md-ref-alice-type-size-xs: 0.75rem;
+  --md-ref-alice-type-size-sm: 0.875rem;
+  --md-ref-alice-type-size-base: 1rem;
+  --md-ref-alice-type-size-md: 1.25rem;
+  --md-ref-alice-type-size-lg: clamp(1.5rem, 2.2vw, 2rem);
+  --md-ref-alice-type-size-xl: clamp(2rem, 3.5vw, 3rem);
+  --md-ref-alice-type-size-2xl: clamp(2.75rem, 5vw, 4.5rem);
+  --md-ref-alice-line-height-display: 1.05;
+  --md-ref-alice-line-height-tight: 1.15;
+  --md-ref-alice-line-height-snug: 1.3;
+  --md-ref-alice-line-height-normal: 1.65;
+  --md-ref-alice-tracking-eyebrow: 0.08em;
+  --md-ref-alice-tracking-tight: -0.02em;
+  --md-ref-alice-font-weight-regular: 400;
+  --md-ref-alice-font-weight-medium: 500;
+  --md-ref-alice-font-weight-semibold: 600;
+  --md-ref-alice-space-xs: 0.5rem;
+  --md-ref-alice-space-sm: 1rem;
+  --md-ref-alice-space-md: 1.5rem;
+  --md-ref-alice-space-lg: clamp(2rem, 4vw, 3rem);
+  --md-ref-alice-space-xl: clamp(3.5rem, 6vw, 5rem);
+  --md-ref-alice-space-2xl: clamp(5rem, 9vw, 8rem);
+  --md-ref-alice-layout-content-max: 47.5rem;
+  --md-ref-alice-layout-container-max: 85rem;
+  --md-ref-alice-media-product-ratio: 3 / 4;
+  --md-ref-alice-control-height-base: 3rem;
+  --md-ref-alice-control-height-small: 2.375rem;
+  --md-ref-alice-button-padding-inline: 1.75rem;
+  --md-ref-alice-input-padding-inline: 1rem;
+  --md-ref-alice-shape-corner-none: 0;
+  --md-ref-alice-shape-corner-small: 3px;
+  --md-ref-alice-shape-corner-full: 9999px;
+  --md-ref-alice-border-width-thin: 1px;
+  --md-ref-alice-border-width-thick: 2px;
+  --md-ref-alice-shadow-none: none;
+  --md-ref-alice-shadow-overlay: 0 12px 32px rgb(17 17 17 / 0.08);
+  --md-ref-alice-layer-base: 1;
+  --md-ref-alice-layer-sticky: 100;
+  --md-ref-alice-layer-dropdown: 200;
+  --md-ref-alice-layer-modal: 400;
+  --md-ref-alice-motion-duration-fast: 200ms;
+  --md-ref-alice-motion-duration-standard: 350ms;
+  --md-ref-alice-motion-duration-long: 600ms;
+  --md-ref-alice-motion-easing-standard: cubic-bezier(0.22, 1, 0.36, 1);
+}
