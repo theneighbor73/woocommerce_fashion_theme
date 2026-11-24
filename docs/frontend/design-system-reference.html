@@ -156,17 +156,22 @@
     .state-name { color: var(--muted); font-size: .75rem; }
     .demo-button, .demo-option, .demo-input { min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .5rem .9rem; border: 1px solid var(--strong); border-radius: 0; background: var(--strong); color: var(--canvas); font: 500 .875rem/1.3 var(--sans); }
     .demo-button { justify-self: start; cursor: pointer; }
+    .demo-button.pressed, .demo-button.loading { cursor: auto; }
     .demo-button.hover, .demo-button.pressed { background: var(--canvas); color: var(--strong); }
     .demo-button.pressed { transform: translateY(1px); }
     .demo-button:focus-visible, .demo-option:focus-visible, .demo-input:focus-visible { outline: 3px solid var(--strong); outline-offset: 3px; }
     .demo-button.disabled { border-color: #666; background: #E5E5E5; color: #666; cursor: not-allowed; }
     .demo-option { min-width: 2.75rem; background: white; color: var(--strong); }
-    .demo-option.selected { outline: 2px solid var(--strong); outline-offset: 2px; }
+    .demo-option.hover { background: #F2E8D4; }
+    .demo-option.selected { border-color: var(--strong); background: #F2E8D4; box-shadow: inset 0 -3px 0 var(--strong); }
     .demo-option.unavailable { color: #666; background: #F0EEEB; text-decoration: line-through; }
     .demo-input { width: min(100%, 20rem); justify-content: flex-start; background: white; color: var(--strong); }
-    .demo-input.focused { outline: 3px solid var(--strong); outline-offset: 2px; }
+    input.demo-input { display: block; }
+    .demo-input::placeholder { color: #666; opacity: 1; }
     .demo-input.error { border: 2px solid var(--error); }
     .demo-input.valid { border: 2px solid var(--success); }
+    .input-demo { width: min(100%, 20rem); }
+    .input-demo small { display: block; margin-top: .65rem; color: var(--error); }
     .icon-sample { display: inline-flex; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 2.75rem; border: 1px solid var(--line); background: var(--strong); color: var(--canvas); font-size: 1.1rem; }
     .icon-sample.light { background: var(--canvas); color: var(--ink); }
     .icon-strip { display: flex; flex-wrap: wrap; gap: .5rem; }
@@ -411,20 +416,21 @@
           <div class="state-row"><span class="state-name">Focus</span><button class="demo-button" type="button" style="outline:3px solid #111;outline-offset:3px">Add to bag</button></div>
           <div class="state-row"><span class="state-name">Pressed</span><button class="demo-button pressed" type="button">Add to bag</button></div>
           <div class="state-row"><span class="state-name">Disabled</span><button class="demo-button disabled" type="button" disabled>Unavailable</button></div>
-          <div class="state-row"><span class="state-name">Loading</span><button class="demo-button" type="button" aria-busy="true">Processing…</button></div>
+          <div class="state-row"><span class="state-name">Loading</span><button class="demo-button loading" type="button" aria-busy="true">Processing…</button></div>
         </div><p class="interaction-note">Primary/Fill and Secondary/Outline use their documented paired colors. Focus uses a high-contrast offset ring; pressed adds a small cue while preserving contrast. Disabled controls use native <code>disabled</code> or <code>aria-disabled</code> and do not act. Loading is shown only when supported by the underlying operation; expose <code>aria-busy</code>, prevent duplicate submission natively, and preserve width where possible. Reduced motion removes nonessential movement, not state feedback.</p></article>
         <article class="card"><h3>Variation options</h3><div class="state-list" aria-label="Illustrated product variation states">
           <div class="state-row"><span class="state-name">Available</span><button class="demo-option" type="button">S</button></div>
+          <div class="state-row"><span class="state-name">Hover</span><button class="demo-option hover" type="button">S</button></div>
           <div class="state-row"><span class="state-name">Selected</span><button class="demo-option selected" type="button" aria-pressed="true">M</button></div>
           <div class="state-row"><span class="state-name">Unavailable</span><button class="demo-option unavailable" type="button" aria-disabled="true">L</button></div>
           <div class="state-row"><span class="state-name">Focus</span><button class="demo-option" type="button" style="outline:3px solid #111;outline-offset:3px">XL</button></div>
         </div><p class="interaction-note">Available options are selectable. Selected options have distinct border/fill/indicator and appropriate native <code>aria-checked</code> or <code>aria-pressed</code> semantics. Unavailable options are visibly muted or crossed out, cannot be purchased, and expose <code>aria-disabled</code>. Keyboard focus stays distinct from selection. These examples do not implement purchasing behavior.</p></article>
         <article class="card"><h3>Input states</h3><div class="state-list" aria-label="Illustrated input field states">
-          <div class="state-row"><span class="state-name">Default</span><div class="demo-input">Email address</div></div>
-          <div class="state-row"><span class="state-name">Focused</span><div class="demo-input focused">Email address</div></div>
-          <div class="state-row"><span class="state-name">Error</span><div><div class="demo-input error" aria-invalid="true">Enter a valid email</div><small style="color:#C62828">Please check this address.</small></div></div>
-          <div class="state-row"><span class="state-name">Disabled</span><div class="demo-input" style="background:#E5E5E5;color:#666">Not editable</div></div>
-          <div class="state-row"><span class="state-name">Valid</span><div class="demo-input valid">Address confirmed</div></div>
+          <div class="state-row"><label class="state-name" for="demo-input-default">Default</label><input class="demo-input" id="demo-input-default" type="text" placeholder="Your name"></div>
+          <div class="state-row"><label class="state-name" for="demo-input-focused">Focus</label><input class="demo-input" id="demo-input-focused" type="text" placeholder="Click or tab here"></div>
+          <div class="state-row"><label class="state-name" for="demo-input-error">Error</label><div class="input-demo"><input class="demo-input error" id="demo-input-error" type="email" aria-invalid="true" aria-describedby="demo-input-error-message" value="not-an-email"><small id="demo-input-error-message">Please check this address.</small></div></div>
+          <div class="state-row"><label class="state-name" for="demo-input-disabled">Disabled</label><input class="demo-input" id="demo-input-disabled" type="text" value="Not editable" disabled style="background:#E5E5E5;color:#666"></div>
+          <div class="state-row"><label class="state-name" for="demo-input-valid">Valid</label><input class="demo-input valid" id="demo-input-valid" type="email" value="hello@example.com"></div>
         </div><p class="interaction-note">Use semantic text/outline tokens and comfortable padding. Focus gets a clear accent/primary ring. Pair error color with a concise, associated message and <code>aria-invalid="true"</code>; disabled uses native semantics. A valid cue stays subtle and never relies on color alone.</p></article>
       </div>
       <p class="note">Use only states supported by the underlying native control. Loading, validation, selection, and availability reflect WordPress/WooCommerce conditions; this guidance adds no business logic.</p>
