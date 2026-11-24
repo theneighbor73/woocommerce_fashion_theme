@@ -122,7 +122,7 @@ Use the correct WordPress and WooCommerce template hierarchy.
 
 ## 6. Layout Strategy
 
-The initial theme uses fixed layouts.
+The initial theme uses fixed compositions with predetermined structure, not fixed pixel-width layouts. Templates and patterns adapt to the shared compact/medium/expanded grid and reflow rules.
 
 Each template has a predetermined structure.
 

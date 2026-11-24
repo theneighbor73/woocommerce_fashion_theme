@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alice's Material 3 design foundations for color, typography, shape, space, depth, and motion.">
+  <title>Alice — Design Foundations</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --canvas: #F9F8F6; --ink: #222222; --strong: #111111; --muted: #666666;
+      --accent: #C5A059; --accent-soft: #F2E8D4; --line: #E5E5E5;
+      --success: #2F6B45; --error: #C62828;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      --layout-margin: 16px; --content-max: 85rem;
+      font-family: var(--sans); color: var(--ink); background: var(--canvas);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-size: 1rem; line-height: 1.6; }
+    a { color: inherit; text-underline-offset: .2em; }
+    a:focus-visible { outline: 3px solid var(--strong); outline-offset: 4px; }
+    .wrap { width: min(calc(100% - 2 * var(--layout-margin)), var(--content-max)); margin-left: auto; margin-right: auto; }
+    header, footer { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+    header { border-bottom: 1px solid var(--line); }
+    header .wrap, footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .brand { font: 500 1.5rem/1 var(--serif); }
+    nav { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .875rem; }
+    nav a { text-decoration: none; }
+    main { padding-bottom: 4rem; }
+    .hero { padding-top: clamp(4rem, 10vw, 8rem); padding-bottom: clamp(4rem, 10vw, 8rem); border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 .75rem; color: var(--muted); font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    h1, h2, h3 { color: var(--strong); font-family: var(--serif); font-weight: 400; }
+    h1 { max-width: 13ch; margin: 0; font-size: clamp(3rem, 8vw, 6rem); line-height: 1; letter-spacing: -.025em; }
+    .hero p:last-child { max-width: 52rem; margin: 1.5rem 0 0; color: var(--muted); font-size: 1.125rem; }
+    section { padding-top: clamp(3rem, 7vw, 5rem); padding-bottom: clamp(3rem, 7vw, 5rem); border-bottom: 1px solid var(--line); scroll-margin-top: 1rem; }
+    .section-head { display: grid; grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: 2rem; align-items: end; margin-bottom: 2rem; }
+    h2 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
+    h3 { margin: 0 0 .5rem; font-size: 1.35rem; }
+    p { margin-top: 0; }
+    .section-head > p, .note { color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .card { padding: clamp(1rem, 3vw, 1.5rem); border: 1px solid var(--line); background: #fff; }
+    .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; }
+    .swatch { overflow: hidden; border: 1px solid var(--line); background: white; }
+    .chip { height: 5rem; background: var(--swatch); }
+    .swatch p { margin: 0; padding: .65rem; font-size: .75rem; }
+    .role-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; }
+    .role-pair { overflow: hidden; border: 1px solid var(--line); background: white; }
+    .role-fill, .role-on { min-height: 3.25rem; display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .6rem .75rem; font-size: .8rem; }
+    .role-fill { background: var(--fill); color: var(--fill-ink); }
+    .role-on { min-height: 2.5rem; background: var(--on-fill); color: var(--on-ink); }
+    .role-fill code, .role-on code { font-size: .72rem; }
+    .role-caption { display: flex; justify-content: space-between; gap: .5rem; padding: .45rem .75rem; color: var(--muted); font-size: .7rem; }
+    .neutral-roles { display: grid; grid-template-columns: 1fr 1fr 1.2fr 1.2fr; gap: .35rem; margin-top: .75rem; }
+    .neutral-role { min-height: 4rem; display: flex; align-items: center; padding: .65rem; font-size: .72rem; }
+    .scale-illustration { display: grid; gap: .65rem; margin-top: 1.25rem; margin-bottom: 1.25rem; }
+    .space-bar-row { display: grid; grid-template-columns: 6rem minmax(0, 1fr) 12rem; align-items: center; gap: .75rem; font-size: .8rem; }
+    .space-track { height: 1.25rem; background: #F0EEEB; }
+    .space-bar { width: var(--bar); height: 100%; background: var(--strong); }
+    .space-lede { max-width: 72ch; color: var(--muted); }
+    .space-block { margin-top: 2rem; }
+    .space-block h3 { margin-bottom: .75rem; }
+    .space-table { width: 100%; border-collapse: collapse; table-layout: fixed; background: #fff; }
+    .space-table caption { padding: .75rem 0; color: var(--muted); font-size: .8rem; text-align: left; }
+    .space-table th, .space-table td { padding: .75rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+    .space-table th { font-size: .78rem; }
+    .space-table td { font-size: .82rem; }
+    .space-table tr:last-child > * { border-bottom: 0; }
+    .ruler-bands { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1.55fr); gap: .5rem; margin-top: 1rem; }
+    .ruler-band { min-width: 0; padding: .8rem; background: #fff; border-top: 4px solid var(--accent); }
+    .ruler-band:nth-child(2) { border-color: #8E7A53; }
+    .ruler-band:nth-child(3) { border-color: var(--strong); }
+    .ruler-band strong, .ruler-band span { display: block; }
+    .ruler-band span { margin-top: .3rem; color: var(--muted); font-size: .75rem; overflow-wrap: anywhere; }
+    .grid-boards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .grid-board { min-width: 0; padding: .8rem; background: #fff; }
+    .grid-board h4 { margin: 0 0 .6rem; font-size: .85rem; }
+    .grid-cells { display: grid; gap: 3px; }
+    .grid-board.compact .grid-cells { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-board.medium .grid-cells { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+    .grid-board.expanded .grid-cells { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+    .grid-cell { min-width: 0; height: 1.5rem; background: #E7E4E0; border-bottom: 2px solid #B8A77F; }
+    .grid-board p { margin: .55rem 0 0; color: var(--muted); font-size: .7rem; }
+    .container-diagram { display: grid; grid-template-columns: minmax(1rem, 1fr) minmax(0, 85rem) minmax(1rem, 1fr); gap: .4rem; padding: .8rem; background: #F0EEEB; }
+    .container-margin { display: grid; place-items: center; color: var(--muted); font-size: .68rem; text-align: center; }
+    .container-inner { min-width: 0; padding: .75rem; background: #E7E4E0; }
+    .container-prose { width: min(100%, 68ch); margin: 0 auto; padding: .75rem; background: #fff; font-size: .75rem; text-align: center; }
+    .ruler-compare { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+    .ruler-card { min-width: 0; padding: 1rem; background: #fff; }
+    .ruler-card > strong { display: block; margin-bottom: .5rem; }
+    .gap-demo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; align-items: center; }
+    .gap-demo > span { display: grid; min-height: 3rem; place-items: center; padding: .5rem; background: #E7E4E0; font-size: .75rem; text-align: center; }
+    .gap-space { min-height: 3rem; display: grid; place-items: center; color: var(--muted); font-size: .65rem; }
+    .section-rhythm { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; align-items: end; margin-top: .75rem; }
+    .section-rhythm span { display: grid; place-items: center; min-height: var(--rhythm); background: #E7E4E0; font-size: .7rem; text-align: center; }
+    .shell-diagram { display: grid; gap: .5rem; padding: 1rem; background: #F0EEEB; }
+    .shell-row { display: flex; min-width: 0; align-items: center; justify-content: space-between; gap: .75rem; padding: .7rem; background: #fff; font-size: .75rem; }
+    .shell-row span:last-child { color: var(--muted); text-align: right; }
+    .shell-top { border-top: 8px solid var(--accent-soft); }
+    .shell-layers { margin-top: 1rem; }
+    .boundary-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .boundary-choice { min-width: 0; padding: 1rem; background: #fff; }
+    .boundary-choice h4 { margin: 0 0 .5rem; font-size: .9rem; }
+    .boundary-sample { min-height: 5rem; display: grid; gap: .5rem; align-content: center; padding: .75rem; background: #F9F8F6; font-size: .72rem; }
+    .boundary-sample.outer { border: 1px solid #999; }
+    .boundary-sample.outer span + span { padding-top: .5rem; border-top: 0; }
+    .boundary-sample.dividers span + span { padding-top: .5rem; border-top: 1px solid #999; }
+    .boundary-sample.open { background: linear-gradient(135deg, #F9F8F6 0 50%, #F0EEEB 50% 100%); }
+    .breakout-diagram { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, min(100%, 85rem)) minmax(0, 1fr); min-height: 7rem; background: #DCD7CF; }
+    .breakout-inner { display: grid; align-content: center; gap: .3rem; padding: 1rem; background: #E7E4E0; }
+    .breakout-inner strong { font: 400 1.3rem/1.1 var(--serif); }
+    .reflow-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+    .reflow-item { min-width: 0; padding: .85rem; background: #fff; font-size: .78rem; }
+    .motion-demo { display: grid; gap: 1.25rem; margin-top: 1.25rem; margin-bottom: 1.25rem; }
+    .motion-lane { display: grid; grid-template-columns: 7rem 1fr; align-items: center; gap: .75rem; font-size: .8rem; }
+    .time-track { position: relative; height: 2.5rem; border-bottom: 1px solid #999; background: repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), #E5E5E5 calc(25% - 1px) 25%); }
+    .time-bar { position: absolute; top: .5rem; left: 0; width: var(--time); height: 1rem; background: var(--strong); }
+    .time-end { position: absolute; top: .25rem; left: var(--time); width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--accent); transform: translateX(-50%); }
+    .motion-visual.is-playing .time-bar { animation: duration-grow var(--duration) cubic-bezier(.22, 1, .36, 1) both; }
+    .motion-visual.is-playing .time-end { animation: duration-marker var(--duration) cubic-bezier(.22, 1, .36, 1) both; }
+    @keyframes duration-grow { from { width: 0; } to { width: var(--time); } }
+    @keyframes duration-marker { from { left: 0; } to { left: var(--time); } }
+    .time-scale { display: flex; justify-content: space-between; padding-left: 7.75rem; color: var(--muted); font-size: .7rem; }
+    .ease-steps { display: flex; align-items: center; gap: .35rem; margin-top: .75rem; }
+    .ease-step { height: .85rem; flex: 1; background: var(--strong); }
+    .ease-step:nth-child(1) { opacity: .24; }
+    .ease-step:nth-child(2) { opacity: .42; }
+    .ease-step:nth-child(3) { opacity: .58; }
+    .ease-step:nth-child(4) { opacity: .72; }
+    .ease-step:nth-child(5) { opacity: .84; }
+    .ease-step:nth-child(6) { opacity: .93; }
+    .ease-step:nth-child(7) { opacity: 1; }
+    .ease-labels { display: flex; justify-content: space-between; color: var(--muted); font-size: .7rem; }
+    .ease-plot { position: relative; height: 7rem; overflow: hidden; border-left: 1px solid #999; border-bottom: 1px solid #999; background: repeating-linear-gradient(0deg, transparent 0 calc(25% - 1px), #E5E5E5 calc(25% - 1px) 25%), repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), #E5E5E5 calc(25% - 1px) 25%); }
+    .ease-plot::after { position: absolute; inset: 0; background: rgb(197 160 89 / .35); clip-path: polygon(0 100%, 0 77%, 10% 46%, 25% 22%, 45% 9%, 65% 3%, 82% 1%, 100% 0, 100% 100%); content: ""; }
+    .ease-line { position: absolute; z-index: 1; inset: 0; background: var(--strong); clip-path: polygon(0 77%, 10% 46%, 25% 22%, 45% 9%, 65% 3%, 82% 1%, 100% 0, 100% 2%, 82% 3%, 65% 5%, 45% 11%, 25% 24%, 10% 48%, 0 79%); }
+    .ease-dot { position: absolute; z-index: 2; bottom: 100%; left: 99%; width: .8rem; height: .8rem; border: 2px solid white; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1px var(--strong); transform: translate(-50%, 50%); }
+    .motion-visual.is-playing .ease-dot { animation: trace-easing 1400ms linear both; }
+    @keyframes trace-easing {
+      0% { left: 1%; bottom: 1%; }
+      10% { left: 7%; bottom: 27%; }
+      25% { left: 19%; bottom: 58%; }
+      45% { left: 39%; bottom: 83%; }
+      65% { left: 58%; bottom: 96%; }
+      82% { left: 68%; bottom: 99%; }
+      100% { left: 99%; bottom: 100%; }
+    }
+    .motion-replay { min-height: 2.75rem; margin-top: 1rem; padding: .5rem .9rem; border: 1px solid var(--strong); background: var(--canvas); color: var(--strong); font: 500 .875rem/1.3 var(--sans); cursor: pointer; }
+    .motion-replay:hover { background: var(--strong); color: var(--canvas); }
+    .motion-replay:focus-visible { outline: 3px solid var(--strong); outline-offset: 3px; }
+    .ease-axis { display: flex; justify-content: space-between; color: var(--muted); font-size: .7rem; }
+    .interaction-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .state-list { display: grid; gap: .65rem; }
+    .state-row { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); align-items: center; gap: .75rem; padding: .55rem; border-bottom: 1px solid var(--line); }
+    .state-name { color: var(--muted); font-size: .75rem; }
+    .demo-button, .demo-option, .demo-input { min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .5rem .9rem; border: 1px solid var(--strong); border-radius: 0; background: var(--strong); color: var(--canvas); font: 500 .875rem/1.3 var(--sans); }
+    .demo-button { justify-self: start; cursor: pointer; }
+    .demo-button.hover, .demo-button.pressed { background: var(--canvas); color: var(--strong); }
+    .demo-button.pressed { transform: translateY(1px); }
+    .demo-button:focus-visible, .demo-option:focus-visible, .demo-input:focus-visible { outline: 3px solid var(--strong); outline-offset: 3px; }
+    .demo-button.disabled { border-color: #666; background: #E5E5E5; color: #666; cursor: not-allowed; }
+    .demo-option { min-width: 2.75rem; background: white; color: var(--strong); }
+    .demo-option.selected { outline: 2px solid var(--strong); outline-offset: 2px; }
+    .demo-option.unavailable { color: #666; background: #F0EEEB; text-decoration: line-through; }
+    .demo-input { width: min(100%, 20rem); justify-content: flex-start; background: white; color: var(--strong); }
+    .demo-input.focused { outline: 3px solid var(--strong); outline-offset: 2px; }
+    .demo-input.error { border: 2px solid var(--error); }
+    .demo-input.valid { border: 2px solid var(--success); }
+    .icon-sample { display: inline-flex; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 2.75rem; border: 1px solid var(--line); background: var(--strong); color: var(--canvas); font-size: 1.1rem; }
+    .icon-sample.light { background: var(--canvas); color: var(--ink); }
+    .icon-strip { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .interaction-note { margin: .75rem 0 0; color: var(--muted); font-size: .78rem; }
+    .small { color: var(--muted); font-size: .75rem; }
+    code { font-family: ui-monospace, Consolas, monospace; font-size: .85em; overflow-wrap: anywhere; }
+    .note { margin-top: 1rem; padding: 1rem 1.25rem; border-left: 3px solid var(--accent); background: var(--accent-soft); }
+    .type-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .type-role { min-width: 0; }
+    .type-sample { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: .75rem; align-items: baseline; padding-top: .7rem; padding-bottom: .7rem; border-bottom: 1px solid var(--line); }
+    .type-sample:last-child { border: 0; }
+    .type-label { color: var(--muted); font: 500 .7rem/1.2 var(--sans); }
+    .type-example { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+    .display-large { font: 400 3.5625rem/4rem var(--serif); letter-spacing: -.015625rem; }
+    .display-medium { font: 400 2.8125rem/3.25rem var(--serif); }
+    .display-small { font: 400 2.25rem/2.75rem var(--serif); }
+    .headline-large { font: 400 2rem/2.5rem var(--serif); }
+    .headline-medium { font: 400 1.75rem/2.25rem var(--serif); }
+    .headline-small { font: 400 1.5rem/2rem var(--serif); }
+    .title-large { font: 400 1.375rem/1.75rem var(--sans); }
+    .title-medium { font: 500 1rem/1.5rem var(--sans); letter-spacing: .009375rem; }
+    .title-small { font: 500 .875rem/1.25rem var(--sans); letter-spacing: .00625rem; }
+    .body-large { font: 400 1rem/1.5rem var(--sans); letter-spacing: .03125rem; }
+    .body-medium { font: 400 .875rem/1.25rem var(--sans); letter-spacing: .015625rem; }
+    .body-small { font: 400 .75rem/1rem var(--sans); letter-spacing: .025rem; }
+    .label-large { font: 500 .875rem/1.25rem var(--sans); letter-spacing: .00625rem; }
+    .label-medium { font: 500 .75rem/1rem var(--sans); letter-spacing: .03125rem; }
+    .label-small { font: 500 .6875rem/1rem var(--sans); letter-spacing: .03125rem; }
+    .emphasis-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .emphasis-role { min-width: 0; }
+    .emphasis-row { display: grid; grid-template-columns: 4rem minmax(0, 1fr) minmax(0, 1fr); gap: .5rem; align-items: baseline; padding-top: .65rem; padding-bottom: .65rem; border-bottom: 1px solid var(--line); }
+    .emphasis-row:last-child { border: 0; }
+    .emphasis-sample { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+    .emphasis-head { display: grid; grid-template-columns: 4rem 1fr 1fr; gap: .5rem; margin-top: .8rem; color: var(--muted); font: 500 .65rem/1.2 var(--sans); }
+    .scale { display: grid; gap: .5rem; }
+    .scale div { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); }
+    .radii { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .radius { width: 7rem; height: 4rem; display: grid; place-items: center; border: 1px solid var(--line); background: var(--canvas); font-size: .75rem; }
+    .depth { min-height: 8rem; display: grid; place-items: center; background: var(--canvas); }
+    .depth-card { padding: 1rem 1.5rem; background: white; box-shadow: 0 1px 3px rgb(17 17 17 / .2); }
+    .scrim-stage { position: relative; min-height: 8rem; display: grid; place-items: center; overflow: hidden; background: #E7E4E0; }
+    .scrim-backdrop { color: #666; text-align: center; font-size: .8rem; }
+    .scrim-shade { position: absolute; inset: 0; background: rgb(17 17 17 / .32); }
+    .scrim-foreground { position: absolute; z-index: 1; width: min(70%, 14rem); padding: .8rem; background: white; box-shadow: 0 6px 18px rgb(17 17 17 / .2); text-align: center; font-size: .8rem; }
+    footer { color: var(--canvas); background: var(--strong); font-size: .875rem; }
+    footer a { color: var(--canvas); }
+    @media (min-width: 600px) { :root { --layout-margin: 24px; } }
+    @media (min-width: 840px) { :root { --layout-margin: 32px; } }
+    @media (max-width: 599px) {
+      header .wrap, footer .wrap { align-items: flex-start; flex-direction: column; }
+      .section-head, .grid { grid-template-columns: 1fr; }
+      .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .role-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .space-bar-row { grid-template-columns: 5rem minmax(0, 1fr); }
+      .space-bar-row code { grid-column: 2; }
+      .grid-boards, .boundary-choices, .reflow-list { grid-template-columns: 1fr; }
+      .ruler-compare { grid-template-columns: 1fr; }
+      .ruler-bands { grid-template-columns: 1fr; }
+      .container-diagram { grid-template-columns: 1rem minmax(0, 1fr) 1rem; padding: .5rem; }
+      .container-margin { font-size: .55rem; overflow-wrap: anywhere; }
+      .shell-row { align-items: flex-start; flex-direction: column; gap: .2rem; }
+      .shell-row span:last-child { text-align: left; }
+      .motion-lane { grid-template-columns: 5rem 1fr; }
+      .time-scale { padding-left: 5.75rem; }
+      .type-grid { grid-template-columns: 1fr; }
+      .emphasis-grid { grid-template-columns: 1fr; }
+      .interaction-grid { grid-template-columns: 1fr; }
+      .state-row { grid-template-columns: 5.5rem minmax(0, 1fr); }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header>
+      <div class="wrap"><span class="brand">Alice</span><nav aria-label="Design foundations"><a href="#color">Color</a><a href="#type">Typography</a><a href="#space">Space & layout</a><a href="#icons">Icons</a><a href="#interaction">Interaction</a><a href="#component-states">Component states</a><a href="#shape">Shape & depth</a><a href="#motion">Motion</a></nav></div>
+  </header>
+  <main>
+    <div class="wrap hero">
+      <p class="eyebrow">Material 3 foundations · light scheme</p>
+      <h1>Quiet clarity, considered detail.</h1>
+      <p>Alice is a minimalist, lifestyle-editorial WordPress block theme for fashion stores. Its foundations use Material 3’s semantic roles and token relationships, expressed through Alice’s own palette, typography, and restrained visual direction. This reference documents foundations only; components are specified separately.</p>
+    </div>
+    <section class="wrap" id="color">
+      <div class="section-head"><div><p class="eyebrow">Roles before values</p><h2>Color</h2></div><p>Brand colors are reference values. System roles describe what a color does, and every foreground is paired with the surface it appears on. A role name alone does not guarantee contrast.</p></div>
+      <div class="role-grid" aria-label="Color roles and their paired foregrounds">
+        <div class="role-pair" style="--fill:#111111;--fill-ink:#F9F8F6;--on-fill:#F9F8F6;--on-ink:#111111"><div class="role-fill"><strong>Primary</strong><code>#111111</code></div><div class="role-on"><strong>On primary</strong><code>#F9F8F6</code></div><div class="role-caption"><span>Primary / foreground pair</span></div></div>
+        <div class="role-pair" style="--fill:#666666;--fill-ink:#F9F8F6;--on-fill:#F9F8F6;--on-ink:#666666"><div class="role-fill"><strong>Secondary</strong><code>#666666</code></div><div class="role-on"><strong>On secondary</strong><code>#F9F8F6</code></div><div class="role-caption"><span>Secondary / foreground pair</span></div></div>
+        <div class="role-pair" style="--fill:#766035;--fill-ink:#FFFFFF;--on-fill:#FFFFFF;--on-ink:#766035"><div class="role-fill"><strong>Tertiary</strong><code>#766035</code></div><div class="role-on"><strong>On tertiary</strong><code>#FFFFFF</code></div><div class="role-caption"><span>Tertiary / foreground pair</span></div></div>
+        <div class="role-pair" style="--fill:#C62828;--fill-ink:#FFFFFF;--on-fill:#FFFFFF;--on-ink:#C62828"><div class="role-fill"><strong>Error</strong><code>#C62828</code></div><div class="role-on"><strong>On error</strong><code>#FFFFFF</code></div><div class="role-caption"><span>Error / foreground pair</span></div></div>
+        <div class="role-pair" style="--fill:#F2E8D4;--fill-ink:#222222;--on-fill:#222222;--on-ink:#F2E8D4"><div class="role-fill"><strong>Primary container</strong><code>#F2E8D4</code></div><div class="role-on"><strong>On primary container</strong><code>#222222</code></div></div>
+        <div class="role-pair" style="--fill:#E5E5E5;--fill-ink:#222222;--on-fill:#222222;--on-ink:#E5E5E5"><div class="role-fill"><strong>Secondary container</strong><code>#E5E5E5</code></div><div class="role-on"><strong>On secondary container</strong><code>#222222</code></div></div>
+        <div class="role-pair" style="--fill:#F2E8D4;--fill-ink:#222222;--on-fill:#222222;--on-ink:#F2E8D4"><div class="role-fill"><strong>Tertiary container</strong><code>#F2E8D4</code></div><div class="role-on"><strong>On tertiary container</strong><code>#222222</code></div></div>
+        <div class="role-pair" style="--fill:#F4D4D4;--fill-ink:#222222;--on-fill:#222222;--on-ink:#F4D4D4"><div class="role-fill"><strong>Error container</strong><code>#F4D4D4</code></div><div class="role-on"><strong>On error container</strong><code>#222222</code></div></div>
+      </div>
+      <div class="neutral-roles" aria-label="Surface and outline roles">
+        <div class="neutral-role" style="background:#FFFFFF;color:#222222">Surface container lowest<br>#FFFFFF</div>
+        <div class="neutral-role" style="background:#F9F8F6;color:#222222">Surface<br>#F9F8F6</div>
+        <div class="neutral-role" style="background:#222222;color:#F9F8F6">On surface<br>#222222</div>
+        <div class="neutral-role" style="background:#666666;color:#FFFFFF">Outline<br>#666666</div>
+        <div class="neutral-role" style="background:#E5E5E5;color:#222222">Outline variant<br>#E5E5E5</div>
+        <div class="neutral-role" style="background:#111111;color:#F9F8F6">Inverse surface<br>#111111</div>
+        <div class="neutral-role" style="background:#F9F8F6;color:#111111">Inverse on surface<br>#F9F8F6</div>
+      </div>
+      <div class="grid" style="margin-top:1rem">
+        <article class="card"><h3>Brand accent</h3><div style="height:2.5rem;margin-bottom:.75rem;background:#C5A059"></div><p><code>reference accent · #C5A059</code><br>The original gold remains part of Alice’s palette. It is decorative emphasis on the light canvas; the darker tertiary role is used when text or icons need stronger contrast.</p></article>
+        <article class="card"><h3>Role boundaries</h3><p>Accent gold is expressive emphasis, not a default text color on canvas. Outline-variant is a quiet divider; essential control boundaries need a stronger role or treatment. Status meaning must include a clear text or shape cue.</p></article>
+      </div>
+      <p class="note">Existing brand values are retained as a starting point. During token approval, tune pairings that fail WCAG 2.2 AA and record foreground/background contrast. Surface containers are optional neutral hierarchy levels; use only the levels a real layout needs.</p>
+    </section>
+    <section class="wrap" id="type">
+      <div class="section-head"><div><p class="eyebrow">Five roles · three sizes</p><h2>Typography</h2></div><p>Material’s baseline scale provides fifteen styles. Alice maps display and headline to its editorial family, Cormorant Garamond, and title, body, and label to Plus Jakarta Sans.</p></div>
+      <div class="type-grid">
+        <article class="card type-role"><h3>Display · brand</h3><div class="type-sample"><code>large</code><p class="type-example display-large">A quieter statement.</p></div><div class="type-sample"><code>medium</code><p class="type-example display-medium">New season</p></div><div class="type-sample"><code>small</code><p class="type-example display-small">Considered</p></div></article>
+        <article class="card type-role"><h3>Headline · brand</h3><div class="type-sample"><code>large</code><p class="type-example headline-large">Thoughtful dressing</p></div><div class="type-sample"><code>medium</code><p class="type-example headline-medium">Quiet detail</p></div><div class="type-sample"><code>small</code><p class="type-example headline-small">Everyday form</p></div></article>
+        <article class="card type-role"><h3>Title · plain</h3><div class="type-sample"><code>large</code><p class="type-example title-large">The new collection</p></div><div class="type-sample"><code>medium</code><p class="type-example title-medium">A refined layer</p></div><div class="type-sample"><code>small</code><p class="type-example title-small">Soft structure</p></div></article>
+        <article class="card type-role"><h3>Body · plain</h3><div class="type-sample"><code>large</code><p class="type-example body-large">Designed for everyday dressing.</p></div><div class="type-sample"><code>medium</code><p class="type-example body-medium">Thoughtful silhouettes and considered details.</p></div><div class="type-sample"><code>small</code><p class="type-example body-small">Material and care information.</p></div></article>
+        <article class="card type-role"><h3>Label · plain</h3><div class="type-sample"><code>large</code><p class="type-example label-large">New arrivals</p></div><div class="type-sample"><code>medium</code><p class="type-example label-medium">Product detail</p></div><div class="type-sample"><code>small</code><p class="type-example label-small">Color: oat</p></div></article>
+      </div>
+      <h3 style="margin-top:2rem">Emphasized styles</h3>
+      <p>Compare baseline and emphasized weights at matching sizes. Emphasis changes weight only; family, size, line-height, and tracking stay the same.</p>
+      <div class="emphasis-grid" aria-label="Baseline and emphasized title and label typography styles">
+        <article class="card emphasis-role"><h3>Title · plain</h3><div class="emphasis-head"><span>Size</span><span>Baseline</span><span>Emphasized</span></div><div class="emphasis-row"><code>large</code><p class="emphasis-sample title-large">New collection</p><p class="emphasis-sample title-large" style="font-weight:500">New collection</p></div><div class="emphasis-row"><code>medium</code><p class="emphasis-sample title-medium">Refined layer</p><p class="emphasis-sample title-medium" style="font-weight:700">Refined layer</p></div><div class="emphasis-row"><code>small</code><p class="emphasis-sample title-small">Soft structure</p><p class="emphasis-sample title-small" style="font-weight:700">Soft structure</p></div></article>
+        <article class="card emphasis-role"><h3>Label · plain</h3><div class="emphasis-head"><span>Size</span><span>Baseline</span><span>Emphasized</span></div><div class="emphasis-row"><code>large</code><p class="emphasis-sample label-large">New arrivals</p><p class="emphasis-sample label-large" style="font-weight:700">New arrivals</p></div><div class="emphasis-row"><code>medium</code><p class="emphasis-sample label-medium">Product detail</p><p class="emphasis-sample label-medium" style="font-weight:700">Product detail</p></div><div class="emphasis-row"><code>small</code><p class="emphasis-sample label-small">Color: oat</p><p class="emphasis-sample label-small" style="font-weight:700">Color: oat</p></div></article>
+      </div>
+      <p class="note">Baseline styles use the Material type token pattern <code>--md-sys-typescale-&lt;role&gt;-&lt;size&gt;-&lt;attribute&gt;</code>. Emphasized weights use the same role and size with Alice’s <code>-emphasized-weight</code> extension; other metrics stay linked to the baseline. The token document lists all sizes, line heights, weights, and tracking. Line wrapping will vary by font metrics.</p>
+    </section>
+    <section class="wrap" id="space">
+      <div class="section-head"><div><p class="eyebrow">Adaptive foundation</p><h2>Space & layout</h2></div><p>Alice uses three width classes, one low-density level, and intrinsic reflow. The same universal rulers guide templates, reusable components, and full-bleed editorial moments.</p></div>
+      <p class="space-lede">The classes adapt the grid and its margins; they do not identify a device or guarantee reflow by themselves. Content must still shrink, wrap, and fit within the available space.</p>
+
+      <div class="space-block">
+        <h3>Breakpoint ruler</h3>
+        <div class="ruler-bands" role="img" aria-label="Compact is under 600 pixels, medium is 600 to 839 pixels, expanded begins at 840 pixels">
+          <div class="ruler-band"><strong>Compact</strong><span>&lt; 600px · 4 columns</span><span>Phone portrait · 16px margin/gutter</span></div>
+          <div class="ruler-band"><strong>Medium</strong><span>600–839px · 8 columns</span><span>Tablet and unfolded portrait · 24px margin/gutter</span></div>
+          <div class="ruler-band"><strong>Expanded</strong><span>≥ 840px · 12 columns</span><span>Phone/tablet/foldable landscape; desktop · 32px margin/gutter</span></div>
+        </div>
+        <table class="space-table">
+          <caption>Canonical width-class comparison</caption>
+          <thead><tr><th scope="col">Class</th><th scope="col">Grid</th><th scope="col">Outer margin</th><th scope="col">Gutter</th><th scope="col">Container</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Compact</th><td>4 columns</td><td>16px</td><td>16px</td><td>Fluid to available width</td></tr>
+            <tr><th scope="row">Medium</th><td>8 columns</td><td>24px</td><td>24px</td><td>Fluid to available width</td></tr>
+            <tr><th scope="row">Expanded</th><td>12 columns</td><td>32px</td><td>32px</td><td>Centered, capped at 85rem</td></tr>
+          </tbody>
+        </table>
+        <div class="grid-boards" role="img" aria-label="Grid column diagrams: four compact columns, eight medium columns, and twelve expanded columns">
+          <div class="grid-board compact"><h4>Compact · 4</h4><div class="grid-cells" aria-hidden="true"><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i></div><p>Phone portrait</p></div>
+          <div class="grid-board medium"><h4>Medium · 8</h4><div class="grid-cells" aria-hidden="true"><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i></div><p>Tablet or unfolded portrait</p></div>
+          <div class="grid-board expanded"><h4>Expanded · 12</h4><div class="grid-cells" aria-hidden="true"><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i><i class="grid-cell"></i></div><p>Landscape, desktop, or wide storefront</p></div>
+        </div>
+      </div>
+
+      <div class="space-block">
+        <h3>Universal layout rulers</h3>
+        <div class="ruler-compare">
+          <div class="ruler-card"><strong>Container and prose are separate</strong><div class="container-diagram" role="img" aria-label="Responsive outer margins surround a capped container; a narrower 68 character prose measure sits independently inside"><div class="container-margin">class margin</div><div class="container-inner"><div class="container-prose">Readable prose · <code>--md-sys-layout-measure-prose: 68ch</code></div></div><div class="container-margin">class margin</div></div><p class="small">Container cap: <code>--md-sys-layout-container-max · 85rem</code>. Prose stays in the 60ch–72ch range rather than spanning the grid.</p></div>
+          <div class="ruler-card"><strong>Padding contains the internal gap</strong><div class="gap-demo" role="img" aria-label="Container padding is at least as large as the internal component gap"><span>Container edge</span><span>Container edge</span><div class="gap-space">padding ≥ gap</div><div class="gap-space">padding ≥ gap</div></div><p class="small">The perimeter breathing room is never tighter than the grid/flex gap inside it.</p></div>
+        </div>
+        <div class="section-rhythm" role="img" aria-label="Section vertical rhythm grows from 56 pixels compact to 64 medium and 80 expanded, and is at least twice internal component spacing">
+          <span style="--rhythm:56px">Compact · 56px</span><span style="--rhythm:64px">Medium · 64px</span><span style="--rhythm:80px">Expanded · 80px</span>
+        </div>
+        <p class="small">Section rhythm ≥ 2× internal component spacing. Minimum interactive target: <code>44px × 44px</code> at every width. Align card footers/actions across each grid row without fixed card heights.</p>
+      </div>
+
+      <div class="space-block">
+        <h3>Spacing scale</h3>
+        <p class="small">Small intervals support component spacing; section rhythm is a separate, class-aware ruler. No density mode changes these values.</p>
+        <div class="scale-illustration" aria-label="Relative spacing token sizes">
+          <div class="space-bar-row"><code>--md-sys-space-xs</code><div class="space-track"><div class="space-bar" style="--bar:12.5%"></div></div><span>0.5rem</span></div>
+          <div class="space-bar-row"><code>--md-sys-space-sm</code><div class="space-track"><div class="space-bar" style="--bar:25%"></div></div><span>1rem</span></div>
+          <div class="space-bar-row"><code>--md-sys-space-md</code><div class="space-track"><div class="space-bar" style="--bar:37.5%"></div></div><span>1.5rem</span></div>
+          <div class="space-bar-row"><code>--md-sys-space-lg</code><div class="space-track"><div class="space-bar" style="--bar:55%"></div></div><span>2–3rem fluid</span></div>
+          <div class="space-bar-row"><code>--md-sys-space-xl</code><div class="space-track"><div class="space-bar" style="--bar:75%"></div></div><span>3.5–5rem fluid</span></div>
+          <div class="space-bar-row"><code>--md-sys-space-2xl</code><div class="space-track"><div class="space-bar" style="--bar:100%"></div></div><span>5–8rem fluid</span></div>
+        </div>
+      </div>
+
+      <div class="space-block">
+        <h3>Scaffold anatomy and layer order</h3>
+        <div class="ruler-compare">
+          <div class="shell-diagram" role="img" aria-label="Top bar uses a safe-area inset; toast sits above header controls; temporary pane is above its backdrop">
+            <div class="shell-row shell-top"><span>Safe-area inset · top bar</span><span>Persistent navigation / utilities</span></div>
+            <div class="shell-row"><span>Toast region</span><span>Anchored to top bar · feedback above panes</span></div>
+            <div class="shell-row"><span>Temporary pane</span><span>Dismissible · focus trap · Escape</span></div>
+            <div class="shell-row"><span>Backdrop</span><span>Behind temporary pane</span></div>
+            <div class="shell-row"><span>Base content</span><span>Document and ordinary regions</span></div>
+          </div>
+          <div><table class="space-table shell-layers"><caption>Shared z-index scale</caption><thead><tr><th scope="col">Role</th><th scope="col">Value</th></tr></thead><tbody><tr><th scope="row">Base</th><td>0</td></tr><tr><th scope="row">Sticky</th><td>100</td></tr><tr><th scope="row">Backdrop</th><td>200</td></tr><tr><th scope="row">Temporary pane</th><td>300</td></tr><tr><th scope="row">Toast</th><td>400</td></tr></tbody></table></div>
+        </div>
+        <p class="note">Compact panes are always temporary. Fixed panes are reserved for expanded or explicitly controlled medium layouts. Use safe-area insets on the top bar, toast region, and full-bleed sections. Do not add bottom navigation or a navigation rail.</p>
+        <p class="small">On compact and short landscape viewports (&lt;480px height), sticky top-bar content is capped at 20svh and can scroll internally. At 200% text zoom, no content is clipped and the page remains available below it.</p>
+      </div>
+
+      <div class="space-block">
+        <h3>Choose one grouping treatment</h3>
+        <div class="boundary-choices">
+          <div class="boundary-choice"><h4>Outer container border</h4><div class="boundary-sample outer"><span>Address</span><span>Delivery details</span></div><p class="small">One outline groups the whole component.</p></div>
+          <div class="boundary-choice"><h4>Internal dividers</h4><div class="boundary-sample dividers"><span>Order item</span><span>Subtotal</span></div><p class="small">Use when individual rows need separation.</p></div>
+          <div class="boundary-choice"><h4>Whitespace / tonal shift</h4><div class="boundary-sample open"><span>Product details</span><span>Additional information</span></div><p class="small">Open grouping needs no border.</p></div>
+        </div>
+        <p class="note">Do not combine an outer border and internal dividers for the same grouping. A dense checkout or order summary may use both only when the two boundaries communicate distinct structure.</p>
+      </div>
+
+      <div class="space-block">
+        <h3>Grid containment and full-bleed breakout</h3>
+        <div class="breakout-diagram" role="img" aria-label="A full-bleed merchandising background extends beyond the grid while its inner copy and action remain aligned to the grid margins"><div></div><div class="breakout-inner"><strong>Full-bleed editorial moment</strong><span>Image or video spans the viewport</span><span>Inner copy and CTA align to the expanded margin ruler</span></div><div></div></div>
+        <p class="small">Standard templates and reusable components stay inside the universal rulers. Only high-impact merchandising may reach <code>100vw</code>; only bespoke editorial sections may define local spatial properties.</p>
+      </div>
+
+      <div class="space-block">
+        <h3>Reflow guardrails</h3>
+        <div class="reflow-list">
+          <div class="reflow-item"><strong>320px viewport</strong><br>Zero page-level horizontal overflow. Keep media and controls within available width.</div>
+          <div class="reflow-item"><strong>Intrinsic sizing</strong><br>Use wrapping and <code>minmax(min(100%, …), 1fr)</code>; avoid fixed layout widths.</div>
+          <div class="reflow-item"><strong>Wide data or pills</strong><br>Place necessary horizontal scrolling inside its own isolated region.</div>
+          <div class="reflow-item"><strong>200% text zoom</strong><br>Reflow labels and controls; keep sticky top-bar content accessible.</div>
+          <div class="reflow-item"><strong>Touch interaction</strong><br>Keep every interactive target at least 44px square.</div>
+          <div class="reflow-item"><strong>Intermediate widths</strong><br>Reflow between class thresholds; column counts alone are not enough.</div>
+        </div>
+        <p class="note">WCAG 2.2 Reflow evaluates vertical-reading content at 320 CSS pixels. Alice’s system rule is stricter: no page-level overflow. Any required two-dimensional content stays in an isolated horizontal scroller.</p>
+      </div>
+    </section>
+    <section class="wrap" id="icons">
+      <div class="section-head"><div><p class="eyebrow">Compact, clear affordances</p><h2>Icons</h2></div><p>Use supplied icons where a compact visual meaning is unambiguous. The examples illustrate foreground contrast only; production controls use the project-provided assets.</p></div>
+      <article class="card"><h3>Asset and color guidance</h3><p>Use supplied icons for compact affordances such as cart, search, account, close, filter, quantity steppers, and arrows. Prefer a <code>currentColor</code> stroke so an icon follows its semantic foreground.</p><div class="icon-strip" aria-label="Icon contrast examples"><span class="icon-sample light" aria-label="Icon on light surface">⌕</span><span class="icon-sample" aria-label="Icon on inverse surface">⌕</span><span class="icon-sample light" aria-label="Cart icon on light surface">▱</span><span class="icon-sample" aria-label="Cart icon on inverse surface">▱</span></div><p class="interaction-note">These glyphs illustrate contrast only; use supplied assets from <code>assets/svg/icons/</code>. Fixed-color <code>light/</code> and <code>dark/</code> sets use <code>#222222</code> and <code>#F9F8F6</code>. Keep visible text or an accessible name; hide decorative icons from assistive technology. If a needed icon is missing, request its slug and usage context before build.</p></article>
+    </section>
+    <section class="wrap" id="interaction">
+      <div class="section-head"><div><p class="eyebrow">Pointer, touch, and click</p><h2>Interaction</h2></div><p>Every input method can reach essential actions and information. Preserve native WordPress and WooCommerce behavior; these rules describe the expected presentation and interaction model.</p></div>
+      <div class="interaction-grid">
+        <article class="card"><h3>Desktop · click and hover</h3><p>Click activates standard controls and toggles expandable menus. Pointer hover may reveal a subtle visual state or desktop dropdown. Hover never carries essential information by itself.</p><p class="interaction-note">Use brief, token-based feedback and preserve foreground/surface contrast.</p></article>
+        <article class="card"><h3>Mobile · tap and touch</h3><p>Ordinary buttons and links act on the first tap. For a parent item with a submenu, the first tap expands/folds the submenu; after a pause, a subsequent tap toggles/folds it, while a double tap navigates to the parent destination.</p><p class="interaction-note">There is no mobile hover state. Keep submenu expansion and parent navigation clearly named and operable by keyboard and assistive technology.</p></article>
+      </div>
+      <p class="note">Do not rely on hover alone to reveal controls or information. Preserve native link, navigation, form, and commerce semantics; this model does not add behavior.</p>
+    </section>
+    <section class="wrap" id="component-states">
+      <div class="section-head"><div><p class="eyebrow">Clear feedback · native behavior</p><h2>Component states</h2></div><p>Every state stays legible, accessible, and consistent with its semantic color pairing. Examples are documentation illustrations; native WordPress and WooCommerce controls remain responsible for behavior.</p></div>
+      <div class="interaction-grid">
+        <article class="card"><h3>Button states</h3><div class="state-list" aria-label="Illustrated button states">
+          <div class="state-row"><span class="state-name">Default</span><button class="demo-button" type="button">Add to bag</button></div>
+          <div class="state-row"><span class="state-name">Hover</span><button class="demo-button hover" type="button">Add to bag</button></div>
+          <div class="state-row"><span class="state-name">Focus</span><button class="demo-button" type="button" style="outline:3px solid #111;outline-offset:3px">Add to bag</button></div>
+          <div class="state-row"><span class="state-name">Pressed</span><button class="demo-button pressed" type="button">Add to bag</button></div>
+          <div class="state-row"><span class="state-name">Disabled</span><button class="demo-button disabled" type="button" disabled>Unavailable</button></div>
+          <div class="state-row"><span class="state-name">Loading</span><button class="demo-button" type="button" aria-busy="true">Processing…</button></div>
+        </div><p class="interaction-note">Primary/Fill and Secondary/Outline use their documented paired colors. Focus uses a high-contrast offset ring; pressed adds a small cue while preserving contrast. Disabled controls use native <code>disabled</code> or <code>aria-disabled</code> and do not act. Loading is shown only when supported by the underlying operation; expose <code>aria-busy</code>, prevent duplicate submission natively, and preserve width where possible. Reduced motion removes nonessential movement, not state feedback.</p></article>
+        <article class="card"><h3>Variation options</h3><div class="state-list" aria-label="Illustrated product variation states">
+          <div class="state-row"><span class="state-name">Available</span><button class="demo-option" type="button">S</button></div>
+          <div class="state-row"><span class="state-name">Selected</span><button class="demo-option selected" type="button" aria-pressed="true">M</button></div>
+          <div class="state-row"><span class="state-name">Unavailable</span><button class="demo-option unavailable" type="button" aria-disabled="true">L</button></div>
+          <div class="state-row"><span class="state-name">Focus</span><button class="demo-option" type="button" style="outline:3px solid #111;outline-offset:3px">XL</button></div>
+        </div><p class="interaction-note">Available options are selectable. Selected options have distinct border/fill/indicator and appropriate native <code>aria-checked</code> or <code>aria-pressed</code> semantics. Unavailable options are visibly muted or crossed out, cannot be purchased, and expose <code>aria-disabled</code>. Keyboard focus stays distinct from selection. These examples do not implement purchasing behavior.</p></article>
+        <article class="card"><h3>Input states</h3><div class="state-list" aria-label="Illustrated input field states">
+          <div class="state-row"><span class="state-name">Default</span><div class="demo-input">Email address</div></div>
+          <div class="state-row"><span class="state-name">Focused</span><div class="demo-input focused">Email address</div></div>
+          <div class="state-row"><span class="state-name">Error</span><div><div class="demo-input error" aria-invalid="true">Enter a valid email</div><small style="color:#C62828">Please check this address.</small></div></div>
+          <div class="state-row"><span class="state-name">Disabled</span><div class="demo-input" style="background:#E5E5E5;color:#666">Not editable</div></div>
+          <div class="state-row"><span class="state-name">Valid</span><div class="demo-input valid">Address confirmed</div></div>
+        </div><p class="interaction-note">Use semantic text/outline tokens and comfortable padding. Focus gets a clear accent/primary ring. Pair error color with a concise, associated message and <code>aria-invalid="true"</code>; disabled uses native semantics. A valid cue stays subtle and never relies on color alone.</p></article>
+      </div>
+      <p class="note">Use only states supported by the underlying native control. Loading, validation, selection, and availability reflect WordPress/WooCommerce conditions; this guidance adds no business logic.</p>
+    </section>
+    <section class="wrap" id="shape">
+      <div class="section-head"><div><p class="eyebrow">Quiet structure</p><h2>Shape & depth</h2></div><p>Square corners are the visual baseline. Boundaries and surface contrast do most of the grouping; elevation is reserved for layers that must read above surrounding content.</p></div>
+      <div class="grid">
+        <article class="card"><h3>Material corner scale</h3><div class="radii"><div class="radius" style="border-radius:0">none<br>0</div><div class="radius" style="border-radius:4px">extra-small<br>4px</div><div class="radius" style="border-radius:8px">small<br>8px</div><div class="radius" style="border-radius:12px">medium<br>12px</div><div class="radius" style="border-radius:16px">large<br>16px</div><div class="radius" style="border-radius:28px">extra-large<br>28px</div><div class="radius" style="border-radius:9999px">full<br>fully round</div></div><p style="margin-top:1rem">Alice’s visual default stays square. Use the other baseline Material shape tokens only when a future specification calls for them.</p></article>
+        <article class="card"><h3>Elevation through shadow</h3><div class="depth"><div class="depth-card">Floating surface · level 2</div></div><p>Material levels describe z-distance; the browser’s shadow is a visual treatment of that lift. Keep ordinary editorial content flat and reserve shadows for floating layers.</p><p><code>--md-sys-elevation-level0–level5</code> · 0, 1, 3, 6, 8, 12px</p></article>
+        <article class="card"><h3>Scrim dims the backdrop</h3><div class="scrim-stage" role="img" aria-label="A translucent dark scrim dims the backdrop behind a foreground surface"><div class="scrim-backdrop">Background content remains behind the overlay</div><div class="scrim-shade"></div><div class="scrim-foreground">Foreground surface</div></div><p style="margin-top:1rem"><code>--md-sys-color-scrim · #111111</code></p><p class="small">The 32% opacity shown here is illustrative. Set opacity for the specific overlay; scrim color itself is an opaque token.</p></article>
+      </div>
+    </section>
+    <section class="wrap" id="motion">
+      <div class="section-head"><div><p class="eyebrow">Purposeful feedback</p><h2>Motion & accessibility</h2></div><p>Motion supports orientation and state feedback. It should be brief, consistent, and unnecessary for understanding content or completing a task.</p></div>
+      <div class="grid">
+        <article class="card"><h3>Duration is elapsed time</h3><p>Each marker travels from the shared start to its endpoint; its arrival shows when that duration finishes. The ruler is 0–600ms.</p><div class="motion-demo motion-visual" data-motion-visual aria-label="Animated duration comparison from zero to six hundred milliseconds"><div class="motion-lane"><code>fast · 200ms</code><div class="time-track"><div class="time-bar" style="--time:33.333%;--duration:200ms"></div><span class="time-end" style="--time:33.333%;--duration:200ms"></span></div></div><div class="motion-lane"><code>standard · 350ms</code><div class="time-track"><div class="time-bar" style="--time:58.333%;--duration:350ms"></div><span class="time-end" style="--time:58.333%;--duration:350ms"></span></div></div><div class="motion-lane"><code>long · 600ms</code><div class="time-track"><div class="time-bar" style="--time:100%;--duration:600ms"></div><span class="time-end" style="--time:100%;--duration:600ms"></span></div></div></div><div class="time-scale"><span>0</span><span>150</span><span>300</span><span>450</span><span>600ms</span></div><p style="margin-top:1.5rem">Duration answers “how long?” Easing describes how progress changes during that time. Alice uses <code>--md-sys-motion-duration-fast</code>, <code>standard</code>, and <code>long</code>.</p></article>
+        <article class="card"><h3>Easing changes the pace</h3><p>Alice’s standard editorial curve starts quickly, then slows into its endpoint. The marker follows the curve to show that pacing; it does not overshoot or spring.</p><div class="ease-plot motion-visual" data-motion-visual role="img" aria-label="Animated easing curve: a marker moves quickly at first and slows toward the end"><span class="ease-line"></span><span class="ease-dot"></span></div><div class="ease-axis"><span>Start · time 0</span><span>Elapsed time →</span><span>Finish</span></div><p style="margin-top:1rem"><code>--md-sys-motion-easing-standard</code><br><code>cubic-bezier(0.22, 1, 0.36, 1)</code></p><p class="small">Replay the illustration to compare the pacing. Reduced-motion preferences keep the final static diagram.</p></article>
+        <article class="card"><h3>Accessibility foundation</h3><p>Target WCAG 2.2 AA for theme-authored presentation. Verify text and non-text contrast on actual pairings, keep focus visible and unobscured, and do not communicate meaning by color alone.</p><p>Honor <code>prefers-reduced-motion</code> by removing nonessential movement and smooth scrolling.</p></article>
+      </div>
+      <button class="motion-replay" type="button" data-motion-replay hidden>Replay motion illustrations</button>
+    </section>
+  </main>
+  <footer><div class="wrap"><span>Alice · Design Foundations</span><span>Sources: <a href="08.ui-tokens.md">UI Tokens</a> · <a href="../00.project-overview.md">Project Overview</a></span></div></footer>
+  <script src="design-system-reference.js" defer></script>
+</body>
+</html>
