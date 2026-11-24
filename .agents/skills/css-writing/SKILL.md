@@ -22,7 +22,10 @@ Use this skill for theme stylesheets, `theme.json` styles, responsive presentati
 - Before introducing a token, check whether an existing token serves the same purpose. Add tokens for meaningful design choices that should be changed consistently; prioritize colors, typography, spacing, layout dimensions, and common component dimensions. Keep one-off adjustments, resets, and positioning values in CSS.
 - Scope component styles to their block or theme component. Avoid broad selectors that alter unrelated WordPress or WooCommerce controls.
 - Before modifying a component, inspect its responsive behavior and interaction states. Preserve compatibility with native WordPress and WooCommerce blocks.
-- Prefer logical properties (`margin-inline`, `padding-block`, `inset-inline-start`) and responsive layouts over fixed dimensions.
+- This theme is LTR only. Use physical left/right and top/bottom properties; do not add RTL mirroring rules or logical-property abstractions. Prefer responsive layouts over fixed dimensions.
+- Follow the Space and Layout rules and canonical `--md-sys-*` tokens in `docs/frontend/08.ui-tokens.md`: three width classes, grid margins/gutters, independent prose measure, 320px reflow, safe areas, and the shared scaffold z-index scale.
+- Use intrinsic sizing (`minmax(min(100%, …), 1fr)`, `min(100%, …)`, and wrapping) for containers and grids. Never create page-level horizontal overflow at 320px; isolate necessary horizontal scrolling within the relevant region.
+- Keep section rhythm at least twice internal component spacing, container padding at least as large as its internal gap, interactive targets at least 44px square, and card actions aligned across grid rows. Use the border/divider/whitespace grouping rule from the Design System.
 - Keep specificity low; avoid `!important` unless a documented integration requires it.
 - Provide visible `:focus-visible` styles. Respect `prefers-reduced-motion` and avoid motion that obscures content or causes layout shifts.
 - Apply the accessibility target in the Design System; check contrast, focus visibility, reflow, and non-color state cues.

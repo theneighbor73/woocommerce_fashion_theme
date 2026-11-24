@@ -1,6 +1,6 @@
 # Material 3 Color System
 
-Material color tokens describe roles, not a mandatory palette. Keep Alice’s approved palette fixed and map its values to the roles the theme actually uses. Do not generate dynamic color or copy Material’s sample purple palette.
+Material color tokens describe roles, not a mandatory palette. Use Alice’s existing palette and visual direction as the starting point; tune values or mappings when role clarity or accessible pairings require it. Do not generate dynamic color or copy Material’s sample palette.
 
 ## Core role families
 
@@ -12,6 +12,7 @@ Material color tokens describe roles, not a mandatory palette. Keep Alice’s ap
 | Error | `error`, `on-error`, `error-container`, `on-error-container` | Validation and error feedback |
 | Surface | `surface`, `on-surface`, `on-surface-variant`, surface containers | Page, content, and nested component backgrounds |
 | Outline | `outline`, `outline-variant` | Important control boundaries and quieter dividers |
+| Overlay | `scrim`, `shadow` | Scrim dims a backdrop under an overlay; shadow colors rendered elevation |
 
 `on-*` roles are for text or icons displayed on the paired role. A container role is a fill; its `on-*` role is the foreground placed on that fill. Check the actual pair for WCAG 2.2 AA; token names do not replace contrast verification.
 
@@ -33,13 +34,14 @@ Map the project’s semantic tokens into roles, then consume the roles in compon
 
 ```css
 :root {
-  --md-sys-color-primary: var(--color-action-primary);
-  --md-sys-color-on-primary: var(--color-text-inverse);
-  --md-sys-color-surface: var(--color-bg-page);
-  --md-sys-color-on-surface: var(--color-text-primary);
-  --md-sys-color-on-surface-variant: var(--color-text-muted);
-  --md-sys-color-outline-variant: var(--color-border-subtle);
-  --md-sys-color-error: var(--color-status-error);
+  --md-sys-color-primary: var(--md-ref-palette-alice-neutral-ink);
+  --md-sys-color-on-primary: var(--md-ref-palette-alice-neutral-canvas);
+  --md-sys-color-surface: var(--md-ref-palette-alice-neutral-canvas);
+  --md-sys-color-on-surface: var(--md-ref-palette-alice-neutral-body);
+  --md-sys-color-on-surface-variant: var(--md-ref-palette-alice-neutral-muted);
+  --md-sys-color-outline-variant: var(--md-ref-palette-alice-neutral-outline);
+  --md-sys-color-error: var(--md-ref-palette-alice-error);
+  --md-sys-color-scrim: var(--md-ref-palette-alice-neutral-ink);
 }
 
 .primary-action {

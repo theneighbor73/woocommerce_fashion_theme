@@ -50,7 +50,7 @@ If the user did not provide required inputs, infer only low-risk defaults. Ask b
 
 ### 1) Design thinking
 
-Make five deliberate design decisions — purpose, tone, spatial composition, typography hierarchy, and color strategy — before writing `block markup`.
+Make five deliberate design decisions — purpose, tone, spatial composition, typography hierarchy, and color strategy — before writing `block markup`. For this project, follow the compact/medium/expanded grid, margins, low-density rhythm, reflow, safe-area, and full-bleed containment rules in [Space and Layout](../../../docs/frontend/04-design-system.md#space-and-layout); a full-bleed background does not make its overlay full-bleed.
 
 Read `references/design-with-tokens.md` for the decision framework and `preset` mapping.
 

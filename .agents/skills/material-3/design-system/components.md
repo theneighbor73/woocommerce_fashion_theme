@@ -11,6 +11,8 @@ Use Material 3 to guide visual hierarchy and state styling. Build with the nativ
 ## Styling and states
 
 - Use project semantic color, type, spacing, shape, and motion tokens. Apply the same visual rules in the frontend and Site Editor where practical.
+- Keep standardized components within the class grid and margin rulers; use intrinsic sizing and wrapping at all widths. Keep container padding at least as large as the internal gap, targets at least 44px square, and card actions aligned across grid rows without fixed card heights.
+- Choose one grouping treatment per component: outer border, internal dividers, tonal shift, or whitespace. A dense checkout/order summary may combine boundaries only when each serves a distinct structural purpose.
 - Preserve native semantics, accessible names, keyboard operation, and focus behavior. Keep a visible, sufficiently contrasting focus indicator.
 - Style only states that the underlying component supports: default, hover, focus, active/pressed, disabled, selected, validation, or loading as applicable.
 - Keep foreground and surface pairings legible in every state. Do not rely on color alone to convey status, selection, availability, or errors.
@@ -23,7 +25,8 @@ Style the block’s existing link and states instead of replacing it with a Mate
 ```css
 .wp-block-button__link {
   min-height: var(--control-height-base);
-  padding-inline: var(--button-padding-x);
+  padding-left: var(--button-padding-x);
+  padding-right: var(--button-padding-x);
   border: var(--border-width-thin) solid var(--color-action-primary);
   border-radius: var(--radius-none);
   background: var(--color-action-primary);

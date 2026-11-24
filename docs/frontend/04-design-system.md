@@ -11,6 +11,21 @@ This document provides shared visual guidance. [UI Tokens](08.ui-tokens.md) is t
 - Use subtle borders and restrained decoration. Avoid generic boxed layouts, excessive shadows, or decorative rounding.
 - Use asymmetry, split imagery, and alternating compositions selectively rather than repeating one editorial layout everywhere.
 
+## Space and Layout
+
+The [UI Tokens](08.ui-tokens.md#spacing-and-layout) define the canonical spatial values. Use its compact, medium, and expanded width classes, universal grid rulers, and one low-density presentation across the system. The short role names used in component discussion are references to those `--md-sys-*` tokens, not alternate values.
+
+This foundation is LTR only. Use left/right and top/bottom terms in component specifications; do not add RTL mirroring rules or logical-property abstractions.
+
+- Keep all standard templates and pervasive components inside the class margins and grid. The prose measure stays independently constrained; the expanded grid does not make paragraphs or controls stretch to the container edge.
+- Keep section rhythm at least twice internal component spacing, container padding at least as large as internal grid/flex gaps, targets at least `44px × 44px`, and card actions aligned across a row.
+- At `320px`, prevent page-level horizontal overflow. Isolate intentionally wide data or pill content in its own horizontal scroller. Use intrinsic sizing and wrapping instead of fixed layout widths.
+- Use safe-area insets for the top bar, toast region, and full-bleed sections. Follow the shared layer scale for sticky regions, backdrops, temporary panes, and toasts.
+- Choose one grouping treatment: an external container border, internal dividers, tonal surface shift/whitespace, or no border. Do not combine an outer border and internal dividers for the same grouping. Dense checkout/order summary tables may use both only when each boundary communicates distinct structure.
+- Full-bleed merchandising may extend to `100vw`; keep its inner copy and actions on the grid margins. Local spatial properties are reserved for bespoke editorial sections, never standardized templates/components.
+
+There is one density level throughout the system. Do not add a density switcher or compact-density mode. Alice’s responsive classes describe available space, not alternate density settings.
+
 ## Imagery
 
 - Choose image framing for its context. Product imagery uses the documented 3:4 aspect ratio where applicable; editorial frames follow their UI specification.
@@ -35,7 +50,30 @@ Component specifications, component-specific behavior, and exceptions belong in 
 - Keep product imagery, name, price, sale price, and native product states easy to scan.
 - Do not communicate status through color alone. Retain native disabled, loading, validation, and commerce-feedback behavior unless a UI specification defines a presentation requirement.
 
-### Component states
+## Icons
+
+Use supplied assets from `assets/svg/icons/` for compact controls when their meaning is unambiguous (cart, search, account, close, filter, quantity steppers, and arrows). Keep the accessible name through visible text or an accessible label; decorative icons are hidden from assistive technology. Prefer the icon’s `currentColor` stroke so it follows the active semantic foreground. The supplied `light/` and `dark/` variants use `#222222` and `#F9F8F6` respectively when a fixed-color asset is needed. Do not invent or draw artwork. If planning needs an icon that is not supplied, request its slug and usage context from the project owner before build.
+
+## Interaction
+
+- Desktop click activates controls and toggles expandable menus. Pointer hover may reveal a subtle state or desktop dropdown; it never carries essential information by itself.
+- Mobile taps activate ordinary buttons and links immediately. For a parent item with a submenu, the first tap expands/folds the submenu; after a pause, a subsequent tap toggles/folds it, while a double tap navigates to the parent destination. Keep the expansion affordance and parent link clearly named and operable by keyboard and assistive technology.
+- There is no mobile hover state. All essential controls and information remain available without hover.
+- Preserve native WordPress/WooCommerce navigation, link, form, and commerce semantics. This model specifies presentation and input expectations, not new behavior.
+
+## Component states
+
+The shared state baseline below is extended by these role-specific rules. The applicable component entry in the [UI Registry](09.ui-registry.md) identifies supported states and any native-control limits.
+
+- **Buttons:** default uses the documented Primary/Secondary or Fill/Outline pairing. Desktop hover makes a subtle token-based change; focus uses a high-contrast `:focus-visible` outline with offset; pressed adds a small tactile cue while preserving foreground/surface contrast. Disabled uses native `disabled` or `aria-disabled="true"` semantics and has no action. Loading is shown only when the underlying operation exposes it; preserve width where possible, expose busy status, and prevent duplicate submission through native behavior.
+- **Product variation options:** available options can be selected by click/tap. The selected option has a distinct border, fill, or shape cue and exposes native selected semantics (such as `aria-checked` or `aria-pressed` when appropriate). Out-of-stock or invalid combinations are visibly unavailable, cannot be purchased, and expose disabled semantics. Focus is distinct from selection.
+- **Input fields:** default uses semantic text and outline tokens with readable value/placeholder and comfortable padding. Focus has a clear accent/primary border or ring. Errors use the error role plus a concise message programmatically associated with the field and `aria-invalid="true"`. Disabled fields use native semantics. A valid cue may be subtle and must not clutter the minimalist form or rely on color alone.
+
+The [HTML Design Foundations](design-system-reference.html#component-states) visualizes button, variation-option, and input states. The separate [Icons](design-system-reference.html#icons) and [Interaction](design-system-reference.html#interaction) sections show the icon contrast and pointer/touch guidance. Glyph examples communicate light/inverse foreground contrast only; they are not production artwork.
+
+Do not invent loading, validation, or purchase logic. Native WordPress/WooCommerce controls remain responsible for those conditions; theme guidance covers their visual expression and accessible presentation only.
+
+### Shared state baseline
 
 States describe how an interactable component appears and behaves in response to its condition or user input. Apply the following shared baseline to buttons, navigation, form controls, and other interactable components. A component supports only states that make sense for its role; its UI Registry entry lists applicable states and documents any exception to this baseline.
 

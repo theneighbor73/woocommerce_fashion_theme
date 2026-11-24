@@ -15,26 +15,25 @@ Map a role to a project token instead of copying a Material sample value. The na
 
 | Material role | Alice token example | Typical use |
 | --- | --- | --- |
-| `primary` | `--color-action-primary` | Primary actions and key emphasis |
-| `on-primary` | `--color-text-inverse` | Text on the primary action surface |
-| `surface` | `--color-bg-page` | Page and content backgrounds |
-| `on-surface` | `--color-text-primary` | Main copy and controls |
-| `outline` / `outline-variant` | `--color-border-subtle` | Control boundaries / quiet dividers |
-| `error` | `--color-status-error` | Validation and critical feedback |
+| `primary` | `--md-sys-color-primary` | Primary emphasis |
+| `on-primary` | `--md-sys-color-on-primary` | Foreground on primary |
+| `surface` | `--md-sys-color-surface` | Page and content backgrounds |
+| `on-surface` | `--md-sys-color-on-surface` | Main copy and controls |
+| `outline` / `outline-variant` | `--md-sys-color-outline` / `--md-sys-color-outline-variant` | Clear boundaries / quiet dividers |
+| `error` | `--md-sys-color-error` | Validation and critical feedback |
 
 ```css
-.product-notice {
-  color: var(--color-text-primary);
-  background: var(--color-accent-subtle);
-  border-inline-start: var(--border-width-thick) solid var(--color-accent-primary);
+.content-region {
+  color: var(--md-sys-color-on-surface);
+  background: var(--md-sys-color-surface);
 }
 ```
 
-The example shows role-based composition, not a fixed Material pairing. For example, the project’s accent-subtle token is decorative and should not be used for small text unless the actual contrast passes.
+Use Alice’s `md.ref` palette values as ingredients and `md.sys.color` tokens as roles. Do not treat a brand accent as a text color on a light surface unless its actual contrast passes.
 
 ## Typography
 
-- Keep the project’s approved serif and sans-serif families. Use type roles to establish hierarchy for editorial display, headings, body copy, metadata, controls, and labels.
+- Keep the project’s approved serif and sans-serif families. Use Material 3’s five semantic roles—display, headline, title, body, and label—with large, medium, and small sizes. Assign roles by content purpose, then define family, size, line-height, weight, and tracking as a coherent style. Alice’s emphasized variants are limited to title and label; preserve all baseline metrics and change only the documented weight. Display, headline, and body use baseline styles only.
 - Use the project’s responsive type tokens and line-height, weight, and tracking values where they fit. Keep product names, prices, form labels, and supporting copy easy to scan.
 - Do not add Material’s default typeface or a second font family just to match a sample.
 
@@ -42,46 +41,41 @@ The example shows role-based composition, not a fixed Material pairing. For exam
 
 ```css
 .editorial-title {
-  font-family: var(--font-serif);
-  font-size: var(--text-2xl);
-  line-height: var(--leading-display);
-  font-weight: var(--weight-regular);
+  font-family: var(--md-ref-typeface-brand);
+  font-size: var(--md-sys-typescale-display-large-size);
+  line-height: var(--md-sys-typescale-display-large-line-height);
+  font-weight: var(--md-sys-typescale-display-large-weight);
 }
 
 .product-card__title,
 .product-card__price {
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  line-height: var(--leading-snug);
+  font-family: var(--md-ref-typeface-plain);
+  font-size: var(--md-sys-typescale-title-small-size);
+  line-height: var(--md-sys-typescale-title-small-line-height);
 }
 ```
 
-Treat Material roles such as `display`, `headline`, `title`, `body`, and `label` as semantic guidance. Map them to Alice’s existing responsive tokens; do not create a second parallel scale when a project token already serves the role.
+Treat the five roles and their three sizes as the system vocabulary; map them to Alice’s responsive tokens and established fonts. Do not create a parallel scale with duplicate meaning. Do not use label styles for extended reading text.
 
 ## Shape and depth
 
 - Use a consistent shape scale through semantic radius tokens. Choose shape by component role and the approved UI specification; do not add decorative rounding indiscriminately.
-- Use surface and border contrast to establish grouping. Reserve shadows for floating layers that need separation, such as menus or dialogs.
+- Use surface and border contrast to establish grouping. For a given grouping choose an outer container border, internal dividers, whitespace, or tonal surface shift; do not combine redundant boundaries. Reserve shadows for floating layers that need separation, such as menus or dialogs.
 - Treat elevation as a hierarchy cue, not a reason to add shadows to every card or section. Preserve the project’s restrained visual treatment.
 
-### Component examples
+### Foundation examples
 
 ```css
-.product-card {
-  border: var(--border-width-thin) solid var(--color-border-subtle);
-  border-radius: var(--radius-none);
-  background: var(--color-bg-page);
-}
-
-.menu-panel {
-  border: var(--border-width-thin) solid var(--color-border-subtle);
-  border-radius: var(--radius-sm);
-  background: var(--color-bg-page);
-  box-shadow: var(--shadow-overlay);
+.surface-example {
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-none);
+  background: var(--md-sys-color-surface);
 }
 ```
 
-Use the project’s shape token for the component’s intended role. A card may remain square while a floating menu uses the approved small radius; Material does not require every component to share one corner value.
+Use Material’s baseline corner vocabulary: none, extra-small (4px), small (8px), medium (12px), large (16px), extra-large (28px), and full. Alice keeps square corners as the default; do not add rounded shapes without a design need. Elevation levels express z-distance, while shadow and `md.sys.color.scrim` provide visual treatments. Scrim is an opaque color token applied translucently over the background beneath an overlay; set opacity in the relevant overlay specification.
+
+Alice uses one low-density level. Follow the LTR Space and Layout foundation for margins, gutters, safe-area insets, pane behavior, and application stacking order. Do not add density variants, RTL mirroring, or redundant border/divider treatments.
 
 ## Motion
 
@@ -91,15 +85,15 @@ Use the project’s shape token for the component’s intended role. A card may 
 ### Transition example
 
 ```css
-.wp-block-button__link {
+.motion-example {
   transition:
-    color var(--duration-fast) var(--ease-editorial),
-    background-color var(--duration-fast) var(--ease-editorial),
-    border-color var(--duration-fast) var(--ease-editorial);
+    color var(--md-sys-motion-duration-fast) var(--md-sys-motion-easing-standard),
+    background-color var(--md-sys-motion-duration-fast) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-fast) var(--md-sys-motion-easing-standard);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wp-block-button__link {
+  .motion-example {
     transition-duration: 0.01ms;
   }
 }
