@@ -19,7 +19,7 @@ Use this skill for theme stylesheets, `theme.json` styles, responsive presentati
 - Use the canonical `--md-ref-*` and `--md-sys-*` names in CSS and in JavaScript/PHP that read, pass, or consume CSS custom properties. Keep the names and roles aligned with `docs/frontend/08.ui-tokens.md`.
 - Prefer design tokens for colors, typography, spacing scales, radii, and recurring component states.
 - One-off custom CSS values are permitted for optical alignment, `aspect-ratio`, viewport and safe-area units (`dvh`, `svh`, `env(safe-area-inset-*)`), `calc()`/`clamp()` expressions, specific WordPress or WooCommerce block overrides where core/block specificity requires them, and other sparse edge cases where tokens are unavailable or ineffective.
-- Add a brief inline comment explaining why a non-self-evident one-off value is needed (for example, `/* optical baseline alignment for serif label */`). Treat any one-off value used more than 4 times as a candidate for a token.
+- Add a brief inline comment explaining why a non-self-evident one-off value is needed (for example, `/* optical baseline alignment for serif label */`). Treat any one-off value used more than twice as a candidate for a token.
 
 ### Promoting recurring one-off values
 
