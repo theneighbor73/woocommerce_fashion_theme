@@ -30,7 +30,7 @@ function alice_theme_setup() {
 		)
 	);
 
-	add_editor_style( 'assets/css/theme.css' );
+	add_editor_style( array( 'assets/css/variables.css', 'assets/css/theme.css' ) );
 }
 add_action( 'after_setup_theme', 'alice_theme_setup' );
 
@@ -158,9 +158,16 @@ function alice_theme_get_asset_version( $relative_path ) {
  */
 function alice_theme_enqueue_assets() {
 	wp_enqueue_style(
+		'alice-reference-tokens',
+		get_theme_file_uri( '/assets/css/variables.css' ),
+		array(),
+		alice_theme_get_asset_version( 'assets/css/variables.css' )
+	);
+
+	wp_enqueue_style(
 		'alice-theme',
 		get_theme_file_uri( '/assets/css/theme.css' ),
-		array(),
+		array( 'alice-reference-tokens' ),
 		alice_theme_get_asset_version( 'assets/css/theme.css' )
 	);
 

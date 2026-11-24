@@ -1,76 +1,82 @@
-/* Alice design tokens and shared presentation. */
+/* Alice semantic tokens and shared presentation. */
 :root {
-  --color-bg-page: var(--wp--preset--color--canvas, #f9f8f6);
-  --color-bg-inverse: var(--wp--preset--color--primary, #111111);
-  --color-text-heading: var(--wp--preset--color--primary, #111111);
-  --color-action-primary: var(--wp--preset--color--primary, #111111);
-  --color-action-primary-hover: var(--wp--preset--color--canvas, #f9f8f6);
-  --color-text-primary: var(--wp--preset--color--body, #222222);
-  --color-accent-primary: var(--wp--preset--color--accent, #c5a059);
-  --color-border-subtle: var(--wp--preset--color--border, #e5e5e5);
-  --color-status-error: var(--wp--preset--color--alert, #c62828);
-  --color-status-success: var(--wp--preset--color--success, #2f6b45);
-  --color-text-muted: var(--wp--preset--color--muted, #666666);
-  --color-accent-subtle: var(--wp--preset--color--accent-subtle, #f2e8d4);
-  --color-text-inverse: var(--wp--preset--color--canvas, #f9f8f6);
-  --color-focus-ring: var(--wp--preset--color--primary, #111111);
-  --font-serif: var(
-    --wp--preset--font-family--serif,
-    "Cormorant Garamond",
-    Georgia,
-    serif
-  );
-  --font-sans: var(
-    --wp--preset--font-family--sans,
-    "Plus Jakarta Sans",
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif
-  );
-  --text-xs: var(--wp--preset--font-size--xs, 0.75rem);
-  --text-sm: var(--wp--preset--font-size--sm, 0.875rem);
-  --text-base: var(--wp--preset--font-size--base, 1rem);
-  --text-md: var(--wp--preset--font-size--md, 1.25rem);
-  --text-lg: var(--wp--preset--font-size--lg, clamp(1.5rem, 2.2vw, 2rem));
-  --text-xl: var(--wp--preset--font-size--xl, clamp(2rem, 3.5vw, 3rem));
-  --text-2xl: var(--wp--preset--font-size--2-xl, clamp(2.75rem, 5vw, 4.5rem));
-  --leading-display: 1.05;
-  --leading-tight: 1.15;
-  --leading-snug: 1.3;
-  --leading-normal: 1.65;
-  --tracking-eyebrow: 0.08em;
-  --tracking-tight: -0.02em;
-  --weight-regular: 400;
-  --weight-medium: 500;
-  --weight-semibold: 600;
-  --space-xs: var(--wp--preset--spacing--20, 0.5rem);
-  --space-sm: var(--wp--preset--spacing--30, 1rem);
-  --space-md: var(--wp--preset--spacing--40, 1.5rem);
-  --space-lg: clamp(2rem, 4vw, 3rem);
-  --space-xl: clamp(3.5rem, 6vw, 5rem);
-  --space-2xl: clamp(5rem, 9vw, 8rem);
-  --layout-content-max: 47.5rem;
-  --layout-wide-max: 85rem;
-  --product-aspect-ratio: 3 / 4;
-  --control-height-base: 3rem;
-  --control-height-sm: 2.375rem;
-  --button-padding-x: 1.75rem;
-  --input-padding-x: 1rem;
-  --radius-none: 0;
-  --radius-sm: 3px;
-  --radius-full: 9999px;
-  --border-width-thin: 1px;
-  --border-width-thick: 2px;
-  --shadow-none: none;
-  --shadow-overlay: 0 12px 32px rgb(17 17 17 / 0.08);
-  --z-base: 1;
-  --duration-fast: 200ms;
-  --duration-base: 350ms;
-  --duration-media: 600ms;
-  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
-  --z-sticky: 100;
-  --z-dropdown: 200;
-  --z-modal: 400;
+  --md-sys-color-surface: var(--md-ref-palette-alice-neutral-canvas);
+  --md-sys-color-on-surface: var(--md-ref-palette-alice-neutral-body);
+  --md-sys-color-primary: var(--md-ref-palette-alice-neutral-ink);
+  --md-sys-color-on-primary: var(--md-ref-palette-alice-neutral-canvas);
+  --md-sys-color-secondary: var(--md-ref-palette-alice-neutral-muted);
+  --md-sys-color-on-secondary: var(--md-ref-palette-alice-neutral-canvas);
+  --md-sys-color-tertiary: var(--md-ref-palette-alice-brand-gold-dark);
+  --md-sys-color-on-tertiary: var(--md-ref-palette-alice-neutral-canvas);
+  --md-sys-color-primary-container: var(--md-ref-palette-alice-brand-gold-soft);
+  --md-sys-color-on-primary-container: var(--md-ref-palette-alice-neutral-body);
+  --md-sys-color-secondary-container: var(--md-ref-palette-alice-neutral-outline);
+  --md-sys-color-on-secondary-container: var(--md-ref-palette-alice-neutral-body);
+  --md-sys-color-tertiary-container: var(--md-ref-palette-alice-brand-gold-soft);
+  --md-sys-color-on-tertiary-container: var(--md-ref-palette-alice-neutral-body);
+  --md-sys-color-error: var(--md-ref-palette-alice-error);
+  --md-sys-color-on-error: var(--md-ref-palette-alice-neutral-white);
+  --md-sys-color-error-container: var(--md-ref-palette-alice-error-soft);
+  --md-sys-color-on-error-container: var(--md-ref-palette-alice-neutral-body);
+  --md-sys-color-surface-variant: var(--md-ref-palette-alice-brand-gold-soft);
+  --md-sys-color-on-surface-variant: var(--md-ref-palette-alice-neutral-muted);
+  --md-sys-color-surface-container-lowest: var(--md-ref-palette-alice-neutral-white);
+  --md-sys-color-surface-container-low: var(--md-ref-palette-alice-neutral-canvas);
+  --md-sys-color-surface-container: var(--md-ref-palette-alice-neutral-canvas);
+  --md-sys-color-outline: var(--md-ref-palette-alice-neutral-muted);
+  --md-sys-color-outline-variant: var(--md-ref-palette-alice-neutral-outline);
+  --md-sys-color-inverse-surface: var(--md-ref-palette-alice-neutral-ink);
+  --md-sys-color-inverse-on-surface: var(--md-ref-palette-alice-neutral-canvas);
+  --md-sys-color-inverse-primary: var(--md-ref-palette-alice-brand-gold-light);
+  --md-sys-color-scrim: var(--md-ref-palette-alice-neutral-ink);
+  --md-sys-color-shadow: var(--md-ref-palette-alice-neutral-ink);
+  --md-sys-color-focus: var(--md-ref-palette-alice-neutral-ink);
+  --md-sys-color-success: var(--md-ref-palette-alice-success);
+  --md-sys-color-alice-brand-accent: var(--md-ref-palette-alice-brand-gold);
+  --md-sys-typescale-alice-size-xs: var(--md-ref-alice-type-size-xs);
+  --md-sys-typescale-alice-size-sm: var(--md-ref-alice-type-size-sm);
+  --md-sys-typescale-alice-size-base: var(--md-ref-alice-type-size-base);
+  --md-sys-typescale-alice-size-md: var(--md-ref-alice-type-size-md);
+  --md-sys-typescale-alice-size-lg: var(--md-ref-alice-type-size-lg);
+  --md-sys-typescale-alice-size-xl: var(--md-ref-alice-type-size-xl);
+  --md-sys-typescale-alice-size-2xl: var(--md-ref-alice-type-size-2xl);
+  --md-sys-typescale-alice-line-height-display: var(--md-ref-alice-line-height-display);
+  --md-sys-typescale-alice-line-height-tight: var(--md-ref-alice-line-height-tight);
+  --md-sys-typescale-alice-line-height-snug: var(--md-ref-alice-line-height-snug);
+  --md-sys-typescale-alice-line-height-normal: var(--md-ref-alice-line-height-normal);
+  --md-sys-typescale-alice-tracking-eyebrow: var(--md-ref-alice-tracking-eyebrow);
+  --md-sys-typescale-alice-tracking-tight: var(--md-ref-alice-tracking-tight);
+  --md-sys-typescale-alice-weight-regular: var(--md-ref-alice-font-weight-regular);
+  --md-sys-typescale-alice-weight-medium: var(--md-ref-alice-font-weight-medium);
+  --md-sys-typescale-alice-weight-semibold: var(--md-ref-alice-font-weight-semibold);
+  --md-sys-space-xs: var(--md-ref-alice-space-xs);
+  --md-sys-space-sm: var(--md-ref-alice-space-sm);
+  --md-sys-space-md: var(--md-ref-alice-space-md);
+  --md-sys-space-lg: var(--md-ref-alice-space-lg);
+  --md-sys-space-xl: var(--md-ref-alice-space-xl);
+  --md-sys-space-2xl: var(--md-ref-alice-space-2xl);
+  --md-sys-layout-alice-content-cap: var(--md-ref-alice-layout-content-max);
+  --md-sys-layout-container-max: var(--md-ref-alice-layout-container-max);
+  --md-sys-media-product-ratio: var(--md-ref-alice-media-product-ratio);
+  --md-sys-control-height: var(--md-ref-alice-control-height-base);
+  --md-sys-control-height-small: var(--md-ref-alice-control-height-small);
+  --md-sys-control-padding-button-inline: var(--md-ref-alice-button-padding-inline);
+  --md-sys-control-padding-input-inline: var(--md-ref-alice-input-padding-inline);
+  --md-sys-shape-corner-none: var(--md-ref-alice-shape-corner-none);
+  --md-sys-shape-corner-alice-small: var(--md-ref-alice-shape-corner-small);
+  --md-sys-shape-corner-full: var(--md-ref-alice-shape-corner-full);
+  --md-sys-border-width-thin: var(--md-ref-alice-border-width-thin);
+  --md-sys-border-width-thick: var(--md-ref-alice-border-width-thick);
+  --md-sys-elevation-shadow-none: var(--md-ref-alice-shadow-none);
+  --md-sys-elevation-shadow-overlay: var(--md-ref-alice-shadow-overlay);
+  --md-sys-layer-base: var(--md-ref-alice-layer-base);
+  --md-sys-layer-sticky: var(--md-ref-alice-layer-sticky);
+  --md-sys-layer-dropdown: var(--md-ref-alice-layer-dropdown);
+  --md-sys-layer-modal: var(--md-ref-alice-layer-modal);
+  --md-sys-motion-duration-fast: var(--md-ref-alice-motion-duration-fast);
+  --md-sys-motion-duration-standard: var(--md-ref-alice-motion-duration-standard);
+  --md-sys-motion-duration-long: var(--md-ref-alice-motion-duration-long);
+  --md-sys-motion-easing-standard: var(--md-ref-alice-motion-easing-standard);
 }
 
 .wp-site-blocks *,
@@ -88,9 +94,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--color-bg-page);
-  color: var(--color-text-primary);
-  font-family: var(--font-sans);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-ref-typeface-plain);
 }
 
 .wp-site-blocks img,
@@ -104,17 +110,17 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-focus-ring);
+  outline: 2px solid var(--md-sys-color-focus);
   outline-offset: 3px;
 }
 
 .site-header {
   position: sticky;
   inset-block-start: 0;
-  z-index: var(--z-sticky);
-  background: var(--color-bg-page);
-  border-block-end: 1px solid var(--color-border-subtle);
-  transition: transform var(--duration-base) var(--ease-editorial);
+  z-index: var(--md-sys-layer-sticky);
+  background: var(--md-sys-color-surface);
+  border-block-end: 1px solid var(--md-sys-color-outline-variant);
+  transition: transform var(--md-sys-motion-duration-standard) var(--md-sys-motion-easing-standard);
 }
 
 .site-header.is-hidden {
@@ -126,11 +132,11 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
   width: 100%;
-  max-width: var(--layout-wide-max);
+  max-width: var(--md-sys-layout-container-max);
   min-height: 5.5rem;
   margin-inline: auto;
-  padding: 0 var(--space-md);
-  gap: var(--space-md);
+  padding: 0 var(--md-sys-space-md);
+  gap: var(--md-sys-space-md);
 }
 
 .site-header__left {
@@ -145,7 +151,7 @@ a {
 
 .site-header__brand .wp-block-site-title {
   margin: 0;
-  font-family: var(--font-serif);
+  font-family: var(--md-ref-typeface-brand);
   font-size: 1.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -182,16 +188,16 @@ a {
 }
 
 .site-header__navigation .wp-block-navigation-item__content {
-  color: var(--color-text-heading);
+  color: var(--md-sys-color-primary);
   font-size: 0.8125rem;
   font-weight: 500;
   text-decoration: none;
 }
 
 .site-header__navigation .wp-block-navigation-item__content:hover {
-  color: var(--color-text-heading);
+  color: var(--md-sys-color-primary);
   text-decoration-line: underline;
-  text-decoration-color: var(--color-accent-primary);
+  text-decoration-color: var(--md-sys-color-alice-brand-accent);
 }
 
 .site-header__search {
@@ -204,7 +210,7 @@ a {
 
 .site-header__search .wp-block-search__inside-wrapper {
   min-width: 0;
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--md-sys-color-outline-variant);
   border-radius: 0;
   padding: 0.125rem;
 }
@@ -227,38 +233,38 @@ a {
   border-radius: 0;
   padding: 0.5rem;
   background: transparent;
-  color: var(--color-text-heading);
+  color: var(--md-sys-color-primary);
 }
 
 /* Shared native Button block styles. */
 .wp-block-button .wp-block-button__link {
   display: inline-flex;
-  min-height: var(--control-height-base);
+  min-height: var(--md-sys-control-height);
   align-items: center;
   justify-content: center;
-  border: var(--border-width-thin) solid var(--color-action-primary);
-  border-radius: var(--radius-sm);
+  border: var(--md-sys-border-width-thin) solid var(--md-sys-color-primary);
+  border-radius: var(--md-sys-shape-corner-alice-small);
   padding-block: 0.6875rem;
-  padding-inline: var(--button-padding-x);
-  background-color: var(--color-action-primary);
-  color: var(--color-text-inverse);
+  padding-inline: var(--md-sys-control-padding-button-inline);
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
   text-align: center;
   text-decoration: none;
   transform: translateY(0);
   transition:
-    background-color var(--duration-fast)
-      var(--ease-editorial, cubic-bezier(0.22, 1, 0.36, 1)),
-    border-color var(--duration-fast)
-      var(--ease-editorial, cubic-bezier(0.22, 1, 0.36, 1)),
-    color var(--duration-fast)
-      var(--ease-editorial, cubic-bezier(0.22, 1, 0.36, 1)),
-    transform var(--duration-fast)
-      var(--ease-editorial, cubic-bezier(0.22, 1, 0.36, 1));
+    background-color var(--md-sys-motion-duration-fast)
+      var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-fast)
+      var(--md-sys-motion-easing-standard),
+    color var(--md-sys-motion-duration-fast)
+      var(--md-sys-motion-easing-standard),
+    transform var(--md-sys-motion-duration-fast)
+      var(--md-sys-motion-easing-standard);
 }
 
 /* Primary: hover and press invert the dark surface and light label. */
 .wp-block-button.is-style-alice-primary .wp-block-button__link {
-  border-radius: var(--radius-none);
+  border-radius: var(--md-sys-shape-corner-none);
 }
 
 .wp-block-button.is-style-alice-primary .wp-block-button__link:hover,
@@ -267,33 +273,33 @@ a {
     .is-style-alice-secondary
   ):not(.is-style-outline)
   .wp-block-button__link:hover {
-  background-color: var(--color-action-primary-hover);
-  border-color: var(--color-action-primary-hover);
-  color: var(--color-action-primary);
+  background-color: var(--md-sys-color-inverse-on-surface);
+  border-color: var(--md-sys-color-inverse-on-surface);
+  color: var(--md-sys-color-primary);
 }
 
 /* Secondary: outlined at rest, filled with the inverse pair on interaction. */
 .wp-block-button.is-style-alice-secondary .wp-block-button__link {
   background-color: transparent;
-  border-color: var(--color-action-primary);
-  color: var(--color-text-primary);
-  border-radius: var(--radius-none);
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-surface);
+  border-radius: var(--md-sys-shape-corner-none);
 }
 
 .wp-block-button.is-style-outline .wp-block-button__link,
 .wp-block-button .wp-block-button__link.is-style-outline {
   background-color: transparent;
-  border-color: var(--color-action-primary);
-  color: var(--color-text-primary);
-  border-radius: var(--radius-sm);
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-surface);
+  border-radius: var(--md-sys-shape-corner-alice-small);
 }
 
 .wp-block-button.is-style-alice-secondary .wp-block-button__link:hover,
 .wp-block-button.is-style-outline .wp-block-button__link:hover,
 .wp-block-button .wp-block-button__link.is-style-outline:hover {
-  background-color: var(--color-action-primary);
-  border-color: var(--color-action-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
 }
 
 .wp-block-button.is-style-alice-primary .wp-block-button__link:active,
@@ -302,26 +308,26 @@ a {
     .is-style-alice-secondary
   ):not(.is-style-outline)
   .wp-block-button__link:active {
-  background-color: var(--color-action-primary-hover);
-  border-color: var(--color-action-primary-hover);
-  color: var(--color-action-primary);
+  background-color: var(--md-sys-color-inverse-on-surface);
+  border-color: var(--md-sys-color-inverse-on-surface);
+  color: var(--md-sys-color-primary);
   transform: translateY(1px);
 }
 
 .wp-block-button.is-style-alice-secondary .wp-block-button__link:active,
 .wp-block-button.is-style-outline .wp-block-button__link:active,
 .wp-block-button .wp-block-button__link.is-style-outline:active {
-  background-color: var(--color-action-primary);
-  border-color: var(--color-action-primary);
-  color: var(--color-text-inverse);
+  background-color: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
   transform: translateY(1px);
 }
 
 /* Accessible keyboard focus and native disabled state. */
 .wp-block-button .wp-block-button__link:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
+  outline: 2px solid var(--md-sys-color-focus);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px var(--color-accent-subtle);
+  box-shadow: 0 0 0 4px var(--md-sys-color-primary-container);
 }
 
 .wp-block-button .wp-block-button__link:is(:disabled, [aria-disabled="true"]) {
@@ -346,11 +352,11 @@ a {
   max-width: calc(100vw - 3rem);
   height: 100vh;
   height: 100dvh;
-  z-index: var(--z-modal);
+  z-index: var(--md-sys-layer-modal);
   padding: 1.5rem;
-  background: var(--color-bg-page);
+  background: var(--md-sys-color-surface);
   box-shadow: 0 12px 32px rgb(17 17 17 / 0.18);
-  animation: alice-menu-enter var(--duration-base) var(--ease-editorial) both;
+  animation: alice-menu-enter var(--md-sys-motion-duration-standard) var(--md-sys-motion-easing-standard) both;
 }
 
 .site-header__navigation
@@ -385,10 +391,10 @@ a {
 
 .site-main {
   width: calc(100% - 3rem);
-  max-width: var(--layout-wide-max);
+  max-width: var(--md-sys-layout-container-max);
   min-height: 45vh;
   margin-inline: auto;
-  padding-block: var(--space-xl);
+  padding-block: var(--md-sys-space-xl);
 }
 
 .site-main--home {
@@ -401,7 +407,7 @@ a {
 .editorial-hero-image-gallery {
   position: relative;
   width: 100%;
-  background: var(--color-bg-page);
+  background: var(--md-sys-color-surface);
 }
 
 .editorial-hero-image-gallery__stage {
@@ -409,7 +415,7 @@ a {
   min-height: min(100vh, 46rem);
   min-height: min(100svh, 46rem);
   padding: 0;
-  background: var(--color-bg-page);
+  background: var(--md-sys-color-surface);
 }
 
 .editorial-hero-image-gallery__slides {
@@ -443,7 +449,7 @@ a {
   width: min(38rem, calc(100% - 2rem));
   margin: 0;
   padding: 0;
-  color: var(--color-text-inverse);
+  color: var(--md-sys-color-on-primary);
   text-shadow: 0 1px 12px rgb(17 17 17 / 0.8);
 }
 
@@ -457,9 +463,9 @@ a {
 
 .editorial-hero-image-gallery__eyebrow {
   margin-block: 0 0.75rem;
-  font-size: var(--text-xs);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-eyebrow);
+  font-size: var(--md-sys-typescale-alice-size-xs);
+  font-weight: var(--md-sys-typescale-alice-weight-semibold);
+  letter-spacing: var(--md-sys-typescale-alice-tracking-eyebrow);
   text-transform: uppercase;
 }
 
@@ -468,13 +474,13 @@ a {
   max-width: 14ch;
   margin-block: 0 0.75rem;
   font-size: clamp(2.25rem, 5vw, 4.5rem);
-  line-height: var(--leading-display);
+  line-height: var(--md-sys-typescale-alice-line-height-display);
 }
 
 .editorial-hero-image-gallery__description {
   max-width: 42rem;
   margin-block: 0 1.5rem;
-  font-size: var(--text-base);
+  font-size: var(--md-sys-typescale-alice-size-base);
 }
 
 .editorial-hero-image-gallery__actions {
@@ -532,7 +538,7 @@ a {
   max-width: none;
   height: 100%;
   opacity: 0;
-  transition: opacity var(--duration-media) var(--ease-editorial);
+  transition: opacity var(--md-sys-motion-duration-long) var(--md-sys-motion-easing-standard);
 }
 
 .editorial-hero-image-gallery.is-enhanced
@@ -669,13 +675,13 @@ a {
 
 .site-main h1,
 .site-main h2 {
-  color: var(--color-text-heading);
-  font-family: var(--font-serif);
+  color: var(--md-sys-color-primary);
+  font-family: var(--md-ref-typeface-brand);
   font-weight: 500;
 }
 
 .site-entry {
-  margin-block-end: var(--space-xl);
+  margin-block-end: var(--md-sys-space-xl);
 }
 
 .site-entry .wp-block-post-featured-image img,
@@ -687,19 +693,19 @@ a {
 }
 
 .site-footer {
-  color: var(--color-text-inverse);
+  color: var(--md-sys-color-on-primary);
 }
 
 .site-footer :focus-visible {
-  outline-color: var(--color-text-inverse);
+  outline-color: var(--md-sys-color-on-primary);
 }
 
 .site-footer .site-footer__main {
   width: 100%;
-  max-width: var(--layout-wide-max);
+  max-width: var(--md-sys-layout-container-max);
   margin-inline: auto;
-  padding: var(--space-xl) var(--space-md);
-  gap: var(--space-lg);
+  padding: var(--md-sys-space-xl) var(--md-sys-space-md);
+  gap: var(--md-sys-space-lg);
 }
 
 .site-footer__identity {
@@ -708,15 +714,15 @@ a {
 
 .site-footer__wordmark {
   margin-block: 0 0.75rem;
-  color: var(--color-text-inverse);
-  font-family: var(--font-serif);
+  color: var(--md-sys-color-on-primary);
+  font-family: var(--md-ref-typeface-brand);
   font-size: 1.75rem;
   font-weight: 600;
 }
 
 .site-footer__wordmark a,
 .site-footer__copyright .wp-block-site-title a {
-  color: var(--color-text-inverse);
+  color: var(--md-sys-color-on-primary);
   text-decoration: none;
 }
 
@@ -727,10 +733,10 @@ a {
 
 .site-footer__identity h2 {
   margin-block: 1.5rem 0.5rem;
-  color: var(--color-text-inverse);
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
+  color: var(--md-sys-color-on-primary);
+  font-family: var(--md-ref-typeface-plain);
+  font-size: var(--md-sys-typescale-alice-size-sm);
+  font-weight: var(--md-sys-typescale-alice-weight-semibold);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -746,8 +752,8 @@ a {
 
 .site-footer__links h2 {
   margin-block: 0 1rem;
-  color: var(--color-text-inverse);
-  font-family: var(--font-sans);
+  color: var(--md-sys-color-on-primary);
+  font-family: var(--md-ref-typeface-plain);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -760,13 +766,13 @@ a {
 
 .site-footer .wp-block-navigation-item__content,
 .site-footer__social .wp-block-social-link-anchor {
-  color: var(--color-text-inverse);
+  color: var(--md-sys-color-on-primary);
   font-size: 0.8125rem;
   text-decoration: none;
 }
 
 .site-footer .wp-block-navigation-item__content:hover {
-  color: var(--color-accent-primary);
+  color: var(--md-sys-color-alice-brand-accent);
 }
 
 .site-footer__social {
@@ -775,30 +781,30 @@ a {
 
 .site-footer__divider {
   width: calc(100% - 3rem);
-  max-width: var(--layout-wide-max);
+  max-width: var(--md-sys-layout-container-max);
   margin: 0 auto;
   border: 0;
-  border-block-start: 1px solid var(--color-border-subtle);
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .site-footer .site-footer__bottom {
   width: 100%;
-  max-width: var(--layout-wide-max);
+  max-width: var(--md-sys-layout-container-max);
   margin-inline: auto;
-  padding: 1rem var(--space-md) 1.5rem;
-  gap: var(--space-sm);
+  padding: 1rem var(--md-sys-space-md) 1.5rem;
+  gap: var(--md-sys-space-sm);
 }
 
 .site-footer__copyright,
 .site-footer__legal .wp-block-navigation-item__content {
   margin: 0;
-  color: var(--color-text-inverse);
+  color: var(--md-sys-color-on-primary);
   font-size: 0.75rem;
 }
 
 .site-footer__copyright .wp-block-site-title {
   margin: 0;
-  color: var(--color-text-inverse);
+  color: var(--md-sys-color-on-primary);
 }
 
 .site-footer__legal .wp-block-navigation__container {
@@ -838,7 +844,7 @@ a {
   }
 
   .site-footer .site-footer__main {
-    gap: var(--space-md);
+    gap: var(--md-sys-space-md);
   }
 }
 
