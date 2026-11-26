@@ -53,6 +53,10 @@ Installed WordPress skills under `.agents/skills/` provide technical guidance. P
 6. Update `docs/07.project-tracker.md` when implementation progress changes.
 7. Report changes, how they work, verification, incomplete work, and deviations.
 
+## Git checks via WSL
+
+Before running any Git status, diff, log, or other Git check by invoking `wsl.exe`, ask the project owner for permission in advance. Do not run the command until the owner authorizes that specific check. This applies even when the check is read-only.
+
 ## Live review
 
 Run live review when requested only.
