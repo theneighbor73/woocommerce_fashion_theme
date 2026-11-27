@@ -25,6 +25,7 @@ Act only as the theme developer. Do not create, generate, draw, source, or downl
 - [Technical architecture](docs/architecture/05.technical-architecture.md): WordPress implementation boundaries.
 - [UI registry](docs/frontend/09.ui-registry.md): UI specifications and status.
 - [Project tracker](docs/07.project-tracker.md): implementation progress.
+- [Agent toolkit](toolkit.md): project-approved tools, workflows, and access limits.
 
 ### Design-system section map
 
@@ -53,13 +54,7 @@ Installed WordPress skills under `.agents/skills/` provide technical guidance. P
 6. Update `docs/07.project-tracker.md` when implementation progress changes.
 7. Report changes, how they work, verification, incomplete work, and deviations.
 
-## Git checks via WSL
+## Tool permissions
 
-Before running any Git status, diff, log, or other Git check by invoking `wsl.exe`, ask the project owner for permission in advance. Do not run the command until the owner authorizes that specific check. This applies even when the check is read-only.
-
-## Live review
-
-Run live review when requested only.
-
-The project owner authorized Chrome browser control and DevTools inspection for live testing. Use the connected Chrome browser at <http://localhost:8080/>; this resolves on the owner's machine, unlike a remote browser. Use Chrome DevTools Protocol network events to verify resource request status/completion, then inspect visible behavior in the page. Do not use TinyFish for live-site verification.
+Follow [the Agent Toolkit](toolkit.md) for tool availability, usage, approval, Git-check, and live-review rules.
 
