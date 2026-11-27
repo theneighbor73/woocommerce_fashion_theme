@@ -21,7 +21,7 @@ If a requirement cannot be achieved within these limits, stop and follow the esc
 - Preserve native links, forms, and controls. The interface should remain understandable if enhancement code does not run.
 - Keep scripts small, scoped to the affected interface, and loaded only where needed.
 - Use semantic HTML and native keyboard behavior. Manage focus only when the interaction requires it.
-- Apply the accessibility target in `docs/frontend/04-design-system.md`; verify keyboard access, focus visibility, names/state exposure, and reduced motion.
+- Apply the accessibility target in `docs/frontend/design-system-reference.html`; verify keyboard access, focus visibility, names/state exposure, and reduced motion.
 - Avoid unnecessary DOM changes, dependencies, global state, and event handlers.
 - Handle reduced motion in CSS; JavaScript should not create essential motion or hide essential content.
 - Do not send network requests or change commerce state from theme scripts.

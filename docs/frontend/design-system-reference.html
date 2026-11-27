@@ -246,7 +246,7 @@
 </head>
 <body>
   <header>
-      <div class="wrap"><span class="brand">Alice</span><nav aria-label="Design foundations"><a href="#color">Color</a><a href="#type">Typography</a><a href="#space">Space & layout</a><a href="#icons">Icons</a><a href="#interaction">Interaction</a><a href="#component-states">Component states</a><a href="#shape">Shape & depth</a><a href="#motion">Motion</a></nav></div>
+      <div class="wrap"><span class="brand">Alice</span><nav aria-label="Design foundations"><a href="#visual-direction">Visual direction</a><a href="#color">Color</a><a href="#type">Typography</a><a href="#space">Space & layout</a><a href="#icons">Icons</a><a href="#interaction">Interaction</a><a href="#component-states">Component states</a><a href="#shape">Shape & depth</a><a href="#motion">Motion</a></nav></div>
   </header>
   <main>
     <div class="wrap hero">
@@ -254,6 +254,14 @@
       <h1>Quiet clarity, considered detail.</h1>
       <p>Alice is a minimalist, lifestyle-editorial WordPress block theme for fashion stores. Its foundations use Material 3’s semantic roles and token relationships, expressed through Alice’s own palette, typography, and restrained visual direction. This reference documents foundations only; components are specified separately.</p>
     </div>
+    <section class="wrap" id="visual-direction">
+      <div class="section-head"><div><p class="eyebrow">Editorial, restrained, clear</p><h2>Visual direction & imagery</h2></div><p>Use a quiet visual foundation that lets products, useful information, and merchant-provided photography lead.</p></div>
+      <div class="grid">
+        <article class="card"><h3>Composition</h3><ul><li>Keep hierarchy clear and product information easy to scan.</li><li>Use intentional whitespace and strong editorial compositions.</li><li>Use asymmetry, split imagery, and alternating compositions selectively instead of repeating one layout everywhere.</li><li>Keep product cards clean and consistent, with prominent imagery and readable names and prices.</li></ul></article>
+        <article class="card"><h3>Media</h3><ul><li>Choose image framing for its context. Product imagery uses the documented 3:4 aspect ratio where applicable; editorial frames follow their UI specification.</li><li>Use cover cropping only when essential subject details remain visible across supported viewport sizes and specified safe areas.</li><li>Preserve merchant-provided media files; use native blocks and CSS for display size, position, and crop.</li><li>Use meaningful alt text for informative images and avoid redundant spoken content for decorative images.</li></ul></article>
+        <article class="card"><h3>Decoration</h3><p>Use subtle borders and restrained decoration. Avoid generic boxed layouts, excessive shadows, or decorative rounding. Product and lifestyle photography should lead where supplied.</p></article>
+      </div>
+    </section>
     <section class="wrap" id="color">
       <div class="section-head"><div><p class="eyebrow">Roles before values</p><h2>Color</h2></div><p>Brand colors are reference values. System roles describe what a color does, and every foreground is paired with the surface it appears on. A role name alone does not guarantee contrast.</p></div>
       <div class="role-grid" aria-label="Color roles and their paired foregrounds">
@@ -280,6 +288,7 @@
         <article class="card"><h3>Role boundaries</h3><p>Accent gold is expressive emphasis, not a default text color on canvas. Outline-variant is a quiet divider; essential control boundaries need a stronger role or treatment. Status meaning must include a clear text or shape cue.</p></article>
       </div>
       <p class="note">Existing brand values are retained as a starting point. During token approval, tune pairings that fail WCAG 2.2 AA and record foreground/background contrast. Surface containers are optional neutral hierarchy levels; use only the levels a real layout needs.</p>
+      <p class="note">The nine-step palette shade ramps may support appropriate visual roles including surfaces, text, borders, icons, and feedback. There is no universal shade-to-role mapping: choose shades for the component and context, then verify contrast and meaning for every actual pairing. Semantic base colors remain useful defaults, not exclusive choices.</p>
     </section>
     <section class="wrap" id="type">
       <div class="section-head"><div><p class="eyebrow">Five roles · three sizes</p><h2>Typography</h2></div><p>Material’s baseline scale provides fifteen styles. Alice maps display and headline to its editorial family, Cormorant Garamond, and title, body, and label to Plus Jakarta Sans.</p></div>
@@ -300,6 +309,7 @@
     </section>
     <section class="wrap" id="space">
       <div class="section-head"><div><p class="eyebrow">Adaptive foundation</p><h2>Space & layout</h2></div><p>Alice uses three width classes, one low-density level, and intrinsic reflow. The same universal rulers guide templates, reusable components, and full-bleed editorial moments.</p></div>
+      <p class="space-lede">This foundation is LTR only. Component specifications use left/right and top/bottom terms; do not add RTL mirroring rules or logical-property abstractions.</p>
       <p class="space-lede">The classes adapt the grid and its margins; they do not identify a device or guarantee reflow by themselves. Content must still shrink, wrap, and fit within the available space.</p>
 
       <div class="space-block">
@@ -434,6 +444,7 @@
         </div><p class="interaction-note">Use semantic text/outline tokens and comfortable padding. Focus gets a clear accent/primary ring. Pair error color with a concise, associated message and <code>aria-invalid="true"</code>; disabled uses native semantics. A valid cue stays subtle and never relies on color alone.</p></article>
       </div>
       <p class="note">Use only states supported by the underlying native control. Loading, validation, selection, and availability reflect WordPress/WooCommerce conditions; this guidance adds no business logic.</p>
+      <p class="note">Across controls, distinguish primary actions, secondary actions, text links, and icon-only controls. Use clear form labels, comfortable sizing, and legible validation feedback while preserving native behavior. Keep product imagery, names, regular and sale prices, and native product states easy to scan. Status must not rely on color alone; retain native disabled, loading, validation, and commerce-feedback behavior.</p>
     </section>
     <section class="wrap" id="shape">
       <div class="section-head"><div><p class="eyebrow">Quiet structure</p><h2>Shape & depth</h2></div><p>Square corners are the visual baseline. Boundaries and surface contrast do most of the grouping; elevation is reserved for layers that must read above surrounding content.</p></div>
@@ -448,7 +459,7 @@
       <div class="grid">
         <article class="card"><h3>Duration is elapsed time</h3><p>Each marker travels from the shared start to its endpoint; its arrival shows when that duration finishes. The ruler is 0–600ms.</p><div class="motion-demo motion-visual" data-motion-visual aria-label="Animated duration comparison from zero to six hundred milliseconds"><div class="motion-lane"><code>fast · 200ms</code><div class="time-track"><div class="time-bar" style="--time:33.333%;--duration:200ms"></div><span class="time-end" style="--time:33.333%;--duration:200ms"></span></div></div><div class="motion-lane"><code>standard · 350ms</code><div class="time-track"><div class="time-bar" style="--time:58.333%;--duration:350ms"></div><span class="time-end" style="--time:58.333%;--duration:350ms"></span></div></div><div class="motion-lane"><code>long · 600ms</code><div class="time-track"><div class="time-bar" style="--time:100%;--duration:600ms"></div><span class="time-end" style="--time:100%;--duration:600ms"></span></div></div></div><div class="time-scale"><span>0</span><span>150</span><span>300</span><span>450</span><span>600ms</span></div><p style="margin-top:1.5rem">Duration answers “how long?” Easing describes how progress changes during that time. Alice uses <code>--md-sys-motion-duration-fast</code>, <code>standard</code>, and <code>long</code>.</p></article>
         <article class="card"><h3>Easing changes the pace</h3><p>Alice’s standard editorial curve starts quickly, then slows into its endpoint. The marker follows the curve to show that pacing; it does not overshoot or spring.</p><div class="ease-plot motion-visual" data-motion-visual role="img" aria-label="Animated easing curve: a marker moves quickly at first and slows toward the end"><span class="ease-line"></span><span class="ease-dot"></span></div><div class="ease-axis"><span>Start · time 0</span><span>Elapsed time →</span><span>Finish</span></div><p style="margin-top:1rem"><code>--md-sys-motion-easing-standard</code><br><code>cubic-bezier(0.22, 1, 0.36, 1)</code></p><p class="small">Replay the illustration to compare the pacing. Reduced-motion preferences keep the final static diagram.</p></article>
-        <article class="card"><h3>Accessibility foundation</h3><p>Target WCAG 2.2 AA for theme-authored presentation. Verify text and non-text contrast on actual pairings, keep focus visible and unobscured, and do not communicate meaning by color alone.</p><p>Honor <code>prefers-reduced-motion</code> by removing nonessential movement and smooth scrolling.</p></article>
+        <article class="card"><h3>Accessibility foundation</h3><p>Target WCAG 2.2 AA for theme-authored presentation. Verify text and non-text contrast on actual pairings, keep focus visible and unobscured, and do not communicate meaning by color alone. Preserve keyboard access, semantic hierarchy, and accessible names for icon-only controls across compact, medium, and expanded widths. Review native WooCommerce controls for styling regressions without claiming ownership of plugin markup.</p><p>Honor <code>prefers-reduced-motion</code> by removing nonessential movement and smooth scrolling.</p><p>Keep the Site Editor close to the frontend so merchants can understand and customize what they will publish. Set meaningful block-level presentation in native attributes or <code>theme.json</code> where practical; use CSS for responsive behavior and component details that are awkward or unavailable in native controls. Prioritize parity for structure, colors, spacing, and visible states over exact pixel matching.</p></article>
       </div>
       <button class="motion-replay" type="button" data-motion-replay hidden>Replay motion illustrations</button>
     </section>

@@ -21,18 +21,19 @@ Act only as the theme developer. Do not create, generate, draw, source, or downl
 - [Project overview](docs/00.project-overview.md): scope, product decisions, and palette.
 - [Sitemap](docs/architecture/02-sitemap.md): pages and templates.
 - [User journeys](docs/frontend/03-user-journeys.md): customer goals.
-- [Design foundations](docs/frontend/design-system-reference.html) and [UI tokens](docs/frontend/08.ui-tokens.md): visual rules and approved values. The HTML reference is the design-system source of truth; [the Markdown companion](docs/frontend/04-design-system.md) mirrors its guidance in compact text for context.
+- [Design foundations](docs/frontend/design-system-reference.html) and [UI tokens](docs/frontend/08.ui-tokens.md): visual rules and approved values. The HTML reference is the design-system source of truth; the UI Tokens document defines approved values.
 - [Technical architecture](docs/architecture/05.technical-architecture.md): WordPress implementation boundaries.
 - [UI registry](docs/frontend/09.ui-registry.md): UI specifications and status.
 - [Project tracker](docs/07.project-tracker.md): implementation progress.
+- [Agent toolkit](toolkit.md): project-approved tools, workflows, and access limits.
 
 ### Design-system section map
 
-- Follow the separate [Icons](docs/frontend/design-system-reference.html#icons), [Interaction](docs/frontend/design-system-reference.html#interaction), and [Component states](docs/frontend/design-system-reference.html#component-states) sections in the HTML design-system source of truth. The [Markdown companion](docs/frontend/04-design-system.md) mirrors this organization.
+- Follow the separate [Visual direction](docs/frontend/design-system-reference.html#visual-direction), [Icons](docs/frontend/design-system-reference.html#icons), [Interaction](docs/frontend/design-system-reference.html#interaction), and [Component states](docs/frontend/design-system-reference.html#component-states) sections in the HTML design-system source of truth.
 - Use supplied SVG icons from `assets/svg/icons/` for compact, unambiguous affordances; preserve visible text or an accessible name. Prefer `currentColor` strokes. Existing `light/` and `dark/` assets are context variants, not a requirement to hard-code those strokes.
 - If a design specification needs an icon slug that is not present, request the slug and usage context from the project owner before implementation. Do not create or source icon artwork.
 - Desktop hover may add feedback but cannot be the sole way to discover controls or information. Mobile has no hover; ordinary links/buttons activate on the first tap. For expandable parent navigation, follow the documented first-tap expansion, subsequent toggle, and double-tap parent navigation model while preserving clear accessible names and keyboard operation.
-- Apply the shared state guidance in `docs/frontend/04-design-system.md` and the visual examples in `docs/frontend/design-system-reference.html` to buttons, variation selectors, and inputs. Retain native WordPress/WooCommerce semantics and behavior; do not add interaction or commerce logic for documentation or styling.
+- Apply the shared state guidance and visual examples in `docs/frontend/design-system-reference.html` to buttons, variation selectors, and inputs. Retain native WordPress/WooCommerce semantics and behavior; do not add interaction or commerce logic for documentation or styling.
 
 Read the relevant authored skill before coding:
 
@@ -53,13 +54,7 @@ Installed WordPress skills under `.agents/skills/` provide technical guidance. P
 6. Update `docs/07.project-tracker.md` when implementation progress changes.
 7. Report changes, how they work, verification, incomplete work, and deviations.
 
-## Git checks via WSL
+## Tool permissions
 
-Before running any Git status, diff, log, or other Git check by invoking `wsl.exe`, ask the project owner for permission in advance. Do not run the command until the owner authorizes that specific check. This applies even when the check is read-only.
-
-## Live review
-
-Run live review when requested only.
-
-The project owner authorized Chrome browser control and DevTools inspection for live testing. Use the connected Chrome browser at <http://localhost:8080/>; this resolves on the owner's machine, unlike a remote browser. Use Chrome DevTools Protocol network events to verify resource request status/completion, then inspect visible behavior in the page. Do not use TinyFish for live-site verification.
+Follow [the Agent Toolkit](toolkit.md) for tool availability, usage, approval, Git-check, and live-review rules.
 

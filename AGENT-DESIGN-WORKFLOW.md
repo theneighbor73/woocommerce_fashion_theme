@@ -13,12 +13,12 @@ This is the operational workflow for researching, proposing, and implementing Al
 
 ### Phase 2 — Research and sketch options
 
-1. The owner may provide three to five inspiration URLs. Inspect their rendered pages in the authorized Chrome browser at representative compact, medium, and expanded widths. Use DevTools to inspect rendered dimensions, responsive behavior, and interactions where useful. Figma subscription or Figma MCP is not required.
+1. The owner may provide three to five inspiration URLs. Inspect and research references using the approved tools and access rules in [the Agent Toolkit](toolkit.md).
 2. Treat observations and measurements from reference sites as research evidence only; do not use their dimensions as Alice's implementation specifications.
-3. If inspiration URLs are not provided, research current UX conventions and relevant examples online. Include links, concise findings, and why a pattern may suit Alice.
+3. If inspiration URLs are not provided, research current UX conventions and relevant examples online. Include links, concise findings, and why a pattern may suit Alice, following the Toolkit's research guidance.
 4. Every proposed layout option must already comply with the project overview, sitemap, customer journeys, technical architecture, UI Registry, design-system reference, UI tokens, media policy, and owner instructions. Treat inclusion in a proposal as confirmation that it fits Alice's requirements and constraints. If the foundation for a decision is missing, flag it for discussion before presenting that layout as implementation-ready. Research-only patterns outside the boundary may be mentioned with a compliant fallback, but do not prototype them as candidate implementations.
-5. Present one to three rough layout options as lightweight HTML/CSS prototypes, wireframes, or diagrams. Explain hierarchy, composition, and notable interactions. These are directional estimates, not final specifications. Use placeholder content or project-owner-provided assets from `/assets` only.
-6. Save Phase 2 sketch artifacts under `proposal-pg/<slice>/phase-2-sketches/`, with one subdirectory per option (for example, `option-a/`). Keep these files review-only, outside production theme code. Any future theme packaging process must explicitly exclude `proposal-pg/`; no packaging exclusion mechanism is currently configured in this repository.
+5. Present one to three rough layout options. Explain hierarchy, composition, and notable interactions. These are directional estimates, not final specifications; use the prototype formats and artifact rules in the Toolkit.
+6. Save Phase 2 sketch artifacts in the Toolkit's review-only proposal location and keep them outside production theme code.
 7. For major or distinctive layouts, show options for owner selection or combination before detailed specification. Simple, system-supported templates such as a functional 404 can proceed directly to implementation without separate design approval; the owner's final validation still applies.
 8. For each slice, ask the owner for any useful inputs not already available: inspiration URLs, the desired customer outcome, required content or sections, and relevant project-provided assets. The owner may provide assets as each slice begins.
 
@@ -40,7 +40,7 @@ For each significant decision, indicate whether it is defined by an existing tok
 ### Phase 4 — Record specifications and propose the responsive UI
 
 1. Write the derived specifications into the relevant UI Registry entry and set it to `SPECIFIED`. This Registry entry is the specification for the visual proposal and the implementation handoff.
-2. Create a refined, responsive prototype using HTML and CSS, with JavaScript only when needed to demonstrate a visual interaction. Save it separately under `proposal-pg/<slice>/phase-4-proposal/`; do not overwrite the Phase 2 sketches. Identify which selected or combined sketch informed the refined proposal.
+2. Create a refined, responsive prototype following the Toolkit's prototype and artifact rules. Keep it separate from the Phase 2 sketches and identify which selected or combined sketch informed it.
 3. Show compact/mobile, medium/tablet, and expanded/desktop contexts, component composition, and important interaction states. Validate the prototype against the quantitative Registry specifications and resolve mismatches before presenting it.
 4. For major or distinctive layouts—including the homepage, catalog family, product detail, and single blog post—present the Registry specs and proposal for owner approval before implementation. For simple templates already supported by the design system, such as a basic standard content page or functional 404, a separate design approval is not required.
 
@@ -53,12 +53,12 @@ For each significant decision, indicate whether it is defined by an existing tok
 
 ### Phase 6 — Verify and hand off
 
-1. Run relevant existing lint, build, and validation checks. Report exactly what ran and the result. Do not create a new test suite without approval. Run PHP lint on changed PHP files when relevant, using `PHP_EXECUTABLE` from the local `.env.local`; if the executable/check is unavailable or fails to launch, report that clearly.
+1. Run relevant existing lint, build, and validation checks according to the Toolkit. Report exactly what ran and the result.
 2. Once code is complete and applicable code checks pass, set the Registry status to `IMPLEMENTED`.
-3. After a major UI page/slice is complete, use the already authorized Chrome/CDP browser at `http://localhost:8080/` to inspect network request completion where appropriate and visible frontend behavior at relevant widths. This review is not routine for small components or refactors.
+3. Review each major completed UI slice using the browser procedure and access rules in the Toolkit. Small changes are reviewed only when requested.
 4. The owner checks block/pattern editing and usability in the WordPress Site Editor and gives final approval. After the required reviews pass and the owner approves, set the Registry status to `ESTABLISHED`.
-5. The owner performs any final validation and pushes changes to Git manually. Follow repository authorization rules before running Git checks through WSL.
-6. Update the Project Tracker when implementation progress changes. Reserve broad accessibility and WordPress Theme Check passes for meaningful milestones or pre-release. CI is deferred for future consideration.
+5. Follow the Toolkit for Git-check permissions and release ownership.
+6. Update the Project Tracker when implementation progress changes. Follow the Toolkit for milestone-specific checks and CI availability.
 
 ## Planned UI slice order
 
@@ -81,7 +81,6 @@ The shared header and footer are established. Recheck them in context during rel
 - **Alice's boundary:** This is a presentation-only WordPress/WooCommerce block theme. Use native blocks, templates, template parts, patterns, `theme.json`, CSS, and narrowly scoped Interactivity API enhancements for progressive visual interactions. WordPress/WooCommerce own data, commerce, and business behavior.
 - **No out-of-scope implementation:** Do not add custom blocks, business logic, persistent data, external services, or plugins. Research patterns beyond the boundary as findings only. Explain a native fallback and a suitable existing-plugin option when one exists; the owner decides whether to preserve the pattern's essence in the final direction. Discard options requiring custom blocks/plugins or prohibited behavior.
 - **Reusable merchant UI:** Treat portability as a design principle. Use inserter patterns for reusable merchant-facing compositions that produce independent editable copies. Use template parts for recurring site structure. Do not duplicate pattern markup when the pattern is the source composition.
-- **Media:** Use only project-owner-provided assets as supplied. Do not create, generate, source, download, crop, resize, compress, convert, or otherwise edit media. Ask the owner to provide a missing required asset.
+- **Media:** Follow the approved asset and icon rules in the Toolkit.
 - **Sources of truth:** `docs/frontend/design-system-reference.html` is the visual design-system source; `docs/frontend/09.ui-registry.md` is the source for UI specifications and status. Consult the other project documents and skills named in `AGENTS.md` for each task.
-- **Local PHP configuration:** `.env.local` may contain non-secret, machine-specific tool paths such as `PHP_EXECUTABLE`; it is Git-ignored. Never put credentials there or inspect credential-bearing files.
-- **Owner and agent roles:** The agent carries research through implementation and technical verification within approved constraints. The owner provides design direction where requested, validates in the Site Editor and final review, and pushes manually. The planned major documentation refactor is separate future work.
+- **Tool permissions:** The Toolkit is the single source for tool access, invocation, approval, and review rules. The agent handles research through implementation and technical verification; the owner provides design direction where requested, validates in the Site Editor, and approves the result.
