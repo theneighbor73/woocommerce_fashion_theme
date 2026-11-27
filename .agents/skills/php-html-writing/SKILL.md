@@ -18,7 +18,7 @@ Use this skill for theme setup, guarded presentation hooks, block patterns, and 
 - Keep `templates/*.html` and `parts/*.html` as serialized WordPress block markup; do not include PHP.
 - Use native core and WooCommerce blocks. Keep block comment attributes consistent with the saved HTML markup.
 - Use template parts for recurring structural regions and patterns for reusable native block compositions.
-- Use semantic landmarks and native controls. Keep nesting purposeful and manageable; follow the accessibility guidance in `docs/frontend/04-design-system.md`.
+- Use semantic landmarks and native controls. Keep nesting purposeful and manageable; follow the accessibility guidance in `docs/frontend/design-system-reference.html`.
 - Match template locking to the UI specification: preserve fixed composition while allowing intended content and navigation editing.
 
 ## PHP safety

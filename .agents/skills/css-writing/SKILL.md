@@ -9,7 +9,7 @@ Use this skill for theme stylesheets, `theme.json` styles, responsive presentati
 
 ## Project constraints
 
-- Follow the theme boundary in `docs/00.project-overview.md`, the visual guidance in `docs/frontend/04-design-system.md`, approved values in `docs/frontend/08.ui-tokens.md`, and component behavior in `docs/frontend/09.ui-registry.md`. These project documents are authoritative for design decisions and supersede this skill whenever guidance conflicts; ask for permission to remove the conflicting skill guidance if you detect it.
+- Follow the theme boundary in `docs/00.project-overview.md`, the visual guidance in `docs/frontend/design-system-reference.html`, approved values in `docs/frontend/08.ui-tokens.md`, and component behavior in `docs/frontend/09.ui-registry.md`. These project documents are authoritative for design decisions and supersede this skill whenever guidance conflicts; ask for permission to remove the conflicting skill guidance if you detect it.
 - Prefer `theme.json` for global presets and block defaults. Use CSS for visual details that are not practical in `theme.json`.
 
 ## Design tokens and custom properties
