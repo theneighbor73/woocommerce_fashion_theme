@@ -54,7 +54,7 @@ Storefront
 └── 404
 ```
 
-This is the planned page baseline. Core shopping pages are implemented first; blog, editorial, and secondary content pages follow. The actual published pages and navigation items are managed by the merchant.
+This is the planned page baseline. The actual published pages and navigation items are managed by the merchant.
 
 Not every sitemap entry requires a separate template.
 
@@ -89,15 +89,7 @@ The following templates are required or should be evaluated for the initial WooC
 | Checkout                 | Checkout experience            |
 | My Account               | Customer account               |
 
-Important:
-
-WooCommerce functionality can be rendered through WooCommerce blocks, WordPress block templates, and supported WooCommerce integration mechanisms.
-
-Do not assume that every WooCommerce page requires a separate HTML template.
-
-Cart and Checkout must be styled for both WooCommerce blocks and classic shortcode-backed pages. Prefer blocks for new/default setups; do not replace either mode's behavior.
-
-Use the correct WordPress and WooCommerce template hierarchy.
+Implementation constraints for WordPress and WooCommerce templates, including Cart and Checkout modes, are defined in [Technical Constraints](05.technical-constraints.md).
 
 ## 5. Page-to-Template Mapping
 
@@ -120,48 +112,4 @@ Use the correct WordPress and WooCommerce template hierarchy.
 | Search               | Search template                                        |
 | Invalid URL          | 404 template                                           |
 
-## 6. Layout Strategy
-
-The initial theme uses fixed compositions with predetermined structure, not fixed pixel-width layouts. Templates and patterns adapt to the shared compact/medium/expanded grid and reflow rules.
-
-Each template has a predetermined structure.
-
-Merchants may change intended content but should not freely rearrange the structural layout.
-
-The initial locking approach is `contentOnly` wherever appropriate.
-
-The theme must provide appropriate editable areas for:
-
-- Text.
-- Images.
-- Site logo.
-- Navigation.
-
-Do not expose arbitrary template composition controls in the initial version.
-
-## 7. Template Parts vs Patterns vs Components
-
-Use the correct WordPress abstraction.
-
-### Template Parts
-
-Use for recurring structural areas such as:
-
-- Header.
-- Footer.
-
-### Block Patterns
-
-Use for reusable compositions such as:
-
-- Hero sections.
-- Editorial banners.
-- Promotional sections.
-
-Patterns are the default for reusable merchant-facing page sections: they should be insertable, editable copies, and templates should reference the registered pattern instead of duplicating its block markup. Template parts remain the choice for shared site structure.
-
-### CSS and JavaScript Components
-
-Reusable visual and interaction elements do not necessarily need to be WordPress blocks.
-
-Use the simplest appropriate implementation.
+Template structure, pattern/template-part responsibilities, and merchant editing constraints are defined in [Technical Constraints](05.technical-constraints.md). The [UI Registry](../frontend/09.ui-registry.md) records each slice's specific composition and editing requirements.

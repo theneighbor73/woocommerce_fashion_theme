@@ -7,7 +7,7 @@ This is the operational workflow for researching, proposing, and implementing Al
 ### Phase 1 — Orient to the UI slice
 
 1. Identify the page/template group and customer goal. Use the roadmap below to plan future slices, but detail only the slice that is next.
-2. Read relevant sources: project overview, sitemap, customer journeys, technical architecture, UI Registry, design-system reference, and UI tokens. Inspect the current implementation and relevant authored skills before coding.
+2. Read relevant sources: project overview, sitemap, customer journeys, technical constraints, UI Registry, design-system reference, and UI tokens. Inspect the current implementation and relevant authored skills before coding.
 3. Review the current UI Registry status and identify merchant-editable content, reusable-section candidates, template-part needs, native WordPress/WooCommerce behavior, responsive requirements, accessibility states, and relevant empty/error/availability states.
 4. Do not implement an item while its UI Registry status is `SPECIFICATION_PENDING`.
 
@@ -16,7 +16,7 @@ This is the operational workflow for researching, proposing, and implementing Al
 1. The owner may provide three to five inspiration URLs. Inspect and research references using the approved tools and access rules in [the Agent Toolkit](toolkit.md).
 2. Treat observations and measurements from reference sites as research evidence only; do not use their dimensions as Alice's implementation specifications.
 3. If inspiration URLs are not provided, research current UX conventions and relevant examples online. Include links, concise findings, and why a pattern may suit Alice, following the Toolkit's research guidance.
-4. Every proposed layout option must already comply with the project overview, sitemap, customer journeys, technical architecture, UI Registry, design-system reference, UI tokens, media policy, and owner instructions. Treat inclusion in a proposal as confirmation that it fits Alice's requirements and constraints. If the foundation for a decision is missing, flag it for discussion before presenting that layout as implementation-ready. Research-only patterns outside the boundary may be mentioned with a compliant fallback, but do not prototype them as candidate implementations.
+4. Every proposed layout option must already comply with the project overview, sitemap, customer journeys, technical constraints, UI Registry, design-system reference, UI tokens, media policy, and owner instructions. Treat inclusion in a proposal as confirmation that it fits Alice's requirements and constraints. If the foundation for a decision is missing, flag it for discussion before presenting that layout as implementation-ready. Research-only patterns outside the boundary may be mentioned with a compliant fallback, but do not prototype them as candidate implementations.
 5. Present one to three rough layout options. Explain hierarchy, composition, and notable interactions. These are directional estimates, not final specifications; use the prototype formats and artifact rules in the Toolkit.
 6. Save Phase 2 sketch artifacts in the Toolkit's review-only proposal location and keep them outside production theme code.
 7. For major or distinctive layouts, show options for owner selection or combination before detailed specification. Simple, system-supported templates such as a functional 404 can proceed directly to implementation without separate design approval; the owner's final validation still applies.
